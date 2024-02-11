@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +12,8 @@ namespace AstekUtility.Observer
         /// Key is the instance of subject
         /// Value is the List of observer observing it
         /// </summary>
-        private readonly Dictionary<ISubject, List<IObserver>> _subjectAndObservers = new Dictionary<ISubject, List<IObserver>>();
+        private readonly Dictionary<Type, List<IObserver>> _subjectAndObservers = new Dictionary<Type, List<IObserver>>();
+        private readonly Dictionary<Type, ISubject> _subjectTypeToInstance = new Dictionary<Type, ISubject>();
 
         /// <summary>
         /// Prevents allocation as instantiated class
@@ -25,13 +27,14 @@ namespace AstekUtility.Observer
         /// <param name="subject"></param>
         public void RegisterSubject<T>(T subject) where T : ISubject
         {
-            if (_subjectAndObservers.ContainsKey(subject))
+            if (_subjectAndObservers.ContainsKey(typeof(T)))
             {
                 Debug.LogError($"Observer Manager: Attempted to add subject of type {typeof(T).Name} which is already added.");
                 return;
             }
 
-            _subjectAndObservers.Add(subject, new List<IObserver>());
+            _subjectAndObservers.Add(typeof(T), new List<IObserver>());
+            _subjectTypeToInstance.Add(typeof(T), subject);
         }
 
         /// <summary>
@@ -39,15 +42,16 @@ namespace AstekUtility.Observer
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="subject"></param>
-        public void UnregisterSubject<T>(T subject) where T : ISubject
+        public void UnregisterSubject<T>() where T : ISubject
         {
-            if (!_subjectAndObservers.ContainsKey(subject))
+            if (!_subjectAndObservers.ContainsKey(typeof(T)))
             {
                 Debug.LogError($"Observer Manager: Attempted to remove subject of type {typeof(T).Name} which is not registered.");
                 return;
             }
 
-            _subjectAndObservers.Remove(subject);
+            _subjectAndObservers.Remove(typeof(T));
+            _subjectTypeToInstance.Remove(typeof(T));
         }
 
         /// <summary>
@@ -59,17 +63,17 @@ namespace AstekUtility.Observer
         /// <param name="observer"></param>
         public void SubscribeToSubject<T, W>(T subject, W observer) where T : ISubject where W : IObserver
         {
-            if (!_subjectAndObservers.ContainsKey(subject))
+            if (!_subjectAndObservers.ContainsKey(typeof(T)))
             {
                 RegisterSubject(subject);
             }
 
-            if (_subjectAndObservers[subject].Contains(observer))
+            if (_subjectAndObservers[typeof(T)].Contains(observer))
             {
                 Debug.LogError($"Observer {observer.GetType().Name} marked for subscription to Subject {subject.GetType().Name} is already subscribed to it");
             }
 
-            _subjectAndObservers[subject].Add(observer);
+            _subjectAndObservers[typeof(T)].Add(observer);
         }
 
         /// <summary>
@@ -79,18 +83,18 @@ namespace AstekUtility.Observer
         /// <typeparam name="W"></typeparam>
         /// <param name="subject"></param>
         /// <param name="observer"></param>
-        public void UnsubscribeToSubject<T, W>(T subject, W observer) where T : ISubject where W : IObserver
+        public void UnsubscribeToSubject<T, W>(W observer) where T : ISubject where W : IObserver
         {
-            if (!_subjectAndObservers.ContainsKey(subject))
+            if (!_subjectAndObservers.ContainsKey(typeof(T)))
             {
-                Debug.LogError($"Subject {subject.GetType().Name} is not registered");
+                Debug.LogError($"Subject {typeof(T).Name} is not registered");
             }
-            else if (!_subjectAndObservers[subject].Contains(observer))
+            else if (!_subjectAndObservers[typeof(T)].Contains(observer))
             {
-                Debug.LogError($"Observer {observer.GetType().Name} does not subscribe to Subject {subject.GetType().Name}");
+                Debug.LogError($"Observer {observer.GetType().Name} does not subscribe to Subject {typeof(T).Name}");
             }
 
-            _subjectAndObservers[subject].Remove(observer);
+            _subjectAndObservers[typeof(T)].Remove(observer);
         }
 
         /// <summary>
@@ -98,11 +102,11 @@ namespace AstekUtility.Observer
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="subject"></param>
-        public void NotifyObservers<T>(T subject) where T : ISubject
+        public void NotifyObservers<T>() where T : ISubject
         {
-            foreach (IObserver observer in _subjectAndObservers[subject])
+            foreach (IObserver observer in _subjectAndObservers[typeof(T)])
             {
-                observer.OnNotify(subject);
+                observer.OnNotify(_subjectTypeToInstance[typeof(T)]);
             }
         }
 
@@ -120,9 +124,9 @@ namespace AstekUtility.Observer
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public bool CheckIfRegistered<T>(T subject) where T : ISubject
+        public bool CheckIfRegistered<T>() where T : ISubject
         {
-            if (_subjectAndObservers.ContainsKey(subject))
+            if (_subjectAndObservers.ContainsKey(typeof(T)))
             {
                 return true;
             }
