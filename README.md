@@ -5,6 +5,7 @@ This Project contains generic design patterns for
 -Factory
 -Observer
 -Service Locator
+-State Machine
 
 It also contains following utility scripts:
 -Event manager
