@@ -104,7 +104,7 @@ namespace AstekUtility.Observer
         /// <param name="subject"></param>
         public void NotifyObservers<T>(T subject) where T : ISubject
         {
-            foreach (IObserver observer in _subjectAndObservers[subject.GetType])
+            foreach (IObserver observer in _subjectAndObservers[subject.GetType()])
             {
                 observer.OnNotify(_subjectTypeToInstance[typeof(T)]);
             }
