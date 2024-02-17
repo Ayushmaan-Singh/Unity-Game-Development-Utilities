@@ -63,7 +63,7 @@ namespace AstekUtility.Observer
         /// <param name="observer"></param>
         public void SubscribeToSubject<T, W>(T subject, W observer) where T : ISubject where W : IObserver
         {
-            if (!_subjectAndObservers.ContainsKey(typeof(T)))
+            if (!_subjectAndObservers.ContainsKey(subject.GetType()))
             {
                 RegisterSubject(subject);
             }
@@ -83,9 +83,9 @@ namespace AstekUtility.Observer
         /// <typeparam name="W"></typeparam>
         /// <param name="subject"></param>
         /// <param name="observer"></param>
-        public void UnsubscribeToSubject<T, W>(W observer) where T : ISubject where W : IObserver
+        public void UnsubscribeToSubject<T, W>(T subject,W observer) where T : ISubject where W : IObserver
         {
-            if (!_subjectAndObservers.ContainsKey(typeof(T)))
+            if (!_subjectAndObservers.ContainsKey(subject.GetType()))
             {
                 Debug.LogError($"Subject {typeof(T).Name} is not registered");
             }
@@ -102,9 +102,9 @@ namespace AstekUtility.Observer
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="subject"></param>
-        public void NotifyObservers<T>() where T : ISubject
+        public void NotifyObservers<T>(T subject) where T : ISubject
         {
-            foreach (IObserver observer in _subjectAndObservers[typeof(T)])
+            foreach (IObserver observer in _subjectAndObservers[subject.GetType])
             {
                 observer.OnNotify(_subjectTypeToInstance[typeof(T)]);
             }
