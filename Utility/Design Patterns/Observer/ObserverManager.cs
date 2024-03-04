@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace AstekUtility.Observer
+namespace AstekUtility.Observer.Managed
 {
     public sealed class ObserverManager
     {
@@ -42,9 +42,9 @@ namespace AstekUtility.Observer
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="subject"></param>
-        public void UnregisterSubject<T>() where T : ISubject
+        public void UnregisterSubject<T>(T subject) where T : ISubject
         {
-            if (!_subjectAndObservers.ContainsKey(typeof(T)))
+            if (!_subjectAndObservers.ContainsKey(subject.GetType()))
             {
                 Debug.LogError($"Observer Manager: Attempted to remove subject of type {typeof(T).Name} which is not registered.");
                 return;
@@ -55,22 +55,39 @@ namespace AstekUtility.Observer
         }
 
         /// <summary>
+        /// Used to get default value of a subject when needed
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="subject"></param>
+        /// <returns></returns>
+        public ISubject GetSubject<T>() where T : ISubject
+        {
+            if (!_subjectAndObservers.ContainsKey(typeof(T)))
+            {
+                Debug.LogError($"Observer Manager: Attempted to get subject of type {typeof(T).Name} which is not registered.");
+            }
+
+            return _subjectTypeToInstance[typeof(T)];
+        }
+
+        /// <summary>
         /// Subscribe an Observer of type W to Subject of type T
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <typeparam name="W"></typeparam>
         /// <param name="subject"></param>
         /// <param name="observer"></param>
-        public void SubscribeToSubject<T, W>(T subject, W observer) where T : ISubject where W : IObserver
+        public void SubscribeToSubject<T, W>(W observer) where T : ISubject where W : IObserver
         {
-            if (!_subjectAndObservers.ContainsKey(subject.GetType()))
+            if (!_subjectAndObservers.ContainsKey(typeof(T)))
             {
-                RegisterSubject(subject);
+                Debug.LogError($"Observer Manager: Attempted to observe subject of type {typeof(T).Name} which is not registered.");
+                return;
             }
 
             if (_subjectAndObservers[typeof(T)].Contains(observer))
             {
-                Debug.LogError($"Observer {observer.GetType().Name} marked for subscription to Subject {subject.GetType().Name} is already subscribed to it");
+                Debug.LogError($"Observer {observer.GetType().Name} marked for subscription to Subject {typeof(T).Name} is already subscribed to it");
             }
 
             _subjectAndObservers[typeof(T)].Add(observer);
@@ -83,9 +100,9 @@ namespace AstekUtility.Observer
         /// <typeparam name="W"></typeparam>
         /// <param name="subject"></param>
         /// <param name="observer"></param>
-        public void UnsubscribeToSubject<T, W>(T subject,W observer) where T : ISubject where W : IObserver
+        public void UnsubscribeToSubject<T, W>(W observer) where T : ISubject where W : IObserver
         {
-            if (!_subjectAndObservers.ContainsKey(subject.GetType()))
+            if (!_subjectAndObservers.ContainsKey(typeof(T)))
             {
                 Debug.LogError($"Subject {typeof(T).Name} is not registered");
             }

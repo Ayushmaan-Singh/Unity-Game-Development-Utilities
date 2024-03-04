@@ -1,11 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace AstekUtility.Observer
 {
-    public interface IObserver
+    namespace Managed
     {
-        void OnNotify(ISubject subject);
+        public interface IObserver
+        {
+            void OnNotify(ISubject subject);
+        }
+    }
+
+    namespace Unmanaged
+    {
+        public interface IObserver<T>
+        {
+            void OnNotify(ISubject<T> subject);
+        }
     }
 }
