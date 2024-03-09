@@ -6,9 +6,15 @@ namespace AstekUtility.Observer
     {
         public interface ISubject { }
 
-        public class SubjectBase<T> : ISubject
+        public class ManagedSubject<T> : ISubject
         {
-            public T Data { get; set; }
+            public T Data { get; private set; }
+
+            public void Notify(T newValue)
+            {
+                Data = newValue;
+                ObserverManager.Instance.NotifyObservers(this.GetType());
+            }
         }
     }
 
@@ -18,13 +24,13 @@ namespace AstekUtility.Observer
         {
             void Attach(params IObserver<T>[] observer);
             void Detach(params IObserver<T>[] observer);
-            void Notify();
+            void Notify(T changedValue);
         }
 
-        public class Subject<T> : ISubject<T>
+        public class UnmanagedSubject<T> : ISubject<T>
         {
+            public T Data { get; private set; }
             private List<IObserver<T>> _observers = new List<IObserver<T>>();
-            public T Value { get; set; }
 
             public void Attach(params IObserver<T>[] observer)
             {
@@ -53,8 +59,9 @@ namespace AstekUtility.Observer
                 _observers.Clear();
             }
 
-            public void Notify()
+            public void Notify(T changedValue)
             {
+                Data = changedValue;
                 foreach (IObserver<T> obs in _observers)
                 {
                     obs.OnNotify(this);
