@@ -1,54 +1,51 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-
 namespace AstekUtility.BehaviorTree
 {
-    public class Node
-    {
-        public string Name { get; protected set; }
-        public int SortOrder { get; protected set; }
+	public class Node
+	{
 
-        public enum Status
-        {
-            Running,
-            Success,
-            Failure
-        }
+		public enum Status
+		{
+			Running,
+			Success,
+			Failure
+		}
+		protected int _currentChild;
 
-        public Status NodeStatus { get; protected set; }
+		public Node() { }
+		public Node(string name)
+		{
+			Name = name;
+		}
 
-        //Put in order they are to be executed if its a sequence type Node
-        public List<Node> Children { get; protected set; } = new List<Node>();
-        protected int _currentChild = 0;
+		public Node(string name, int order)
+		{
+			Name = name;
+			SortOrder = order;
+		}
+		public string Name { get; protected set; }
+		public int SortOrder { get; protected set; }
 
-        public Node() { }
-        public Node(string name)
-        {
-            Name = name;
-        }
+		public Status NodeStatus { get; protected set; }
 
-        public Node(string name, int order)
-        {
-            Name = name;
-            SortOrder = order;
-        }
+		//Put in order they are to be executed if its a sequence type Node
+		public List<Node> Children { get; protected set; } = new List<Node>();
 
-        public void AddChild(Node n)
-        {
-            Children.Add(n);
-        }
+		public void AddChild(Node n)
+		{
+			Children.Add(n);
+		}
 
-        public virtual Status Process()
-        {
-            return Children[_currentChild].Process();
-        }
+		public virtual Status Process()
+		{
+			return Children[_currentChild].Process();
+		}
 
-        public void Reset()
-        {
-            foreach (Node n in Children)
-                n.Reset();
-            _currentChild = 0;
-        }
-    }
+		public void Reset()
+		{
+			foreach (Node n in Children)
+				n.Reset();
+			_currentChild = 0;
+		}
+	}
 }

@@ -1,0 +1,4 @@
+﻿This pathfinding algorithm was made by studying git-amends video
+
+Video: https://www.youtube.com/watch?v=q77-uxsDZow&list=PLnJJ5frTPwRNdPS7F6AYZwyf4b5IXFhtc&index=6
+Project link: https://gist.github.com/adammyhre/b8a2428c34e06ba9acbd70dceeadbcb6
