@@ -9,6 +9,7 @@ This Project contains generic design patterns for </br>
 -State Machine</br>
 -GOAP</br>
 -Mediator Pattern</br>
+-Blackboard Architecture</br>
 
 It also contains following utility scripts:</br>
 -Event manager</br>
