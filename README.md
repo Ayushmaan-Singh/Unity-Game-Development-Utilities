@@ -1,4 +1,5 @@
 This Project contains generic design patterns for </br>
+-Dependency Injector</br>
 -Behavior Tree</br>
 -Object Pooling</br>
 -Singleton</br>
@@ -15,6 +16,6 @@ It also contains following utility scripts:</br>
 -Event manager</br>
 -Collision Event(A wrapper providing collision event from one script to multiple subscriber through unity events)</br>
 -Serialized Dictionary(Unity only)</br>
--Extension Methods For Transform,GameObject,float,int,Vector3,AnimationCurve,type,and object.</br>
+-Extension Methods For Transform,GameObject,float,int,Vector3,AnimationCurve,type, object, IEnumerator, AsyncOperationHandle<T>, AsyncOperatoion and Task.</br>
 -local Timers-countdown and stopwatch</br>
 -Global Playerloop registered timer- countdown and stopwatch controlled cia TimerManager</br>
