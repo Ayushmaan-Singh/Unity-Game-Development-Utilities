@@ -5,7 +5,7 @@ This Project contains generic design patterns for </br>
 -Factory</br>
 -Observer</br>
 -Pure C# Service Locator(can be used by any c# code)</br>
--MonoBehaviour Service Locator(Unity only)</br>
+-MonoBehaviour Service Locator-Has a service locator for local scope i.e in parent, scene wide scope and global scope(Unity only)</br>
 -State Machine</br>
 -GOAP</br>
 -Mediator Pattern</br>
