@@ -4,9 +4,9 @@ using UnityEngine.SceneManagement;
 
 namespace AstekUtility.SceneManagement
 {
-	public class Bootstrapper : Singleton<Bootstrapper>
+	public class Bootstrapper : PersistentSingleton<Bootstrapper>
 	{
-		[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+		//[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
 		private static async void Init()
 		{
 			Debug.Log("Bootstrapper........");

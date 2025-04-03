@@ -9,10 +9,10 @@ namespace AstekUtility.RuntimeSetArchitecture
 	{
 		private Dictionary<string, T> Items = new Dictionary<string, T>();
 
-		public T this[string key]
+		public T this[string name]
 		{
-			get => Items[key];
-			set => Items[key] = value;
+			get => Items[name];
+			set => Items[name] = value;
 		}
 		public int Count => Items.Count;
 

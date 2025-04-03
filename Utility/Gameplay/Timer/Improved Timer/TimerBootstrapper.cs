@@ -15,7 +15,7 @@ namespace AstekUtility.Gameplay.ImprovedTimer
 		private static bool SHOWPLAYERLOOP = true;
         #endif
 
-		[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterAssembliesLoaded)]
+		//[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterAssembliesLoaded)]
 		internal static void Initialize()
 		{
 			PlayerLoopSystem currentPlayerLoop = PlayerLoop.GetCurrentPlayerLoop();

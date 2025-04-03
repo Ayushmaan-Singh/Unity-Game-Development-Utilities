@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace AstekUtility.Gameplay.ImprovedTimer
 {
@@ -8,17 +7,14 @@ namespace AstekUtility.Gameplay.ImprovedTimer
 	/// </summary>
 	public class StopwatchTimer : Timer
 	{
-		public Action OnTimerTick = delegate { };
-
 		public StopwatchTimer() : base(0) { }
 
 		public override void Tick()
 		{
-			if (!IsRunning)
-				return;
-			
-			OnTimerTick.Invoke();
-			CurrentTime += Time.deltaTime;
+			if (IsRunning)
+			{
+				CurrentTime += Time.deltaTime;
+			}
 		}
 
 		public override bool IsFinished => false;

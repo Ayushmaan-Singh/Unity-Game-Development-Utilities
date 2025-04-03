@@ -84,10 +84,10 @@ namespace AstekUtility.Gameplay.Timer
 
 		public override void Tick(float deltaTime)
 		{
-			if (!IsRunning)
-				return;
-			
-			Time += deltaTime;
+			if (IsRunning)
+			{
+				Time += deltaTime;
+			}
 		}
 
 		public void Reset() => Time = 0;
