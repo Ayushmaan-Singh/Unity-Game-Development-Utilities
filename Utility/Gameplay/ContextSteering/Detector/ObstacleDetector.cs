@@ -1,42 +1,40 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Object = System.Object;
 namespace AstekUtility.Gameplay
 {
 	public class ObstacleDetector : Detector
 	{
-		public string _detectorName;
-		private Collider[] _colliders;
-
 		private void Start()
 		{
-			if (_aiData.AvoidedObjectCollection == null)
-			{
-				_aiData.AvoidedObjectCollection = new Dictionary<string, Collider[]>();
-			}
-			_aiData.AvoidedObjectCollection.Add(_detectorName, null);
+			_aiData.AvoidedObjectCollection.Add(this, null);
 		}
 
 		#if UNITY_EDITOR
 		public override void OnDrawGizmos()
 		{
-			if (_showGizmos == false)
+			if (_showGizmos == false || _aiData == null || !_aiData.AvoidedObjectCollection.ContainsKey(this))
 				return;
 
-			if (Application.isPlaying && _colliders != null)
+			Gizmos.color = _gizmoColor;
+
+			if (_aiData.AvoidedObjectCollection[this] == null)
+				return;
+
+			foreach (Collider obstacleCollider in _aiData.AvoidedObjectCollection[this])
 			{
-				Gizmos.color = _gizmoColor;
-				foreach (Collider obstacleCollider in _colliders)
-				{
+				if (obstacleCollider != null)
 					Gizmos.DrawSphere(obstacleCollider.transform.position, 0.4f);
-				}
 			}
 		}
 		#endif
 
 		public override void Detect()
 		{
-			_colliders = Physics.OverlapSphere(_mainModel.position, _detectionRadius, _obstacleLayerMask);
-			_aiData.AvoidedObjectCollection[_detectorName] = _colliders;
+			if (!_mainModel)
+				return;
+			_aiData.AvoidedObjectCollection[this] = Physics.OverlapSphere(_mainModel.position, detectionRadius, detectObjectInLayer);
 		}
 	}
 }

@@ -3,40 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace AstekUtility
 {
-	// public abstract class UnitySerializedDictionary<TKey, TValue> : ISerializationCallbackReceiver
-	// {
-	// 	[SerializeField] private List<DictData> dictData = new List<DictData>();
-	// 	private Dictionary<TKey, TValue> _dictionary;
-	//
-	// 	public TValue this[TKey key] { get { return _dictionary[key]; } set { _dictionary[key] = value; } }
-	//
-	// 	[Serializable]
-	// 	private class DictData
-	// 	{
-	// 		public TKey Key;
-	// 		public TValue Value;
-	// 	}
-	//
-	// 	void ISerializationCallbackReceiver.OnAfterDeserialize()
-	// 	{
-	// 		_dictionary.Clear();
-	// 		foreach (DictData t in dictData)
-	// 		{
-	// 			this[t.Key] = t.Value;
-	// 		}
-	// 	}
-	//
-	// 	void ISerializationCallbackReceiver.OnBeforeSerialize()
-	// 	{
-	// 		dictData.Clear();
-	// 		foreach (KeyValuePair<TKey, TValue> item in _dictionary)
-	// 		{
-	// 			dictData.Add(new DictData
-	// 			{
-	// 				Key = item.Key,
-	// 				Value = item.Value
-	// 			});
-	// 		}
-	// 	}
-	//}
+	public abstract class UnitySerializedDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISerializationCallbackReceiver
+	{
+		[SerializeField, HideInInspector]
+		private List<TKey> keyData = new List<TKey>();
+	
+		[SerializeField, HideInInspector]
+		private List<TValue> valueData = new List<TValue>();
+
+		void ISerializationCallbackReceiver.OnAfterDeserialize()
+		{
+			Clear();
+			for (int i = 0; i < keyData.Count && i < this.valueData.Count; i++)
+			{
+				this[keyData[i]] = valueData[i];
+			}
+		}
+
+		void ISerializationCallbackReceiver.OnBeforeSerialize()
+		{
+			keyData.Clear();
+			valueData.Clear();
+
+			foreach (KeyValuePair<TKey, TValue> item in this)
+			{
+				keyData.Add(item.Key);
+				valueData.Add(item.Value);
+			}
+		}
+	}
 }

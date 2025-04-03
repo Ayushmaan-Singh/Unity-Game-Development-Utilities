@@ -1,43 +1,48 @@
 using System;
 using System.Collections.Generic;
-namespace AstekUtility.StateMachine
+namespace AstekUtility.DesignPattern.StateMachine
 {
 	public class StateMachine
 	{
 		private readonly HashSet<ITransition> _anyTransitions = new HashSet<ITransition>();
 		private readonly Dictionary<Type, StateNode> _nodes = new Dictionary<Type, StateNode>();
-		public StateNode Current { get; private set; }
+		public StateNode CurrentState { get; private set; }
 
-		public void Update()
+		public void FrameUpdate()
 		{
 			ITransition transition = GetTransition();
 			if (transition != null)
 				ChangeState(transition.To);
 
-			Current.State?.Update();
+			CurrentState.State?.FrameUpdate();
 		}
 
-		public void FixedUpdate()
+		public void PhysicsUpdate()
 		{
-			Current.State?.FixedUpdate();
+			CurrentState.State?.PhysicsUpdate();
+		}
+
+		public void LateUpdate()
+		{
+			CurrentState.State?.LateUpdate();
 		}
 
 		public void SetState(IState state)
 		{
-			Current = _nodes[state.GetType()];
-			Current.State?.OnEnter();
+			CurrentState = _nodes[state.GetType()];
+			CurrentState.State?.OnStateEnter();
 		}
 
-		public void ChangeState(IState state)
+		private void ChangeState(IState state)
 		{
-			if (state == Current.State) return;
+			if (state == CurrentState?.State) return;
 
-			IState previousState = Current.State;
+			IState previousState = CurrentState?.State;
 			IState nextState = _nodes[state.GetType()].State;
 
-			previousState?.OnExit();
-			nextState?.OnEnter();
-			Current = _nodes[state.GetType()];
+			previousState?.OnStateExit();
+			nextState?.OnStateEnter();
+			CurrentState = _nodes[state.GetType()];
 		}
 
 		private ITransition GetTransition()
@@ -46,7 +51,7 @@ namespace AstekUtility.StateMachine
 				if (transition.Condition.Evaluate())
 					return transition;
 
-			foreach (ITransition transition in Current.Transitions)
+			foreach (ITransition transition in CurrentState.Transitions)
 				if (transition.Condition.Evaluate())
 					return transition;
 
@@ -63,7 +68,7 @@ namespace AstekUtility.StateMachine
 			_anyTransitions.Add(new Transition(GetOrAddNode(to).State, condition));
 		}
 
-		public StateNode GetOrAddNode(IState state)
+		private StateNode GetOrAddNode(IState state)
 		{
 			StateNode node = _nodes.GetValueOrDefault(state.GetType());
 
@@ -76,12 +81,11 @@ namespace AstekUtility.StateMachine
 			return node;
 		}
 
-        /// <summary>
-        ///     Node containing a state and its transitions
-        /// </summary>
-        public class StateNode
+		/// <summary>
+		/// Node containing a state and its transitions
+		/// </summary>
+		public class StateNode
 		{
-
 			public StateNode(IState state)
 			{
 				State = state;

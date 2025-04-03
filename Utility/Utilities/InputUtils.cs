@@ -1,39 +1,51 @@
-using AstekUtility.ServiceLocatorTool;
+using AstekUtility.DesignPattern.ServiceLocatorTool;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.PlayerLoop;
+
 namespace AstekUtility.Input
 {
-	public class InputUtils : IGameService
+	public class InputUtils : MonoBehaviour
 	{
-		public Vector3 GetMousePosition { get; private set; }
+		public delegate Vector3 MousePosition();
+		public delegate void UpdateMousePos(Camera camera);
 
-		public InputUtils()
+		public MousePosition GetMousePosition { get; private set; }
+		public UpdateMousePos UpdateMousePosition { get; private set; }
+
+		private Vector3 _currentMousePos;
+
+		public void Awake()
 		{
-			if (!ServiceLocator.Instance.CheckIfRegistered<InputUtils>())
-				ServiceLocator.Instance.Register<InputUtils>(this);
+			GetMousePosition = GetCurrentMousePosition;
+			UpdateMousePosition = MousePositionToXZPlane;
+			
+			ServiceLocator.Global.Register(GetMousePosition);
+			ServiceLocator.Global.Register(UpdateMousePosition);
 		}
 
-		~InputUtils()
+		private Vector3 GetCurrentMousePosition()
 		{
-			if (ServiceLocator.Instance.CheckIfRegistered<InputUtils>())
-				ServiceLocator.Instance.Unregister<InputUtils>();
+			return _currentMousePos;
 		}
 
-		public Vector3 MousePositionToXZPlane(Camera camera)
+		private void MousePositionToXZPlane(Camera camera)
 		{
 			Plane plane = new Plane(Vector3.up, 0);
 			Ray ray = camera.ScreenPointToRay(Mouse.current.position.ReadValue());
 			if (plane.Raycast(ray, out float distance))
 			{
-				GetMousePosition = ray.GetPoint(distance);
+				_currentMousePos = ray.GetPoint(distance);
 			}
-			return GetMousePosition;
 		}
 
-		public Vector3 MousePositionToXYPlane(Camera camera)
+		/// <summary>
+		/// Not used in current game
+		/// </summary>
+		/// <param name="camera"></param>
+		private void MousePositionToXYPlane(Camera camera)
 		{
-			GetMousePosition = camera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-			return GetMousePosition;
+			_currentMousePos = camera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 		}
 	}
 }

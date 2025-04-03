@@ -1,67 +1,50 @@
-#nullable enable
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+
+#nullable enable
 namespace AstekUtility
 {
-	public interface IObjectPool { }
-
-	public class ObjectPool<T> : IObjectPool where T : class?
+	[Serializable]
+	public class ObjectPool<T>
 	{
-		private readonly List<T?> _objectQueue;
+		private readonly Queue<T> _collection = new Queue<T>();
+		[SerializeField, Min(1)] private int maxSize;
+		[SerializeField] private bool canExpand = true;
 
-		public ObjectPool(uint maxPoolSize)
+		public bool CanBePooled => _collection.Count < maxSize || canExpand;
+		public int Count => _collection.Count;
+		public bool CanRelease => _collection.Count > 0;
+
+		public event Action<T> OnPooled = delegate { };
+		public event Action<T> OnRelease = delegate { };
+		public event Action<T> OnClear = delegate { };
+
+		public ObjectPool() { }
+		public ObjectPool(int maxSize) => this.maxSize = maxSize;
+		public ObjectPool(bool canExpand) => this.canExpand = canExpand;
+
+		public void PoolObject(T obj)
 		{
-			_objectQueue = new List<T?>((int)maxPoolSize);
+			if (!CanBePooled)
+				return;
+
+			_collection.Enqueue(obj);
+			OnPooled.Invoke(obj);
 		}
-
-		public ObjectPool()
+		public T? ReleaseObject()
 		{
-			_objectQueue = new List<T?>();
+			if (!CanRelease)
+				return default(T);
+
+			T obj = _collection.Dequeue();
+			OnRelease.Invoke(obj);
+			return obj;
 		}
-
-		public bool CanAddItemToPool(T? obj)
+		public void Clear()
 		{
-			return _objectQueue.Count < _objectQueue.Capacity && !_objectQueue.Contains(obj);
-		}
-
-		public void AddItemToPool(T? obj)
-		{
-			if (CanAddItemToPool(obj))
-			{
-				_objectQueue.Add(obj);
-			}
-			else
-			{
-				Debug.Log("Pooling Utility : Amount Exceeded Cannot Add More Item");
-			}
-		}
-
-		public int GetPooledItemCount()
-		{
-			return _objectQueue.Count;
-		}
-
-		public T? GetItemFromPool()
-		{
-			if (_objectQueue.Count > 0)
-			{
-				T? val = _objectQueue[0];
-				_objectQueue.RemoveAt(0);
-				return val;
-			}
-			return null;
-		}
-
-		public bool TryGetItemFromPool(out T? val)
-		{
-			if (_objectQueue.Count > 0)
-			{
-				val = _objectQueue[0];
-				_objectQueue.Remove(val);
-				return true;
-			}
-			val = null;
-			return false;
+			_collection.ForEach(obj => OnClear.Invoke(obj));
+			_collection.Clear();
 		}
 	}
 }

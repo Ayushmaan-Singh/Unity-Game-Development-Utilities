@@ -1,15 +1,17 @@
 ﻿using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.SceneManagement;
 
 namespace AstekUtility.SceneManagement
 {
-	public class Bootstrapper : PersistentSingleton<Bootstrapper>
+	public class Bootstrapper : Singleton<Bootstrapper>
 	{
 		[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-		static async void Init()
+		private static async void Init()
 		{
 			Debug.Log("Bootstrapper........");
-			await SceneManager.LoadSceneAsync("GameMaster", LoadSceneMode.Single).AsTask();
+			if (SceneManager.GetActiveScene().name != "GameMaster")
+				await Addressables.LoadSceneAsync("Assets/_Scenes/GameMaster.unity", LoadSceneMode.Single).Task;
 		}
 	}
 }

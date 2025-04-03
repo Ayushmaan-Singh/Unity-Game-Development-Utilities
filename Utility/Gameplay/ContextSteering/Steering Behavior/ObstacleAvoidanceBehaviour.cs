@@ -1,17 +1,17 @@
 using UnityEngine;
 namespace AstekUtility.Gameplay
 {
-    /// <summary>
-    ///     Used by objects that are treated to be avoided by the AI to a certain degree
-    ///     Object like obstacles are considered automatically at max weight of avoidance i.e 1
-    ///     Object like other enemies are considered at a lower weight of avoidance i.e less than 1
-    /// </summary>
-    public class ObstacleAvoidanceBehaviour : SteeringBehaviour
+	/// <summary>
+	///     Used by objects that are treated to be avoided by the AI to a certain degree
+	///     Object like obstacles are considered automatically at max weight of avoidance i.e 1
+	///     Object like other enemies are considered at a lower weight of avoidance i.e less than 1
+	/// </summary>
+	public class ObstacleAvoidanceBehaviour : SteeringBehaviour
 	{
-		[SerializeField] protected string _colliderTypeName;
-		[SerializeField] protected float _radius = 2f;
-		[SerializeField] protected float _agentColliderSize = 0.6f;
-		[SerializeField] [Range(0, 1f)] protected float _maxAvoidanceWeight = 1f;
+		[SerializeField] protected Detector detector;
+		[SerializeField] protected float radius = 2f;
+		[SerializeField] protected float agentColliderSize = 0.6f;
+		[SerializeField] [Range(0, 1f)] protected float maxAvoidanceWeight = 1f;
 
 		//gizmo parameters
 		private float[] _dangersResultTemp;
@@ -22,7 +22,7 @@ namespace AstekUtility.Gameplay
 				return;
 
 			//Gizmos.color = Color.red;
-			//Gizmos.DrawSphere(_mainModel.position, _agentColliderSize);
+			//Gizmos.DrawSphere(mainModel.position, _agentColliderSize);
 
 			if (Application.isPlaying && _dangersResultTemp != null)
 			{
@@ -34,7 +34,7 @@ namespace AstekUtility.Gameplay
 					{
 						Gizmos.DrawRay(
 							_mainModel.position,
-							_direction8SidesXZ[i] * _dangersResultTemp[i] * 2
+							_directionXZ[i] * _dangersResultTemp[i] * 2
 						);
 					}
 				}
@@ -44,26 +44,28 @@ namespace AstekUtility.Gameplay
 
 		public override (float[] danger, float[] interest) GetSteering(float[] danger, float[] interest)
 		{
-			foreach (Collider obstacleCollider in _aiData.AvoidedObjectCollection[_colliderTypeName])
+			if (!_aiData.AvoidedObjectCollection.ContainsKey(detector))
+				return (danger, interest);
+			foreach (Collider obstacleCollider in _aiData.AvoidedObjectCollection[detector])
 			{
 				Vector3 directionToObstacle
 					= obstacleCollider.ClosestPoint(_mainModel.position) - _mainModel.position;
 				float distanceToObstacle = directionToObstacle.magnitude;
 
 				//calculate weight based on the distance Enemy<--->Obstacle
-				float calculatedWeight = Mathf.Clamp01((_radius - distanceToObstacle) / _radius);
+				float calculatedWeight = Mathf.Clamp01((radius - distanceToObstacle) / radius);
 				float weight
-					= distanceToObstacle <= _agentColliderSize && calculatedWeight > _maxAvoidanceWeight
-						? _maxAvoidanceWeight
+					= distanceToObstacle <= agentColliderSize && calculatedWeight > maxAvoidanceWeight
+						? maxAvoidanceWeight
 						: calculatedWeight;
 
 				Vector3 directionToObstacleNormalized = directionToObstacle.normalized;
 
-				int size = _direction8SidesXZ.Length;
+				int size = _directionXZ.Length;
 				//Add obstacle parameters to the danger array
 				for (int i = 0; i < size; i++)
 				{
-					float result = Vector3.Dot(directionToObstacleNormalized, _direction8SidesXZ[i]);
+					float result = Vector3.Dot(directionToObstacleNormalized, _directionXZ[i]);
 
 					float valueToPutIn = result * weight;
 

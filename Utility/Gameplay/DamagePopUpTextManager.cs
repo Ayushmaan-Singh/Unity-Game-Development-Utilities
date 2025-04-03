@@ -1,6 +1,7 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
-using AstekUtility.ServiceLocatorTool;
+using AstekUtility.DesignPattern.ServiceLocatorTool;
 using Combat;
 using Functional;
 using Sirenix.OdinInspector;
@@ -8,10 +9,10 @@ using TMPro;
 using UnityEngine;
 namespace AstekUtility.Gameplay
 {
-	public class DamagePopUpTextManager : MonoBehaviour, IGameService
+	public class DamagePopUpTextManager : MonoBehaviour
 	{
 
-		[SerializeField] private Transform _popuptextPrefab;
+		[SerializeField] private RectTransform _popuptextPrefab;
 		[SerializeField] private int _poolSize = 60;
 
 		[Title("Pop Up Sequence")]
@@ -35,18 +36,17 @@ namespace AstekUtility.Gameplay
 
 		private CancellationTokenSource _cts;
 
-		private ObjectPool<Transform> _popuptextPool;
+		[SerializeField]private ObjectPool<RectTransform> popuptextPool;
 		private int _popuptextSpawned;
 		public EntityState CurrentState { get; set; } = EntityState.Running;
 
 		private void Awake()
 		{
-			_popuptextPool = new ObjectPool<Transform>((uint)_poolSize);
+			ServiceLocator.Global.Register(this);
 		}
 
 		private void OnEnable()
 		{
-			ServiceLocator.Instance.Register(this);
 			CurrentState = EntityState.Running;
 			_cts = new CancellationTokenSource();
 		}
@@ -54,14 +54,13 @@ namespace AstekUtility.Gameplay
 		private void OnDisable()
 		{
 			_cts.Cancel();
-			ServiceLocator.Instance.Unregister<DamagePopUpTextManager>();
 		}
 
-		public void Execute(Vector3 startPoint, Vector3 direction, DamageType dmgType, DamageIntensity dmgIntensity, float dmgAmount)
+		public void Execute(float dmgAmount, DamageType dmgType, DamageIntensity dmgIntensity, Vector3 startPoint, Vector3 direction)
 		{
 			PopuptextSequence(startPoint, dmgType, dmgIntensity, dmgAmount, direction);
 		}
-		public void Execute(Vector3 startPoint, DamageType dmgType, DamageIntensity dmgIntensity, float dmgAmount)
+		public void Execute(float dmgAmount, DamageType dmgType, DamageIntensity dmgIntensity, Vector3 startPoint)
 		{
 			PopuptextSequence(startPoint, dmgType, dmgIntensity, dmgAmount);
 		}
@@ -79,7 +78,7 @@ namespace AstekUtility.Gameplay
 			RectTransform popuptextTransform = popuptext.GetComponent<RectTransform>();
 			TextMeshPro popuptextMesh = popuptext.GetComponent<TextMeshPro>();
 
-			if (popuptext == null)
+			if (!popuptext)
 				return;
 
 			popuptextMesh.text = $"{damageAmount}";
@@ -160,23 +159,18 @@ namespace AstekUtility.Gameplay
 			//Sequence End
 			popuptextMesh.fontSize = baseFontSize;
 			popuptext.gameObject.SetActive(false);
-			_popuptextPool.AddItemToPool(popuptext);
+			popuptextPool.PoolObject(popuptext.GetComponent<RectTransform>());
 		}
 
-		private Transform GetPopuptext()
+		private RectTransform GetPopuptext()
 		{
-			Transform popuptext = _popuptextPool.GetItemFromPool();
-			if (popuptext == null && _popuptextSpawned < _poolSize)
+			RectTransform popuptext = popuptextPool.ReleaseObject();
+			if (!popuptext && _popuptextSpawned < _poolSize)
 			{
 				popuptext = Instantiate(_popuptextPrefab, transform);
 			}
 
 			return popuptext;
-		}
-
-		private void PoolPopupText(Transform objectToPool)
-		{
-			_popuptextPool.AddItemToPool(objectToPool);
 		}
 	}
 }

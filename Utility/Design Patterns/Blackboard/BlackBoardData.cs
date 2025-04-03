@@ -33,7 +33,8 @@ namespace AstekUtility
 		}
 
 		//Dispatch table to set different types of value on the blackboard
-		static Dictionary<AnyValue.ValueType, Action<Blackboard, BlackboardKey, AnyValue>> _setValueDispatchTable = new()
+		private static Dictionary<AnyValue.ValueType, Action<Blackboard, BlackboardKey, AnyValue>> _setValueDispatchTable 
+			= new Dictionary<AnyValue.ValueType, Action<Blackboard, BlackboardKey, AnyValue>>
 		{
 			{
 				AnyValue.ValueType.Int, (blackboard, key, anyValue) => blackboard.SetValue<int>(key, anyValue)
@@ -77,7 +78,7 @@ namespace AstekUtility
 		public static implicit operator string(AnyValue value) => value.ConvertValue<string>();
 		public static implicit operator Vector3(AnyValue value) => value.ConvertValue<Vector3>();
 
-		T ConvertValue<T>()
+		private T ConvertValue<T>()
 		{
 			return Type switch
 			{

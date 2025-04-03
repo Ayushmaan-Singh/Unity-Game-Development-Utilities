@@ -32,6 +32,7 @@ namespace AstekUtility.SceneManagement
 		HUD = 3,
 		Cinematic = 4,
 		Environment = 5,
-		Tooling = 6
+		Tooling = 6,
+		Master=7
 	}
 }

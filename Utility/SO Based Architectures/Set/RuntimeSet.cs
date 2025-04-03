@@ -1,21 +1,28 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+
 namespace AstekUtility.RuntimeSetArchitecture
 {
 	public abstract class RuntimeSet<T> : ScriptableObject
 	{
-		public Dictionary<string,T> Items { get; private set; } = new Dictionary<string, T>();
+		private Dictionary<string, T> Items = new Dictionary<string, T>();
 
-		public void Add(string itemName, T item)
+		public T this[string key]
 		{
-			Items.TryAdd(itemName, item);
+			get => Items[key];
+			set => Items[key] = value;
 		}
+		public int Count => Items.Count;
 
-		public void Remove(string itemName)
-		{
-			if (Items.ContainsKey(itemName))
-				Items.Remove(itemName);
-		}
+		public Dictionary<string, T>.KeyCollection Keys => Items.Keys;
+		public Dictionary<string, T>.ValueCollection Values => Items.Values;
+
+		public bool ContainsKey(string key) => Items.ContainsKey(key);
+		public bool ContainsValue(T value) => Items.ContainsValue(value);
+		public void Add(string itemName, T item) => Items.Add(itemName, item);
+		public void Remove(string itemName) => Items.Remove(itemName);
+		public void Clear() => Items.Clear();
 	}
 }

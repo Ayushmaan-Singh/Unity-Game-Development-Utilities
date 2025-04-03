@@ -1,20 +1,29 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Random = UnityEngine.Random;
 using UnityEngine;
+
 namespace AstekUtility
 {
 	/// <summary>
 	///     Create a object that can be randomly selected from a set of other with a set chance of getting selected
 	/// </summary>
+	[Serializable]
 	public class WeightedRNG<T>
 	{
+		[field:SerializeField] public T Value { get; private set; }
+		[field:SerializeField] public int Probability { get; private set; }
 
+		public WeightedRNG()
+		{
+			
+		}
+		
 		public WeightedRNG(T value, int probability)
 		{
 			Value = value;
 			Probability = probability;
 		}
-		public T Value { get; }
-		public int Probability { get; }
 	}
 
 	/// <summary>

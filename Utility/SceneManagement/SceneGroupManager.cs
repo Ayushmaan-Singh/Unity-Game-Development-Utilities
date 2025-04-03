@@ -9,7 +9,6 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
 
-
 namespace AstekUtility.SceneManagement
 {
 	public class SceneGroupManager
@@ -97,7 +96,7 @@ namespace AstekUtility.SceneManagement
 				if (!sceneAt.isLoaded) continue;
 				string sceneName = sceneAt.name;
 				if (sceneName.Equals(activeScene) || sceneName == "GameMaster"
-				    || handleGroup.Handles.Any(h=>h.IsValid() && h.Result.Scene.name==sceneName)) continue;
+				                                  || handleGroup.Handles.Any(h => h.IsValid() && h.Result.Scene.name == sceneName)) continue;
 			}
 
 			AsyncOperationGroup operationGroup = new AsyncOperationGroup(scenes.Count);
@@ -132,7 +131,7 @@ namespace AstekUtility.SceneManagement
 			public readonly List<AsyncOperation> Operations;
 
 			public float Progress => Operations.Count == 0 ? 0 : Operations.Average(o => o.progress);
-			public bool IsDone => Operations.All(o => o.isDone);
+			public bool IsDone => Operations.Count == 0 || Operations.All(o => o.isDone);
 
 			public AsyncOperationGroup(int initCapacity)
 			{
@@ -146,7 +145,6 @@ namespace AstekUtility.SceneManagement
 		public readonly struct AsyncOperationHandleGroup
 		{
 			public readonly List<AsyncOperationHandle<SceneInstance>> Handles;
-
 
 			public float Progress => Handles.Count == 0 ? 0 : Handles.Average(h => h.PercentComplete);
 			public bool IsDone => Handles.Count == 0 || Handles.All(h => h.IsDone);

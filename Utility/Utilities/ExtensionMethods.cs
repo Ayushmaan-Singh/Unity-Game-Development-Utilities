@@ -1,9 +1,12 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using AstekUtility.DesignPattern.Blackboard;
 using UnityEngine;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using Object = UnityEngine.Object;
 
 namespace AstekUtility
@@ -14,7 +17,7 @@ namespace AstekUtility
 	public static class Vector3Extensions
 	{
 		/// <summary>
-		///     Sets any x y z _values of a Vector3
+		/// Sets any x y z _values of a Vector3
 		/// </summary>
 		public static Vector3 With(this Vector3 vector, float? x = null, float? y = null, float? z = null)
 			=> new Vector3(x ?? vector.x, y ?? vector.y, z ?? vector.z);
@@ -24,6 +27,14 @@ namespace AstekUtility
 		/// </summary>
 		public static Vector3 Add(this Vector3 vector, float x = 0, float y = 0, float z = 0)
 			=> new Vector3(vector.x + x, vector.y + y, vector.z + z);
+
+		/// <summary>
+		/// Returns distance between 2 points using the more optimized method of root of squared magnitude method
+		/// </summary>
+		/// <param name="source"></param>
+		/// <param name="destination"></param>
+		/// <returns></returns>
+		public static float SqrMagnitudeDistance(this Vector3 source, Vector3 destination) => Mathf.Sqrt((source - destination).sqrMagnitude);
 
 		/// <summary>
 		///     Returns a Boolean indicating whether the current Vector3 is in a given range from another Vector3
@@ -36,6 +47,41 @@ namespace AstekUtility
 
 		public static Vector3 SetPrecision(this Vector3 current, int precision) =>
 			new Vector3(current.x.SetPrecision(precision), current.y.SetPrecision(precision), current.z.SetPrecision(precision));
+	}
+
+	public static class Vector2Extensions
+	{
+		/// <summary>
+		/// Sets any x y _values of a Vector2
+		/// </summary>
+		public static Vector2 With(this Vector2 vector, float? x = null, float? y = null)
+			=> new Vector2(x ?? vector.x, y ?? vector.y);
+
+		/// <summary>
+		///     Adds to any x y _values of a Vector2
+		/// </summary>
+		public static Vector2 Add(this Vector2 vector, float x = 0, float y = 0)
+			=> new Vector2(vector.x + x, vector.y + y);
+
+		/// <summary>
+		/// Returns distance between 2 points using the more optimized method of root of squared magnitude method
+		/// </summary>
+		/// <param name="source"></param>
+		/// <param name="destination"></param>
+		/// <returns></returns>
+		public static float SqrMagnitudeDistance(this Vector2 source, Vector2 destination) => Mathf.Sqrt((source - destination).sqrMagnitude);
+
+		/// <summary>
+		///     Returns a Boolean indicating whether the current Vector3 is in a given range from another Vector3
+		/// </summary>
+		/// <param name="current">The current Vector2 position</param>
+		/// <param name="target">The Vector2 position to compare against</param>
+		/// <param name="range">The range value to compare against</param>
+		/// <returns>True if the current Vector2 is in the given range from the target Vector3, false otherwise</returns>
+		public static bool InRangeOf(this Vector2 current, Vector2 target, float range) => (current - target).sqrMagnitude <= range * range;
+
+		public static Vector2 SetPrecision(this Vector2 current, int precision) =>
+			new Vector2(current.x.SetPrecision(precision), current.y.SetPrecision(precision));
 	}
 
 	public static class TransformExtensions
@@ -121,6 +167,11 @@ namespace AstekUtility
 				action(parent.GetChild(i));
 			}
 		}
+
+		public static T GetComponentInChildOrParent<T>(this Transform obj)
+		{
+			return obj.GetComponentInChildren<T>() ?? obj.GetComponentInParent<T>();
+		}
 	}
 
 	public static class GameObjectExtensions
@@ -161,6 +212,20 @@ namespace AstekUtility
 		public static T OrNull<T>(this T obj) where T : Object => obj ? obj : null;
 
 		/// <summary>
+		/// Get component of type T if they are on the object, on the parent of object or on the children of object
+		/// </summary>
+		/// <param name="go"></param>
+		/// <param name="component"></param>
+		/// <param name="includeInactive"></param>
+		/// <typeparam name="T"></typeparam>
+		/// <returns></returns>
+		public static bool TryGetComponentInParentOrChildren<T>(this GameObject go, out T component, bool includeInactive = true) where T : MonoBehaviour
+		{
+			component = go?.GetComponentInParent<T>(includeInactive) ?? go?.GetComponentInChildren<T>(includeInactive);
+			return component.OrNull();
+		}
+
+		/// <summary>
 		///     Destroys all children of the game object
 		/// </summary>
 		/// <param name="gameObject">GameObject whose children are to be destroyed.</param>
@@ -170,7 +235,7 @@ namespace AstekUtility
 		}
 
 		/// <summary>
-		///     Immediately destroys all children of the given GameObject.
+		/// Immediately destroys all children of the given GameObject.
 		/// </summary>
 		/// <param name="gameObject">GameObject whose children are to be destroyed.</param>
 		public static void DestroyChildrenImmediate(this GameObject gameObject)
@@ -239,7 +304,7 @@ namespace AstekUtility
 			gameObject.transform.ForEveryChild(child => child.gameObject.SetLayersRecursively(layer));
 		}
 
-		public static GameObject StartDeactivated(this GameObject gameObject)
+		public static GameObject SetIsActive(this GameObject gameObject, bool isActive)
 		{
 			gameObject.SetActive(false);
 			return gameObject;
@@ -363,7 +428,6 @@ namespace AstekUtility
 	/// <summary>
 	/// Extension method that converts an AsyncOperation into a Task.
 	/// </summary>
-	/// <param name="asyncOperation">The AsyncOperation to convert.</param>
 	/// <returns>A Task that represents the completion of the AsyncOperation.</returns>
 	public static class AsyncOperationExtensions
 	{
@@ -398,12 +462,306 @@ namespace AstekUtility
 
 	public static class EnumerableExtensions
 	{
-		public static void ForEach<T>(this IEnumerable<T> sequence, Action<T> action)
+		/// <summary>
+		/// Change this value to set at which threshold to perform operations in parallel
+		/// </summary>
+		public static int ThresholdForParallelExecution = 100;
+
+		/// <summary>
+		/// execute action on a IEnumerable of type T either sequentially or parallely, if count of item is less than 200 prefer sequentially
+		/// </summary>
+		/// <param name="sequence"></param>
+		/// <param name="action"></param>
+		/// <param name="executeSequentially"> wether to run the action sequentially or parallel</param>
+		/// <typeparam name="T"></typeparam>
+		/// <exception cref="ArgumentNullException"></exception>
+		public static void ForEach<T>(this IEnumerable<T> sequence, Action<T> action, bool executeSequentially = true)
 		{
+			if (sequence == null || action == null)
+				throw new ArgumentNullException(sequence == null ? $"Collection:{nameof(sequence)}" : $"Condition:{nameof(action)}");
+
+			if (executeSequentially)
+			{
+				foreach (T item in sequence)
+				{
+					action.Invoke(item);
+				}
+			}
+			else
+			{
+				Parallel.ForEach(sequence, action.Invoke);
+			}
+		}
+
+		public static void For<T>(this IEnumerable<T> sequence, int startIndex, int count, Action<T> action)
+		{
+			if (sequence == null || action == null)
+				throw new ArgumentNullException(sequence == null ? $"Collection:{nameof(sequence)}" : $"Condition:{nameof(action)}");
+
+			List<T> collection = sequence.ToList();
+			for (int i = startIndex; i < count; i++)
+			{
+				action?.Invoke(collection[i]);
+			}
+		}
+
+		public static IEnumerable<T> Where<T>(this IEnumerable<T> sequence, Func<T, bool> action)
+		{
+			if (sequence == null || action == null)
+				throw new ArgumentNullException(sequence == null ? $"Collection:{nameof(sequence)}" : $"Condition:{nameof(action)}");
+
+			List<T> collection = sequence.ToList();
+			ConcurrentBag<T> results = new ConcurrentBag<T>();
+			collection.ForEach(item =>
+			{
+				if (action.Invoke(item))
+					results.Add(item);
+			}, executeSequentially:collection.Count < ThresholdForParallelExecution);
+			return results;
+		}
+
+		public static IEnumerable<T> RemoveWhere<T>(this IEnumerable<T> sequence, Func<T, bool> predicate)
+		{
+			if (sequence == null || predicate == null)
+				throw new ArgumentNullException(sequence == null ? $"Collection:{nameof(sequence)}" : $"Condition:{nameof(predicate)}");
+
+			List<T> collection = sequence.ToList();
+			List<T> toRemove = collection.Where(predicate).ToList();
+			toRemove.ForEach(item =>
+			{
+				collection.Remove(item);
+			}, executeSequentially:toRemove.Count < ThresholdForParallelExecution);
+			return collection;
+		}
+
+		public static int RemoveWhere<T>(this ICollection<T> collection, Func<T, bool> predicate)
+		{
+			if (collection == null || predicate == null)
+				throw new ArgumentNullException(collection == null ? $"Collection:{nameof(collection)}" : $"Condition:{nameof(predicate)}");
+
+			int removedCount = 0;
+			List<T> toRemove = collection.Where(predicate).ToList();
+			toRemove.ForEach(item =>
+			{
+				collection.Remove(item);
+				removedCount++;
+			}, executeSequentially:toRemove.Count < ThresholdForParallelExecution);
+			return removedCount;
+		}
+
+		public static IEnumerable<TResult> Select<TSource, TResult>(this IEnumerable<TSource> sequence, Func<TSource, TResult> selector)
+		{
+			if (sequence == null || selector == null)
+				throw new ArgumentNullException(sequence == null ? $"Collection:{nameof(sequence)}" : $"Condition:{nameof(selector)}");
+
+			List<TSource> collection = sequence.ToList();
+			ConcurrentBag<TResult> results = new ConcurrentBag<TResult>();
+			collection.ForEach(item => results.Add(selector(item)), executeSequentially:collection.Count < ThresholdForParallelExecution);
+			return results;
+		}
+
+		public static IEnumerable<TResult> SelectMany<TSource, TCollection, TResult>(this IEnumerable<TSource> source,
+			Func<TSource, IEnumerable<TCollection>> collectionSelector,
+			Func<TSource, TCollection, TResult> resultSelector)
+		{
+			if (source == null) throw new ArgumentNullException(nameof(source));
+			if (collectionSelector == null) throw new ArgumentNullException(nameof(collectionSelector));
+			if (resultSelector == null) throw new ArgumentNullException(nameof(resultSelector));
+
+			List<TSource> collection = source.ToList();
+			ConcurrentBag<TResult> results = new ConcurrentBag<TResult>();
+			collection.ForEach(item =>
+			{
+				List<TCollection> collectionSource = collectionSelector(item).ToList();
+				collectionSource.ForEach(collectionItem =>
+				{
+					results.Add(resultSelector(item, collectionItem));
+				}, executeSequentially:collectionSource.Count < ThresholdForParallelExecution);
+			}, executeSequentially:collection.Count < ThresholdForParallelExecution);
+			return results;
+		}
+
+		public static bool All<T>(this IEnumerable<T> sequence, Func<T, bool> predicate)
+		{
+			if (sequence == null)
+				throw new ArgumentNullException(nameof(sequence));
+
 			foreach (T item in sequence)
 			{
-				action(item);
+				if (!predicate.Invoke(item)) return false;
 			}
+			return true;
+		}
+
+		public static bool Any<T>(this IEnumerable<T> sequence, Func<T, bool> predicate = null)
+		{
+			if (sequence == null)
+				throw new ArgumentNullException(nameof(sequence));
+
+			foreach (T item in sequence)
+			{
+				if (predicate == null) return true;
+				if (predicate.Invoke(item)) return true;
+			}
+			return false;
+		}
+
+		public static IEnumerable<TResult> OfType<TResult>(this IEnumerable<object> source)
+		{
+			List<object> collection = source.ToList();
+			ConcurrentBag<TResult> results = new ConcurrentBag<TResult>();
+			collection.ForEach(item =>
+			{
+				if (item is TResult result)
+					results.Add(result);
+			}, executeSequentially:collection.Count < ThresholdForParallelExecution);
+			return results;
+		}
+
+		public static IEnumerable<T> Except<T>(this IEnumerable<T> first, IEnumerable<T> second)
+		{
+			if (first == null || second == null)
+				throw new ArgumentNullException(first == null ? nameof(first) : nameof(second));
+
+			HashSet<T> set = new HashSet<T>(second);
+			foreach (T item in first)
+			{
+				if (!set.Contains(item)) yield return item;
+			}
+		}
+
+		public static List<T> ToList<T>(this IEnumerable<T> sequence)
+		{
+			if (sequence == null)
+				throw new ArgumentNullException(nameof(sequence));
+
+			List<T> collection = new List<T>();
+			sequence.ForEach(item => collection.Add(item));
+			return collection;
+		}
+
+		public static T[] ToArray<T>(this IEnumerable<T> sequence)
+		{
+			if (sequence == null)
+				throw new ArgumentNullException(nameof(sequence));
+
+			List<T> resultList = new List<T>();
+			foreach (T item in sequence)
+			{
+				resultList.Add(item);
+			}
+			T[] resultArray = new T[resultList.Count];
+			for (int i = 0; i < resultList.Count; i++)
+			{
+				resultArray[i] = resultList[i];
+			}
+			return resultArray;
+		}
+
+		public static T[] ToArray<T>(this ICollection<T> sequence)
+		{
+			if (sequence == null)
+				throw new ArgumentNullException(nameof(sequence));
+
+			T[] array = new T[sequence.Count];
+			int i = 0;
+			sequence.ForEach(item =>
+			{
+				array[i] = item;
+				i++;
+			});
+			return array;
+		}
+
+		public static T First<T>(this IEnumerable<T> source)
+		{
+			if (source == null)
+			{
+				throw new ArgumentNullException(nameof(source));
+			}
+
+			List<T> collection = source.ToList();
+			return collection.Count > 0 ? collection[0] : default(T);
+		}
+		public static T FirstOrDefault<T>(this IEnumerable<T> source, Func<T, bool> predicate)
+		{
+			if (source == null)
+			{
+				throw new ArgumentNullException(nameof(source));
+			}
+			if (predicate == null)
+			{
+				throw new ArgumentNullException(nameof(predicate));
+			}
+
+			List<T> collection = source.ToList();
+			int count = collection.Count;
+			for (int i = 0; i < count; i++)
+			{
+				if (predicate.Invoke(collection[i]))
+				{
+					return collection[i];
+				}
+			}
+
+			return default(T);
+		}
+		public static T LastOrDefault<T>(this IEnumerable<T> source, Func<T, bool> predicate)
+		{
+			if (source == null)
+			{
+				throw new ArgumentNullException(nameof(source));
+			}
+			if (predicate == null)
+			{
+				throw new ArgumentNullException(nameof(predicate));
+			}
+
+			List<T> collection = source.ToList();
+			int count = collection.Count;
+			for (int i = count - 1; i >= 0; i--)
+			{
+				if (predicate.Invoke(collection[i]))
+				{
+					return collection[i];
+				}
+			}
+
+			return default(T);
+		}
+
+		public static int FindIndex<T>(this IEnumerable<T> source, Func<T, bool> predicate)
+		{
+			if (source == null) throw new ArgumentNullException(nameof(source));
+			if (predicate == null) throw new ArgumentNullException(nameof(predicate));
+			for (int i = 0; i < source.Count(); i++)
+			{
+				if (predicate(source.ElementAt(i))) { return i; }
+			}
+			return -1; // Return -1 if the element is not found
+		}
+
+		public static bool Contains<T>(this IEnumerable<T> source, Func<T, bool> predicate)
+		{
+			if (source == null) throw new ArgumentNullException(nameof(source));
+			if (predicate == null) throw new ArgumentNullException(nameof(predicate));
+			return source.Any(predicate);
+		}
+	}
+
+	public static class QuaternionExtensions
+	{
+		/// <summary>
+		/// Measure if 2 quaternions are equal with provided tolerance.
+		/// </summary>
+		/// <param name="q1"></param>
+		/// <param name="q2"></param>
+		/// <param name="tolerance">Between 0 and 1</param>
+		/// <returns></returns>
+		public static bool IsRotationApproximatelySame(this Quaternion q1, Quaternion q2, float tolerance = 0f)
+		{
+			float dot = Quaternion.Dot(q1, q2);
+			return Mathf.Abs(dot) > (1.0f - Mathf.Clamp(tolerance, 0, 1));
 		}
 	}
 }
