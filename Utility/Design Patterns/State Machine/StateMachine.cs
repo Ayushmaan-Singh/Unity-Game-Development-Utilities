@@ -22,7 +22,18 @@ namespace AstekUtility.DesignPattern.StateMachine
 			CurrentState.State?.PhysicsUpdate();
 		}
 
-		public void ChangeState(IState state)
+		public void LateUpdate()
+		{
+			CurrentState.State?.LateUpdate();
+		}
+
+		public void SetState(IState state)
+		{
+			CurrentState = _nodes[state.GetType()];
+			CurrentState.State?.OnStateEnter();
+		}
+
+		private void ChangeState(IState state)
 		{
 			if (state == CurrentState?.State) return;
 

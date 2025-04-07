@@ -9,7 +9,7 @@ using TMPro;
 using UnityEngine;
 namespace AstekUtility.Gameplay
 {
-	public class DamagePopUpTextManager : MonoBehaviour
+	public class DamagePopUpTextManager : VisualFX
 	{
 
 		[SerializeField] private RectTransform _popuptextPrefab;

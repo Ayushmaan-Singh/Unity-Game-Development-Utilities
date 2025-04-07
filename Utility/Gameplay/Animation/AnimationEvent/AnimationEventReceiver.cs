@@ -10,14 +10,12 @@ namespace AstekUtility.Gameplay
 	{
 		[SerializeField] private List<AnimationEvent> animationEvents = new List<AnimationEvent>();
 
-		private void Awake()
-		{
-			ServiceLocator.For(this).Register(this);
-		}
-
 		public void OnAnimationEventTriggered(string eventName)
 		{
-			IEnumerable<AnimationEvent> animEvent = animationEvents.Where(animationEvent => animationEvent.EventName == eventName);
+			List<AnimationEvent> animEvent = animationEvents.Where(animationEvent => animationEvent.EventName == eventName).ToList();
+			if (animEvent == null || !animEvent.Any())
+				throw new NullReferenceException($"No animation event by \"{eventName}\" is registered");
+			
 			animEvent?.ForEach(execEvent => execEvent.TriggerEvent());
 		}
 

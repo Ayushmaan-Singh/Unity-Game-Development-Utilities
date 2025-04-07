@@ -1,4 +1,4 @@
-﻿using Cinemachine;
+﻿using Unity.Cinemachine;
 using UnityEngine;
 namespace AstekUtility.VisualFeedback
 {
@@ -12,10 +12,10 @@ namespace AstekUtility.VisualFeedback
 		{
 			set
 			{
-				impulseSource.m_ImpulseDefinition.m_ImpulseDuration = value;
+				impulseSource.ImpulseDefinition.ImpulseDuration = value;
 			}
 		}
-		
+
 		public override void Play()
 		{
 			impulseSource.GenerateImpulse(power);

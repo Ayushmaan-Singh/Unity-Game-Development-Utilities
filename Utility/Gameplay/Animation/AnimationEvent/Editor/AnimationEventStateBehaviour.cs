@@ -17,12 +17,12 @@ namespace AstekUtility.Gameplay
 	[CustomEditor(typeof(AnimationEventStateBehaviour))]
 	public class AnimationEventStateBehaviourEditor : Editor
 	{
-		private Motion previewClip;
-		private float previewTime;
-		private bool isPreviewing;
+		private Motion _previewClip;
+		private float _previewTime;
+		private bool _isPreviewing;
 
-		private PlayableGraph playableGraph;
-		private AnimationMixerPlayable mixer;
+		private PlayableGraph _playableGraph;
+		private AnimationMixerPlayable _mixer;
 
 		public override void OnInspectorGUI()
 		{
@@ -34,14 +34,14 @@ namespace AstekUtility.Gameplay
 			{
 				GUILayout.Space(10);
 
-				if (isPreviewing)
+				if (_isPreviewing)
 				{
 					if (GUILayout.Button("Stop Preview"))
 					{
 						EnforceTPose();
-						isPreviewing = false;
+						_isPreviewing = false;
 						AnimationMode.StopAnimationMode();
-						playableGraph.Destroy();
+						_playableGraph.Destroy();
 					}
 					else
 					{
@@ -50,11 +50,11 @@ namespace AstekUtility.Gameplay
 				}
 				else if (GUILayout.Button("Preview"))
 				{
-					isPreviewing = true;
+					_isPreviewing = true;
 					AnimationMode.StartAnimationMode();
 				}
 
-				GUILayout.Label($"Previewing at {previewTime:F2}s", EditorStyles.helpBox);
+				GUILayout.Label($"Previewing at {_previewTime:F2}s", EditorStyles.helpBox);
 			}
 			else
 			{
@@ -85,8 +85,8 @@ namespace AstekUtility.Gameplay
 			// If it's a simple AnimationClip, sample it directly
 			if (motion is AnimationClip clip)
 			{
-				previewTime = stateBehaviour.TriggerTime * clip.length;
-				AnimationMode.SampleAnimationClip(Selection.activeGameObject, clip, previewTime);
+				_previewTime = stateBehaviour.TriggerTime * clip.length;
+				AnimationMode.SampleAnimationClip(Selection.activeGameObject, clip, _previewTime);
 			}
 		}
 
@@ -94,16 +94,16 @@ namespace AstekUtility.Gameplay
 		{
 			Animator animator = Selection.activeGameObject.GetComponent<Animator>();
 
-			if (playableGraph.IsValid())
+			if (_playableGraph.IsValid())
 			{
-				playableGraph.Destroy();
+				_playableGraph.Destroy();
 			}
 
-			playableGraph = PlayableGraph.Create("BlendTreePreviewGraph");
-			mixer = AnimationMixerPlayable.Create(playableGraph, 1, true);
+			_playableGraph = PlayableGraph.Create("BlendTreePreviewGraph");
+			_mixer = AnimationMixerPlayable.Create(_playableGraph, 1, true);
 
-			var output = AnimationPlayableOutput.Create(playableGraph, "Animation", animator);
-			output.SetSourcePlayable(mixer);
+			var output = AnimationPlayableOutput.Create(_playableGraph, "Animation", animator);
+			output.SetSourcePlayable(_mixer);
 
 			AnimatorController animatorController = GetValidAnimatorController(out string errorMessage);
 			if (!animatorController) return;
@@ -133,7 +133,7 @@ namespace AstekUtility.Gameplay
 				totalWeight += weight;
 
 				AnimationClip clip = GetAnimationClipFromMotion(child.motion);
-				clipPlayables[i] = AnimationClipPlayable.Create(playableGraph, clip);
+				clipPlayables[i] = AnimationClipPlayable.Create(_playableGraph, clip);
 			}
 
 			// Normalize weights so they sum to 1
@@ -142,14 +142,14 @@ namespace AstekUtility.Gameplay
 				weights[i] /= totalWeight;
 			}
 
-			mixer.SetInputCount(clipPlayables.Length);
+			_mixer.SetInputCount(clipPlayables.Length);
 			for (int i = 0; i < clipPlayables.Length; i++)
 			{
-				mixer.ConnectInput(i, clipPlayables[i], 0);
-				mixer.SetInputWeight(i, weights[i]);
+				_mixer.ConnectInput(i, clipPlayables[i], 0);
+				_mixer.SetInputWeight(i, weights[i]);
 			}
 
-			AnimationMode.SamplePlayableGraph(playableGraph, 0, normalizedTime);
+			AnimationMode.SamplePlayableGraph(_playableGraph, 0, normalizedTime);
 		}
 
 
@@ -206,7 +206,7 @@ namespace AstekUtility.Gameplay
 
 		float GetBlendParameterValue(BlendTree blendTree, string parameterName)
 		{
-			var methodInfo = typeof(BlendTree).GetMethod("GetInputBlendValue", BindingFlags.NonPublic | BindingFlags.Instance);
+			MethodInfo methodInfo = typeof(BlendTree).GetMethod("GetInputBlendValue", BindingFlags.NonPublic | BindingFlags.Instance);
 			if (methodInfo == null)
 			{
 				Debug.LogError("Failed to find GetInputBlendValue method via reflection.");
@@ -221,7 +221,7 @@ namespace AstekUtility.Gameplay
 
 		ChildAnimatorState FindMatchingState(AnimatorStateMachine stateMachine, AnimationEventStateBehaviour stateBehaviour)
 		{
-			foreach (var state in stateMachine.states)
+			foreach (ChildAnimatorState state in stateMachine.states)
 			{
 				if (state.state.behaviours.Contains(stateBehaviour))
 				{
@@ -229,9 +229,9 @@ namespace AstekUtility.Gameplay
 				}
 			}
 
-			foreach (var subStateMachine in stateMachine.stateMachines)
+			foreach (ChildAnimatorStateMachine subStateMachine in stateMachine.stateMachines)
 			{
-				var matchingState = FindMatchingState(subStateMachine.stateMachine, stateBehaviour);
+				ChildAnimatorState matchingState = FindMatchingState(subStateMachine.stateMachine, stateBehaviour);
 				if (matchingState.state)
 				{
 					return matchingState;
@@ -250,8 +250,8 @@ namespace AstekUtility.Gameplay
 				.Select(layer => FindMatchingState(layer.stateMachine, stateBehaviour))
 				.FirstOrDefault(state => state.state);
 
-			previewClip = GetAnimationClipFromMotion(matchingState.state?.motion);
-			if (!previewClip)
+			_previewClip = GetAnimationClipFromMotion(matchingState.state?.motion);
+			if (!_previewClip)
 			{
 				errorMessage = "No valid AnimationClip found for the current state.";
 				return false;
@@ -290,7 +290,7 @@ namespace AstekUtility.Gameplay
 			}
 
 			AnimatorController animatorController = animator.runtimeAnimatorController as AnimatorController;
-			if (animatorController == null)
+			if (!animatorController)
 			{
 				errorMessage = "The selected Animator does not have a valid AnimatorController.";
 				return null;
@@ -303,7 +303,7 @@ namespace AstekUtility.Gameplay
 		private static void EnforceTPose()
 		{
 			GameObject selected = Selection.activeGameObject;
-			if (!selected || !selected.TryGetComponent(out Animator animator) || !animator.avatar) return;
+			if (!selected || !selected.TryGetComponent(out Animator animator) || !animator.avatar || !animator.avatar.isHuman) return;
 
 			SkeletonBone[] skeletonBones = animator.avatar.humanDescription.skeleton;
 

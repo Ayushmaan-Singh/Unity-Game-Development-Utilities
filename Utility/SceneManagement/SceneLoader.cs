@@ -2,8 +2,8 @@
 using System.Threading.Tasks;
 using AstekUtility.DesignPattern.ServiceLocatorTool;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+
 namespace AstekUtility.SceneManagement
 {
 	public class SceneLoader : MonoBehaviour
@@ -18,11 +18,6 @@ namespace AstekUtility.SceneManagement
 		private bool isLoading;
 
 		public readonly SceneGroupManager manager = new SceneGroupManager();
-
-		private void Awake()
-		{
-			ServiceLocator.Global.Register(this);
-		}
 
 		private void Update()
 		{
@@ -54,7 +49,7 @@ namespace AstekUtility.SceneManagement
 			LoadingProgress progress = new LoadingProgress();
 			progress.Progressed += target => targetProgress = Mathf.Max(target, targetProgress);
 
-			EnableLoadingCanvas(true);
+			EnableLoadingCanvas();
 			await manager.LoadScenes(sceneGroups[index], progress);
 			EnableLoadingCanvas(false);
 		}

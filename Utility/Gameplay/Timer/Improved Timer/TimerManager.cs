@@ -6,7 +6,11 @@ namespace AstekUtility.Gameplay.ImprovedTimer
 	{
 		private static readonly List<Timer> _TIMERS = new List<Timer>();
 
-		public static void RegisterTimer(Timer timer) => _TIMERS.Add(timer);
+		public static void RegisterTimer(Timer timer)
+		{
+			if (!_TIMERS.Contains(timer))
+				_TIMERS.Add(timer);
+		}
 		public static void DeregisterTimer(Timer timer) => _TIMERS.Remove(timer);
 
 		public static void UpdateTimers()
