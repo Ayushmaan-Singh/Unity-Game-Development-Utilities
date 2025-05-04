@@ -13,8 +13,7 @@ namespace AstekUtility
 		private const int BinarySearchIterations = 32;
 		private const float DefaultTolerance = 0.0001f;
 
-		public static float FindTimeAtValue(this AnimationCurve curve, float targetValue,
-			float tolerance = DefaultTolerance)
+		public static float FindTimeAtValue(this AnimationCurve curve, float targetValue, float tolerance = DefaultTolerance)
 		{
 			if (curve.length == 0) return -1f;
 

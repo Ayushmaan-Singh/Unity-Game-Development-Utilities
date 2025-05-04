@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+
 namespace AstekUtility
 {
 	public abstract class UnitySerializedDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISerializationCallbackReceiver
@@ -13,22 +14,22 @@ namespace AstekUtility
 
 		void ISerializationCallbackReceiver.OnAfterDeserialize()
 		{
-			Clear();
-			for (int i = 0; i < keyData.Count && i < this.valueData.Count; i++)
+			this.Clear();
+			for (int i = 0; i < this.keyData.Count && i < this.valueData.Count; i++)
 			{
-				this[keyData[i]] = valueData[i];
+				this[this.keyData[i]] = this.valueData[i];
 			}
 		}
 
 		void ISerializationCallbackReceiver.OnBeforeSerialize()
 		{
-			keyData.Clear();
-			valueData.Clear();
+			this.keyData.Clear();
+			this.valueData.Clear();
 
 			foreach (KeyValuePair<TKey, TValue> item in this)
 			{
-				keyData.Add(item.Key);
-				valueData.Add(item.Value);
+				this.keyData.Add(item.Key);
+				this.valueData.Add(item.Value);
 			}
 		}
 	}

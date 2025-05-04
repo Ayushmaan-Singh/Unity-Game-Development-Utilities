@@ -13,6 +13,7 @@ namespace AstekUtility.Gameplay.Timer
 		public bool IsRunning { get; protected set; }
 
 		public float Progress => Time / _initialTime;
+		public float InitialTime => _initialTime;
 
 		public Action OnTimerStart = delegate { };
 		public Action OnTimerStop = delegate { };

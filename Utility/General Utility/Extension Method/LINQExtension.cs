@@ -251,7 +251,18 @@ namespace AstekUtility
 
 			return default(T);
 		}
-		
+
+		public static T First<T>(this IEnumerable<T> source)
+		{
+			if (source == null)
+			{
+				throw new ArgumentNullException(nameof(source));
+			}
+
+			List<T> collection = source.ToList();
+			return collection.Count > 0 ? collection[0] : default(T);
+		}
+
 		public static T LastOrDefault<T>(this IEnumerable<T> source, Func<T, bool> predicate)
 		{
 			if (source == null)
@@ -306,6 +317,47 @@ namespace AstekUtility
 				collection.Add(sourceToCollection[i]);
 
 			return collection;
+		}
+
+		public static IEnumerable<T> Union<T>(this IEnumerable<T> first, IEnumerable<T> second)
+		{
+			if (first == null || second == null)
+				throw new ArgumentNullException("Collections cannot be null");
+
+			HashSet<T> seen = new HashSet<T>();
+
+			foreach (T item in first)
+			{
+				if (seen.Add(item))
+				{
+					yield return item;
+				}
+			}
+
+			foreach (T item in second)
+			{
+				if (seen.Add(item))
+				{
+					yield return item;
+				}
+			}
+		}
+
+		public static IEnumerable<T> Intersection<T>(this IEnumerable<T> first, IEnumerable<T> second)
+		{
+			if (first == null || second == null)
+				throw new ArgumentNullException("Collections cannot be null");
+
+			HashSet<T> secondSet = new HashSet<T>(second);
+			HashSet<T> resultSet = new HashSet<T>();
+
+			foreach (T item in first)
+			{
+				if (secondSet.Contains(item) && resultSet.Add(item))
+				{
+					yield return item;
+				}
+			}
 		}
 	}
 }

@@ -2,7 +2,7 @@
 using UnityEngine;
 namespace AstekUtility.Gameplay.ImprovedTimer
 {
-	public abstract class Timer: IDisposable
+	public abstract class Timer : IDisposable
 	{
 		public float CurrentTime { get; protected set; }
 		public bool IsRunning { get; private set; }
@@ -13,11 +13,9 @@ namespace AstekUtility.Gameplay.ImprovedTimer
 
 		public Action OnTimerStart = delegate { };
 		public Action OnTimerStop = delegate { };
-		
-		protected Timer(float value)
-		{
-			_initializeTime = value;
-		}
+
+		protected Timer(float value) => _initializeTime = value;
+
 
 		public void Start()
 		{
@@ -59,7 +57,7 @@ namespace AstekUtility.Gameplay.ImprovedTimer
 		{
 			Dispose(false);
 		}
-		
+
 		//Call dispose to ensure deregistration of the timer from the TimerManager
 		//when the consumer is done with the timer or being destroyed
 		public void Dispose()
@@ -71,8 +69,8 @@ namespace AstekUtility.Gameplay.ImprovedTimer
 		protected virtual void Dispose(bool disposing)
 		{
 			if (_disposed) return;
-			
-			if(disposing)
+
+			if (disposing)
 				TimerManager.DeregisterTimer(this);
 
 			_disposed = true;

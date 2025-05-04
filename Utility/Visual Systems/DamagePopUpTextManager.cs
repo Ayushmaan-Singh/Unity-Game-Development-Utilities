@@ -7,8 +7,10 @@ using Functional;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
-namespace AstekUtility.Gameplay
+
+namespace AstekUtility.VisualFeedback
 {
+	//TODO:Remake it to make it generally used by all projects
 	public class DamagePopUpTextManager : VisualFX
 	{
 
@@ -171,6 +173,14 @@ namespace AstekUtility.Gameplay
 			}
 
 			return popuptext;
+		}
+		public override void Play()
+		{
+			throw new NotImplementedException();
+		}
+		public override void Stop()
+		{
+			throw new NotImplementedException();
 		}
 	}
 }
