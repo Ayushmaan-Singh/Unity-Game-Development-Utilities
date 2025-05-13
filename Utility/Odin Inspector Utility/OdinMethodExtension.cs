@@ -1,7 +1,12 @@
 using System;
 using Sirenix.OdinInspector;
 using UnityEditor;
+using UnityEditorInternal;
 using UnityEngine;
+using AnimatorController = UnityEditor.Animations.AnimatorController;
+using AnimatorControllerLayer = UnityEditor.Animations.AnimatorControllerLayer;
+using AnimatorControllerParameter = UnityEngine.AnimatorControllerParameter;
+using AnimatorControllerParameterType = UnityEngine.AnimatorControllerParameterType;
 
 namespace AstekUtility
 {
@@ -14,7 +19,7 @@ namespace AstekUtility
 		/// <param name="objRenderer"></param>
 		/// <returns></returns>
 		/// <exception cref="ArgumentOutOfRangeException"></exception>
-		private static ValueDropdownList<int> MaterialProperties(this Renderer objRenderer)
+		public static ValueDropdownList<int> MaterialProperties(this Renderer objRenderer)
 		{
 			if (!objRenderer)
 				return new ValueDropdownList<int>();
@@ -49,6 +54,61 @@ namespace AstekUtility
 				};
 			}
 		}
+
+		public static ValueDropdownList<AnimatorParameter> GetAnimatorParameters(this Animator animatorController)
+		{
+			ValueDropdownList<AnimatorParameter> dropdownList = new ValueDropdownList<AnimatorParameter>();
+			if (animatorController != null)
+			{
+				AnimatorControllerParameter[] parameters=animatorController.parameters;
+				parameters.ForEach(parameter =>
+				{
+					dropdownList.Add($"{parameter.type.ToString()}/{parameter.name}",new AnimatorParameter()
+					{
+						Type = parameter.type,
+						ParameterHash = parameter.nameHash
+					});
+				});
+			}
+			return dropdownList;
+		}
+
+		public static ValueDropdownList<AnimationData> GetAnimatorStates(this Animator animatorController)
+		{
+			ValueDropdownList<AnimationData> dropdownList = new ValueDropdownList<AnimationData>();
+			if (animatorController != null && animatorController.runtimeAnimatorController is AnimatorController controller)
+			{
+				for (int i = 0; i < controller.layers.Length; i++)
+				{
+					AnimatorControllerLayer layer = controller.layers[i];
+					UnityEditor.Animations.AnimatorStateMachine stateMachine = layer.stateMachine;
+					
+					stateMachine.states.ForEach(state =>
+					{
+						dropdownList.Add($"{i}:{layer.name}/{state.state.name}",new AnimationData()
+						{
+							LayerIndex = i,
+							AnimationStateID = state.state.nameHash
+						});
+					});
+				}
+			}
+			return dropdownList;
+		}
+		 
 		#endif
+		
+		[Serializable]
+		public struct AnimatorParameter
+		{
+			public AnimatorControllerParameterType Type;
+			public int ParameterHash;
+		}
+		[Serializable]
+		public struct AnimationData
+		{
+			public int LayerIndex;
+			public int AnimationStateID;
+		}
 	}
 }
