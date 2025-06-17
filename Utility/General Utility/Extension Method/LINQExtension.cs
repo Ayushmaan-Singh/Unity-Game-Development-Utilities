@@ -38,17 +38,17 @@ namespace AstekUtility
 			}
 		}
 
-		public static void For<T>(this IEnumerable<T> sequence, int startIndex, int count, Action<T> action)
-		{
-			if (sequence == null || action == null)
-				throw new ArgumentNullException(sequence == null ? $"Collection:{nameof(sequence)}" : $"Condition:{nameof(action)}");
-
-			List<T> collection = sequence.ToList();
-			for (int i = startIndex; i < count; i++)
-			{
-				action?.Invoke(collection[i]);
-			}
-		}
+		// public static void For<T>(this IEnumerable<T> sequence, int startIndex, int count, ref int index, Action<int, T> action)
+		// {
+		// 	if (sequence == null || action == null)
+		// 		throw new ArgumentNullException(sequence == null ? $"Collection:{nameof(sequence)}" : $"Condition:{nameof(action)}");
+		//
+		// 	List<T> collection = sequence.ToList();
+		// 	for (index = startIndex; index < count; index++)
+		// 	{
+		// 		action?.Invoke(index, collection[index]);
+		// 	}
+		// }
 
 		public static IEnumerable<T> Where<T>(this IEnumerable<T> sequence, Func<T, bool> action)
 		{
@@ -79,6 +79,14 @@ namespace AstekUtility
 			return collection;
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="collection"></param>
+		/// <param name="predicate"></param>
+		/// <typeparam name="T"></typeparam>
+		/// <returns> count of items removed</returns>
+		/// <exception cref="ArgumentNullException"></exception>
 		public static int RemoveWhere<T>(this ICollection<T> collection, Func<T, bool> predicate)
 		{
 			if (collection == null || predicate == null)

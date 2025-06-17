@@ -19,7 +19,7 @@ namespace AstekUtility.Odin.SFX
 
 		public static void PlaySFX(SFXClip sfx, bool waitToFinish, AudioSource audioSource = null)
 		{
-			audioSource = (audioSource ?? ServiceLocator.Global.Get<SFXManager>().defaultAudioSource);
+			audioSource = (audioSource ?? ServiceLocator.Global.GetService<SFXManager>().defaultAudioSource);
 			if (audioSource == null)
 			{
 				Debug.LogError("Default audio source not provided");
