@@ -8,13 +8,14 @@ namespace AstekUtility
 	[Serializable]
 	public class ObjectPool<T>
 	{
-		private readonly Queue<T> _collection = new Queue<T>();
+		private readonly Queue<T> _pool = new Queue<T>();
 		[SerializeField, Min(1)] private int maxSize;
 		[SerializeField] private bool canExpand = true;
 
-		public bool CanBePooled => _collection.Count < maxSize || canExpand;
-		public int Count => _collection.Count;
-		public bool CanRelease => _collection.Count > 0;
+		public bool CanBePooled => _pool.Count < maxSize || canExpand;
+		public int Count => _pool.Count;
+		public bool CanRelease => _pool.Count > 0;
+		public T Peek => _pool.Peek();
 
 		public event Action<T> OnPooled = delegate { };
 		public event Action<T> OnRelease = delegate { };
@@ -29,7 +30,7 @@ namespace AstekUtility
 			if (!CanBePooled)
 				return;
 
-			_collection.Enqueue(obj);
+			_pool.Enqueue(obj);
 			OnPooled.Invoke(obj);
 		}
 		public T? ReleaseObject()
@@ -37,14 +38,23 @@ namespace AstekUtility
 			if (!CanRelease)
 				return default(T);
 
-			T obj = _collection.Dequeue();
+			T obj = _pool.Dequeue();
 			OnRelease.Invoke(obj);
 			return obj;
 		}
+
+		public void RemoveObject(T obj)
+		{
+			if (!_pool.Contains(obj))
+				return;
+
+			_pool.RemoveWhere(item => item != null && item.Equals(obj));
+		}
+		
 		public void Clear()
 		{
-			_collection.ForEach(obj => OnClear.Invoke(obj));
-			_collection.Clear();
+			_pool.ForEach(obj => OnClear.Invoke(obj));
+			_pool.Clear();
 		}
 	}
 }
