@@ -19,4 +19,4 @@ It also contains following utility scripts:</br>
 -Extension Methods For Transform, GameObject, float, int, Vector3, AnimationCurve, type, object, IEnumerator, AsyncOperationHandle<T>, AsyncOperatoion, Task, Renderer, Material and extension utilizing Odin Inspector.</br>
 -local Timers-countdown and stopwatch</br>
 -Global Playerloop registered timer- countdown and stopwatch controlled cia TimerManager</br>
--Visual FX-
+-Visual FX- Hit Stop, Hit Flash, Lightning VFX Trail
