@@ -16,6 +16,6 @@ It also contains following utility scripts:</br>
 -Event manager</br>
 -Collision Event(A wrapper providing collision event from one script to multiple subscriber through unity events)</br>
 -Serialized Dictionary(Unity only)</br>
--Extension Methods For Transform,GameObject,float,int,Vector3,AnimationCurve,type, object, IEnumerator, AsyncOperationHandle<T>, AsyncOperatoion and Task.</br>
+-Extension Methods For Transform, GameObject, float, int, Vector3, AnimationCurve, type, object, IEnumerator, AsyncOperationHandle<T>, AsyncOperatoion, Task, Renderer, Material.</br>
 -local Timers-countdown and stopwatch</br>
 -Global Playerloop registered timer- countdown and stopwatch controlled cia TimerManager</br>
