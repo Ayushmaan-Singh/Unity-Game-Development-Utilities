@@ -9,18 +9,12 @@ namespace AstekUtility
 	{
 		[SerializeField] private UnityEvent<Collision> onCollisionStay;
 
-		private void OnCollisionStay(Collision other)
-		{
-			onCollisionStay?.Invoke(other);
-		}
+		private void OnCollisionStay(Collision other) => onCollisionStay?.Invoke(other);
 
-		public void Register(UnityAction<Collision> action)
-		{
-			onCollisionStay.AddListener(action);
-		}
-		public void Deregister(UnityAction<Collision> action)
-		{
-			onCollisionStay.AddListener(action);
-		}
+
+		public void Register(UnityAction<Collision> action) => onCollisionStay.AddListener(action);
+
+		public void Deregister(UnityAction<Collision> action) => onCollisionStay.AddListener(action);
+
 	}
 }

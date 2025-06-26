@@ -18,10 +18,8 @@ namespace AstekUtility
 
 		private List<Collision> collisionCollection = new List<Collision>();
 
-		private void Update()
-		{
-			collisionUpdate?.Invoke(collisionCollection);
-		}
+		private void Update() => collisionUpdate?.Invoke(collisionCollection);
+
 
 		private void FixedUpdate()
 		{
@@ -29,14 +27,8 @@ namespace AstekUtility
 			collisionFixedUpdate?.Invoke(collisionCollection);
 		}
 
-		private void OnCollisionEnter(Collision colliding)
-		{
-			collisionCollection.Add(colliding);
-		}
-		private void OnCollisionExit(Collision colliding)
-		{
-			collisionCollection.Remove(colliding);
-		}
+		private void OnCollisionEnter(Collision colliding) => collisionCollection.Add(colliding);
+		private void OnCollisionExit(Collision colliding) => collisionCollection.Remove(colliding);
 
 		public void Register(UnityAction<List<Collision>> collisionAction, bool runInFixedUpdate = false)
 		{
