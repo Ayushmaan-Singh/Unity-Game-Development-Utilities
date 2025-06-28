@@ -22,9 +22,9 @@ namespace AstekUtility.Gameplay.Collision
 			{
 				case CastType.Box:
 					BoxCollider2D boxCollider = collider2D as BoxCollider2D;
-					return Physics2D.BoxCast(
+					return UnityEngine.Physics2D.BoxCast(
 						origin,
-						boxCollider.size * collider2D.transform.lossyScale,
+						boxCollider.bounds.size,
 						collider2D.transform.eulerAngles.z,
 						direction.normalized,
 						direction.magnitude,
@@ -32,21 +32,21 @@ namespace AstekUtility.Gameplay.Collision
 
 				case CastType.Circle:
 					CircleCollider2D circleCollider = collider2D as CircleCollider2D;
-					return Physics2D.CircleCast(
+					return UnityEngine.Physics2D.CircleCast(
 						origin,
-						circleCollider.radius * collider2D.transform.lossyScale.x,
+						circleCollider.radius * Mathf.Abs(collider2D.transform.lossyScale.x),
 						direction.normalized,
 						direction.magnitude,
 						collisionMask);
 
 				case CastType.Capsule:
 					CapsuleCollider2D capsuleCollider = collider2D as CapsuleCollider2D;
-					return Physics2D.CapsuleCast(
+					return UnityEngine.Physics2D.CapsuleCast(
 						origin,
-						capsuleCollider.size,
+						capsuleCollider.bounds.size,
 						capsuleCollider.direction,
 						collider2D.transform.eulerAngles.z,
-						direction,
+						direction.normalized,
 						direction.magnitude,
 						collisionMask);
 
@@ -65,7 +65,7 @@ namespace AstekUtility.Gameplay.Collision
 					BoxCollider2D boxCollider = collider2D as BoxCollider2D;
 					return Physics2D.BoxCastAll(
 						origin,
-						boxCollider.size * collider2D.transform.lossyScale,
+						boxCollider.bounds.size,
 						collider2D.transform.eulerAngles.z,
 						direction.normalized,
 						direction.magnitude,
@@ -75,7 +75,7 @@ namespace AstekUtility.Gameplay.Collision
 					CircleCollider2D circleCollider = collider2D as CircleCollider2D;
 					return Physics2D.CircleCastAll(
 						origin,
-						circleCollider.radius * collider2D.transform.lossyScale.x,
+						circleCollider.radius * Mathf.Abs(collider2D.transform.lossyScale.x),
 						direction.normalized,
 						direction.magnitude,
 						collisionMask);
@@ -84,10 +84,10 @@ namespace AstekUtility.Gameplay.Collision
 					CapsuleCollider2D capsuleCollider = collider2D as CapsuleCollider2D;
 					return Physics2D.CapsuleCastAll(
 						origin,
-						capsuleCollider.size,
+						capsuleCollider.bounds.size,
 						capsuleCollider.direction,
 						collider2D.transform.eulerAngles.z,
-						direction,
+						direction.normalized,
 						direction.magnitude,
 						collisionMask);
 
@@ -129,7 +129,5 @@ namespace AstekUtility.Gameplay.Collision
 
 			return CastType.Invalid;
 		}
-
-
 	}
 }
