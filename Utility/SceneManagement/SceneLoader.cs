@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using AstekUtility.DesignPattern.ServiceLocatorTool;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,10 +9,11 @@ namespace AstekUtility.SceneManagement
 {
 	public class SceneLoader : MonoBehaviour
 	{
-		[SerializeField] private Image loadingBar;
-		[SerializeField] private float fillSpeed = 0.5f;
-		[SerializeField] private Canvas loadingCanvas;
-		[SerializeField] private Camera loadingCamera;
+		[SerializeField, ToggleLeft, FoldoutGroup("Loading UI")] private bool useLoadingUI = false;
+		[SerializeField, FoldoutGroup("Loading UI"), ShowIf("@useLoadingUI")] private Image loadingBar;
+		[SerializeField, FoldoutGroup("Loading UI"), ShowIf("@useLoadingUI")] private float fillSpeed = 0.5f;
+		[SerializeField, FoldoutGroup("Loading UI"), ShowIf("@useLoadingUI")] private Canvas loadingCanvas;
+		[SerializeField, FoldoutGroup("Loading UI"), ShowIf("@useLoadingUI")] private Camera loadingCamera;
 		[SerializeField] private SceneGroup[] sceneGroups;
 
 		private float targetProgress;
@@ -21,7 +23,8 @@ namespace AstekUtility.SceneManagement
 
 		private void Update()
 		{
-			if (!isLoading) return;
+			if (!isLoading || !useLoadingUI)
+				return;
 
 			float currentFillAmount = loadingBar.fillAmount;
 			float progressDifference = Mathf.Abs(currentFillAmount - targetProgress);
@@ -37,7 +40,8 @@ namespace AstekUtility.SceneManagement
 		/// <param name="index"></param>
 		public async Task LoadSceneGroup(int index)
 		{
-			loadingBar.fillAmount = 0;
+			if (useLoadingUI)
+				loadingBar.fillAmount = 0;
 			targetProgress = 1f;
 
 			if (index < 0 || index >= sceneGroups.Length)
@@ -56,6 +60,9 @@ namespace AstekUtility.SceneManagement
 
 		private void EnableLoadingCanvas(bool enable = true)
 		{
+			if (!useLoadingUI)
+				return;
+
 			isLoading = enable;
 			loadingCanvas.gameObject.SetActive(enable);
 			loadingCamera.gameObject.SetActive(enable);

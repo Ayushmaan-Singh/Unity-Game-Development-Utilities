@@ -38,6 +38,8 @@ namespace AstekUtility
 		public static Vector2 SetPrecision(this Vector2 current, int precision) =>
 			new Vector2(current.x.SetPrecision(precision), current.y.SetPrecision(precision));
 
+		public static Vector3 ToVector3(this Vector2 current) => new Vector3(current.x, current.y, 0);
+
 		#endregion
 
 		#region Vector3
@@ -73,6 +75,8 @@ namespace AstekUtility
 
 		public static Vector3 SetPrecision(this Vector3 current, int precision) =>
 			new Vector3(current.x.SetPrecision(precision), current.y.SetPrecision(precision), current.z.SetPrecision(precision));
+		
+		public static Vector3 ToVector2(this Vector3 current) => new Vector2(current.x, current.y);
 
 		#endregion
 	}

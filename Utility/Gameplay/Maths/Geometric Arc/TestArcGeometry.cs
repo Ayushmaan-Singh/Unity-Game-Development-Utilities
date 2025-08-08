@@ -20,15 +20,15 @@ namespace AstekUtility.Gameplay.Geometric_Calculations
 				DestroyImmediate(spawned[0].gameObject);
 			}
 
-			if (arcGeo._position.Count < arcGeo.PointsOnArc)
+			if (arcGeo.Position.Count < arcGeo.PointsOnArc)
 				return;
 
 			for (int i = 0; i < arcGeo.PointsOnArc; i++)
 			{
 				GameObject instance = Instantiate(obj);
 				spawned.Add(instance.transform);
-				instance.transform.position = ((Vector3)arcGeo._position[i]).With(z:i * 0.1f);
-				instance.transform.up = arcGeo._up[i];
+				instance.transform.position = ((Vector3)arcGeo.Position[i]).With(z:i * 0.1f);
+				instance.transform.up = arcGeo.Up[i];
 			}
 		}
 
@@ -41,8 +41,8 @@ namespace AstekUtility.Gameplay.Geometric_Calculations
 
 			for (int i = 0; i < spawned.Count; i++)
 			{
-				spawned[i].position = ((Vector3)arcGeo._position[i]).With(z:i * 0.1f);
-				spawned[i].up = arcGeo._up[i];
+				spawned[i].position = ((Vector3)arcGeo.Position[i]).With(z:i * 0.1f);
+				spawned[i].up = arcGeo.Up[i];
 			}
 		}
 	}

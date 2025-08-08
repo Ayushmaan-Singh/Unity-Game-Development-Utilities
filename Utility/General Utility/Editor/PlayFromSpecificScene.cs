@@ -7,7 +7,7 @@ namespace AstekUtility
 {
 	public class PlayFromSpecificScene : EditorWindow
 	{
-		private static readonly string _playmodeTargetScene = "GameMaster";
+		private static readonly string _playmodeTargetScene = "GameManager";
 		private static string _currentScene;
 
 		[MenuItem("Developer Tools/Play From Start")]

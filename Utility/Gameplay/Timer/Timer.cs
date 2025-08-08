@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace AstekUtility.Gameplay.Timer
 {
@@ -51,8 +52,8 @@ namespace AstekUtility.Gameplay.Timer
 
 	public class CountdownTimer : Timer
 	{
-		public new float Progress => (_initialTime - Time) / _initialTime;
-		
+		public new float Progress => _initialTime != 0 ? Mathf.Clamp((_initialTime - Time) / _initialTime, 0f, 1f) : 0;
+
 		public CountdownTimer(float value) : base(value) { }
 
 		public override void Tick(float deltaTime)
@@ -87,7 +88,7 @@ namespace AstekUtility.Gameplay.Timer
 		{
 			if (!IsRunning)
 				return;
-			
+
 			Time += deltaTime;
 		}
 

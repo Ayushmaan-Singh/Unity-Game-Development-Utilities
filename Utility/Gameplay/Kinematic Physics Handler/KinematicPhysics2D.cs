@@ -298,7 +298,7 @@ namespace AstekUtility.Gameplay.CustomPhysics2D
 			if (distance < 0.001f) return;
 
 			// Perform collision detection
-			_collisionBuffer = CollisionCast2D.CastAll(ActiveCollider2D, movement, collisionMask);
+			//_collisionBuffer = CollisionCast2D.CastAll(ActiveCollider2D, movement, collisionMask);
 
 			// Process collisions
 			float remainingDistance = distance;

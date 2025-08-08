@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace AstekUtility
 {
@@ -39,18 +41,37 @@ namespace AstekUtility
 		/// <returns>The object itself if it exists and not destroyed, null otherwise.</returns>
 		public static T OrNull<T>(this T obj) where T : Object => obj ? obj : null;
 
-		/// <summary>
-		/// Get component of type T if they are on the object, on the parent of object or on the children of object
-		/// </summary>
-		/// <param name="go"></param>
-		/// <param name="component"></param>
-		/// <param name="includeInactive"></param>
-		/// <typeparam name="T"></typeparam>
-		/// <returns></returns>
-		public static bool TryGetComponentInParentOrChildren<T>(this GameObject go, out T component, bool includeInactive = true) where T : MonoBehaviour
+		public static bool TryGetComponentInChildren<T>(this GameObject go, out T component, bool includeInactive = true) where T : MonoBehaviour
 		{
-			component = go?.GetComponentInParent<T>(includeInactive) ?? go?.GetComponentInChildren<T>(includeInactive);
+			if (!go)
+				throw new ArgumentNullException(nameof(go));
+
+			component = go.GetComponentInChildren<T>(includeInactive);
 			return component.OrNull();
+		}
+		public static bool TryGetComponentsInChildren<T>(this GameObject go, out T[] component, bool includeInactive = true) where T : MonoBehaviour
+		{
+			if (!go)
+				throw new ArgumentNullException(nameof(go));
+
+			component = go.GetComponentsInChildren<T>(includeInactive);
+			return component != null;
+		}
+		public static bool TryGetComponentInParent<T>(this GameObject go, out T component, bool includeInactive = true) where T : MonoBehaviour
+		{
+			if (!go)
+				throw new ArgumentNullException(nameof(go));
+
+			component = go.GetComponentInParent<T>(includeInactive);
+			return component.OrNull();
+		}
+		public static bool TryGetComponentsInParent<T>(this GameObject go, out T[] component, bool includeInactive = true) where T : MonoBehaviour
+		{
+			if (!go)
+				throw new ArgumentNullException(nameof(go));
+
+			component = go.GetComponentsInParent<T>(includeInactive);
+			return component != null;
 		}
 
 		/// <summary>

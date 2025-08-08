@@ -295,6 +295,17 @@ namespace AstekUtility
 			return default(T);
 		}
 
+		public static T Last<T>(this IEnumerable<T> source)
+		{
+			if (source == null)
+			{
+				throw new ArgumentNullException(nameof(source));
+			}
+
+			List<T> collection = source.ToList();
+			return collection.Count > 0 ? collection[^1] : default(T);
+		}
+
 		public static int FindIndex<T>(this ICollection<T> source, Func<T, bool> predicate)
 		{
 			if (source == null) throw new ArgumentNullException(nameof(source));

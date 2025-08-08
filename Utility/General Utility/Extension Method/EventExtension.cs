@@ -30,7 +30,7 @@ namespace AstekUtility
 		#endregion
 
 		#region Validation and Cleaning
-		
+
 		/// <summary>
 		/// Removes delegates with destroyed Unity object targets or invalid references.
 		/// Usage: myEvent = myEvent.CleanDelegates();
@@ -49,7 +49,7 @@ namespace AstekUtility
 					validDelegates.Add(del);
 				}
 			});
-			
+
 			// Rebuild the delegate from valid entries
 			return Delegate.Combine(validDelegates.ToArray()) as T;
 		}
@@ -68,6 +68,32 @@ namespace AstekUtility
 
 			// For non-Unity targets or static methods, assume valid
 			return true;
+		}
+
+		#endregion
+
+		#region Creating Copy
+
+		public static Func<T> Eventlone<T>(this Func<T> source)
+		{
+			Func<T> copy = null;
+			source.GetInvocationList().ForEach(del
+				=> copy += (Func<T>)Delegate.CreateDelegate(typeof(Func<T>), del.Target, del.Method));
+			return copy;
+		}
+		public static Func<T1, T2> Eventlone<T1, T2>(this Func<T1, T2> source)
+		{
+			Func<T1, T2> copy = null;
+			source.GetInvocationList().ForEach(del
+				=> copy += (Func<T1, T2>)Delegate.CreateDelegate(typeof(Func<T1, T2>), del.Target, del.Method));
+			return copy;
+		}
+		public static Func<T1, T2, T3> Eventlone<T1, T2, T3>(this Func<T1, T2, T3> source)
+		{
+			Func<T1, T2, T3> copy = null;
+			source.GetInvocationList().ForEach(del
+				=> copy += (Func<T1, T2, T3>)Delegate.CreateDelegate(typeof(Func<T1, T2, T3>), del.Target, del.Method));
+			return copy;
 		}
 
 		#endregion

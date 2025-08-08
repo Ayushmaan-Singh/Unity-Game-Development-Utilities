@@ -42,14 +42,6 @@ namespace AstekUtility
 			OnRelease.Invoke(obj);
 			return obj;
 		}
-
-		public void RemoveObject(T obj)
-		{
-			if (!_pool.Contains(obj))
-				return;
-
-			_pool.RemoveWhere(item => item != null && item.Equals(obj));
-		}
 		
 		public void Clear()
 		{

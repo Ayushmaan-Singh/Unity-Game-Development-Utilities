@@ -152,7 +152,7 @@ namespace AstekUtility.Gameplay.Collision
 
 		#if UNITY_EDITOR
 
-		public static void DrawWireCube(this Collider collider, Color color)
+		public static void DrawWireShapes(this Collider collider, Color color)
 		{
 			Gizmos.color = color;
 			Gizmos.matrix = collider.transform.localToWorldMatrix;

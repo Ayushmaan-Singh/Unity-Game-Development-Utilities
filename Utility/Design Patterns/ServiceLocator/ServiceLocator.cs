@@ -17,7 +17,6 @@ namespace AstekUtility.DesignPattern.ServiceLocatorTool
 		private const string GLOBALSERVICELOCATORNAME = "ServiceLocator [Global]";
 		private const string SCENESERVICELOCATORNAME = "ServiceLocator [Scene]";
 
-		private static bool _isApplicationGettingClosed;
 
 		#region Service Locator
 
@@ -65,7 +64,7 @@ namespace AstekUtility.DesignPattern.ServiceLocatorTool
 					return _global;
 				}
 
-				if (!_isApplicationGettingClosed)
+				if (Application.isPlaying)
 				{
 					GameObject container = new GameObject(GLOBALSERVICELOCATORNAME, typeof(ServiceLocator));
 					container.AddComponent<ServiceLocatorGlobal>().BootstrapOnDemand();
@@ -91,11 +90,10 @@ namespace AstekUtility.DesignPattern.ServiceLocatorTool
 
 			foreach (GameObject go in _tmpSceneGameObjects.Where(go => go.GetComponent<ServiceLocatorScene>()))
 			{
-				if (go.TryGetComponent(out ServiceLocatorScene bootstrapper) && bootstrapper.Container != mb)
-				{
-					bootstrapper.BootstrapOnDemand();
-					return bootstrapper.Container;
-				}
+				if (!go.TryGetComponent(out ServiceLocatorScene bootstrapper) || bootstrapper.Container == mb)
+					continue;
+				bootstrapper.BootstrapOnDemand();
+				return bootstrapper.Container;
 			}
 
 			return Global;
@@ -119,40 +117,46 @@ namespace AstekUtility.DesignPattern.ServiceLocatorTool
 		/// </summary>
 		/// <param name="service">The service to register.</param>  
 		/// <typeparam name="T">Class type of the service to be registered.</typeparam>
+		/// <param name="overrideService">Pass if we want to override with this value if another already exsists</param>
 		/// <returns>The ServiceLocator instance after registering the service.</returns>
-		public ServiceLocator Register<T>(T service)
+		public ServiceLocator Register<T>(T service, bool overrideService = false)
 		{
-			_services.Register(service);
+			_services.Register(service, overrideService);
 			return this;
 		}
 		/// <summary>
 		/// Registers a service to the ServiceLocator using a specific type.
 		/// </summary>
 		/// <param name="type">The type to use for registration.</param>
-		/// <param name="service">The service to register.</param>  
+		/// <param name="service">The service to register.</param>
+		/// <param name="overrideService">Pass if we want to override with this value if another already exsists</param>
 		/// <returns>The ServiceLocator instance after registering the service.</returns>
-		public ServiceLocator Register(Type type, object service)
+		public ServiceLocator Register(Type type, object service, bool overrideService = false)
 		{
-			_services.Register(type, service);
+			_services.Register(type, service, overrideService);
 			return this;
 		}
 
-		public bool TryGet<T>(out T service) where T : class => _services.TryGet(out service);
-		private bool TryGetNextInHierarchy(out ServiceLocator container)
+		public T GetService<T>() where T : class
 		{
-			if (this == _global)
-			{
-				container = null;
-				return false;
-			}
+			if (TryGetService(out T service))
+				return service;
 
-			container = transform.parent.OrNull()?.GetComponentInParent<ServiceLocator>().OrNull() ?? ForSceneOf(this);
-			return container.OrNull();
+			ServiceLocator container = _sceneContainers.TryGetValue(gameObject.scene, out ServiceLocator sceneContainer)
+				? sceneContainer == this ? _global : sceneContainer : _global;
+
+			if (container && container.TryGetService(out service))
+				return service;
+
+			//If this is global then no place left to check
+			//If we cannot find service registered anywhere
+			throw new NullReferenceException($"Service Of Type:{typeof(T).FullName} Is Not Registered");
 		}
+
+		public bool TryGetService<T>(out T service) where T : class => _services.TryGet(out service);
 
 		#endregion
 
-		private void OnApplicationQuit() => _isApplicationGettingClosed = true;
 		private void OnDestroy()
 		{
 			if (this == _global)
@@ -170,12 +174,62 @@ namespace AstekUtility.DesignPattern.ServiceLocatorTool
 		static void ResetStatics()
 		{
 			_global = null;
-			_isApplicationGettingClosed = false;
 			_sceneContainers = new Dictionary<Scene, ServiceLocator>();
 			_tmpSceneGameObjects = new List<GameObject>();
 		}
+		private class ServiceManager
+		{
+			private readonly Dictionary<Type, object> _services = new Dictionary<Type, object>();
+			public IEnumerable<object> RegisteredServices => _services.Values;
 
-#if UNITY_EDITOR
+			public ServiceManager() { }
+
+			public bool TryGet<T>(out T service) where T : class
+			{
+				Type type = typeof(T);
+				if (_services.TryGetValue(type, out object serviceObj))
+				{
+					service = serviceObj as T;
+					return true;
+				}
+				service = null;
+				return false;
+			}
+
+			public ServiceManager Register<T>(T service, bool overrideService)
+			{
+				Type type = typeof(T);
+				if (!_services.TryAdd(type, service))
+				{
+					if (!overrideService)
+						throw new Exception($"ServiceManager.Register: Service of type{type.FullName} already registered");
+					else
+						_services[type] = service;
+				}
+
+				return this;
+			}
+			public ServiceManager Register(Type type, object service, bool overrideService)
+			{
+				if (!type.IsInstanceOfType(service))
+					throw new ArgumentException($"Type of service does not match type of service interface {nameof(service)}");
+
+				if (!_services.TryAdd(type, service))
+				{
+					if (!overrideService)
+						Debug.LogError($"ServiceManager.Register: Services of type {type.FullName} already registered");
+					else
+						_services[type] = service;
+				}
+
+				return this;
+			}
+		}
+
+		#region Editor Only
+
+		#if UNITY_EDITOR
+
 		[MenuItem("GameObject/ServiceLocator/Add Global")]
 		static void AddGlobal()
 		{
@@ -187,22 +241,9 @@ namespace AstekUtility.DesignPattern.ServiceLocatorTool
 		{
 			GameObject go = new GameObject(SCENESERVICELOCATORNAME, typeof(ServiceLocatorScene));
 		}
-#endif
-	}
 
-	public static class ServiceLocatorExtensionMethods
-	{
-		public static ServiceLocator LocalServiceLocator(this MonoBehaviour self) => ServiceLocator.For(self);
-		public static ServiceLocator SceneServiceLocator(this MonoBehaviour self) => ServiceLocator.ForSceneOf(self);
-		public static T GetService<T>(this MonoBehaviour self) where T : class =>
-			self.LocalServiceLocator() && self.LocalServiceLocator().TryGet(out T service) ? service
-			: self.SceneServiceLocator() && self.SceneServiceLocator().TryGet(out service) ? service
-			: ServiceLocator.Global.TryGet(out service) ? service
-			: throw new NullReferenceException($"Cannot Find Service Of Type {typeof(T)}");
-		public static bool TryGetService<T>(this MonoBehaviour self, out T service) where T : class =>
-			(self.LocalServiceLocator() && self.LocalServiceLocator().TryGet(out service))
-			|| (self.SceneServiceLocator() && self.SceneServiceLocator().TryGet(out service))
-			|| ServiceLocator.Global.TryGet(out service)
-				? true : false;
+		#endif
+
+		#endregion
 	}
 }
