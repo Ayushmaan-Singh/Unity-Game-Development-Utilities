@@ -117,7 +117,7 @@ namespace AstekUtility
 
 		#region Line Renderer
 
-		public static void Reset(this LineRenderer renderer) => renderer.positionCount = 0;
+		public static void Clear(this LineRenderer renderer) => renderer.positionCount = 0;
 
 		#endregion
 	}

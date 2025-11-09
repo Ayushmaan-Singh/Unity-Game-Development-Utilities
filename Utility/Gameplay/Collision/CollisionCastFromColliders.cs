@@ -97,6 +97,91 @@ namespace AstekUtility.Gameplay.Collision
 					throw new ArgumentNullException($"{collider2D} is not within defined cast type");
 			}
 		}
+		public static RaycastHit2D[] CastAll(Collider2D collider2D, Vector2 direction, float distance, LayerMask collisionMask)
+		{
+			CastType determineCast = DetermineCast(collider2D);
+			Vector2 origin = collider2D.bounds.center;
+
+			switch (determineCast)
+			{
+				case CastType.Box:
+					BoxCollider2D boxCollider = collider2D as BoxCollider2D;
+					return Physics2D.BoxCastAll(
+						origin,
+						boxCollider.bounds.size,
+						collider2D.transform.eulerAngles.z,
+						direction.normalized,
+						distance,
+						collisionMask);
+
+				case CastType.Circle:
+					CircleCollider2D circleCollider = collider2D as CircleCollider2D;
+					return Physics2D.CircleCastAll(
+						origin,
+						circleCollider.radius * collider2D.transform.lossyScale.x,
+						direction.normalized,
+						distance,
+						collisionMask);
+
+				case CastType.Capsule:
+					CapsuleCollider2D capsuleCollider = collider2D as CapsuleCollider2D;
+					return Physics2D.CapsuleCastAll(
+						origin,
+						capsuleCollider.bounds.size,
+						capsuleCollider.direction,
+						collider2D.transform.eulerAngles.z,
+						direction.normalized,
+						distance,
+						collisionMask);
+
+					break;
+
+				default:
+					throw new ArgumentNullException($"{collider2D} is not within defined cast type");
+			}
+		}
+		public static RaycastHit2D[] CastAll(Collider2D collider2D, Vector2 origin,Vector2 direction, float distance, LayerMask collisionMask)
+		{
+			CastType determineCast = DetermineCast(collider2D);
+
+			switch (determineCast)
+			{
+				case CastType.Box:
+					BoxCollider2D boxCollider = collider2D as BoxCollider2D;
+					return Physics2D.BoxCastAll(
+						origin,
+						boxCollider.bounds.size,
+						collider2D.transform.eulerAngles.z,
+						direction.normalized,
+						distance,
+						collisionMask);
+
+				case CastType.Circle:
+					CircleCollider2D circleCollider = collider2D as CircleCollider2D;
+					return Physics2D.CircleCastAll(
+						origin,
+						circleCollider.radius * collider2D.transform.lossyScale.x,
+						direction.normalized,
+						distance,
+						collisionMask);
+
+				case CastType.Capsule:
+					CapsuleCollider2D capsuleCollider = collider2D as CapsuleCollider2D;
+					return Physics2D.CapsuleCastAll(
+						origin,
+						capsuleCollider.bounds.size,
+						capsuleCollider.direction,
+						collider2D.transform.eulerAngles.z,
+						direction,
+						distance,
+						collisionMask);
+
+					break;
+
+				default:
+					throw new ArgumentNullException($"{collider2D} is not within defined cast type");
+			}
+		}
 
 		private static CastType DetermineCast(Collider2D collider2D)
 		{

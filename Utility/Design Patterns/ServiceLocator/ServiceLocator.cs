@@ -17,6 +17,7 @@ namespace AstekUtility.DesignPattern.ServiceLocatorTool
 		private const string GLOBALSERVICELOCATORNAME = "ServiceLocator [Global]";
 		private const string SCENESERVICELOCATORNAME = "ServiceLocator [Scene]";
 
+		private static bool _stopSpawningGlobal = false;
 
 		#region Service Locator
 
@@ -100,6 +101,34 @@ namespace AstekUtility.DesignPattern.ServiceLocatorTool
 		}
 
 		/// <summary>
+		/// Returns the <see cref="ServiceLocator"/> configured for the scene of a Renderer. Falls back to the global instance.
+		/// </summary>
+		public static ServiceLocator ForSceneOf(Renderer renderer)
+		{
+			Scene scene = renderer.gameObject.scene;
+
+			if (_sceneContainers.TryGetValue(scene, out ServiceLocator container)
+			    && renderer.GetComponents<MonoBehaviour>().Any(component => component == container))
+			{
+				return container;
+			}
+
+			_tmpSceneGameObjects.Clear();
+			scene.GetRootGameObjects(_tmpSceneGameObjects);
+
+			foreach (GameObject go in _tmpSceneGameObjects.Where(go => go.GetComponent<ServiceLocatorScene>()))
+			{
+				if (!go.TryGetComponent(out ServiceLocatorScene bootstrapper) || 
+				    renderer.GetComponents<MonoBehaviour>().Any(component => component == bootstrapper))
+					continue;
+				bootstrapper.BootstrapOnDemand();
+				return bootstrapper.Container;
+			}
+
+			return Global;
+		}
+
+		/// <summary>
 		/// Gets the closest ServiceLocator instance to the provided 
 		/// MonoBehaviour in hierarchy, the ServiceLocator for its scene, or the global ServiceLocator.
 		/// </summary>
@@ -161,6 +190,7 @@ namespace AstekUtility.DesignPattern.ServiceLocatorTool
 		{
 			if (this == _global)
 			{
+				_stopSpawningGlobal = true;
 				_global = null;
 			}
 			else if (_sceneContainers.ContainsValue(this))
@@ -176,6 +206,7 @@ namespace AstekUtility.DesignPattern.ServiceLocatorTool
 			_global = null;
 			_sceneContainers = new Dictionary<Scene, ServiceLocator>();
 			_tmpSceneGameObjects = new List<GameObject>();
+			_stopSpawningGlobal = false;
 		}
 		private class ServiceManager
 		{

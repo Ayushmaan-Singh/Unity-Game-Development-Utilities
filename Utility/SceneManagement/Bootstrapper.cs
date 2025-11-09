@@ -10,8 +10,8 @@ namespace AstekUtility.SceneManagement
 		private static async void Init()
 		{
 			Debug.Log("Bootstrapper........");
-			if (SceneManager.GetActiveScene().name != "GameManager")
-				await Addressables.LoadSceneAsync("Assets/Scenes/GameManager.unity", LoadSceneMode.Single).Task;
+			// if (SceneManager.GetActiveScene().name != "GameManager")
+			// 	await Addressables.LoadSceneAsync("Assets/Scenes/GameManager.unity", LoadSceneMode.Single).Task;
 		}
 	}
 }

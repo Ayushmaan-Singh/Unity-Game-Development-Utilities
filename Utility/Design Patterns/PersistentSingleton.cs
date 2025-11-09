@@ -7,25 +7,40 @@ namespace AstekUtility
 		public bool AutoUnparentOnAwake = true;
 
 		protected static T instance;
+		private static readonly object _lock = new object();
 
 		public static bool HasInstance => instance != null;
 		public static T TryGetInstance() => HasInstance ? instance : null;
+
+		private static bool _isQuitting;
 
 		public static T Instance
 		{
 			get
 			{
-				if (instance == null)
+				// If the application is quitting, do not create a new instance
+				if (_isQuitting)
 				{
-					instance = FindAnyObjectByType<T>();
-					if (instance == null)
-					{
-						var go = new GameObject(typeof(T).Name + " Auto-Generated");
-						instance = go.AddComponent<T>();
-					}
+					Debug.LogWarning($"[Singleton] Instance '{typeof(T)}' already destroyed on application quit. Won't create again - returning null.");
+					return null;
 				}
 
-				return instance;
+				lock (_lock)
+				{
+					if (instance == null)
+					{
+						instance = (T)FindObjectOfType(typeof(T));
+
+						if (instance == null)
+						{
+							GameObject singleton = new GameObject();
+							instance = singleton.AddComponent<T>();
+							singleton.name = "(singleton) " + typeof(T);
+						}
+					}
+
+					return instance;
+				}
 			}
 		}
 
@@ -58,6 +73,16 @@ namespace AstekUtility
 					Destroy(gameObject);
 				}
 			}
+		}
+
+		[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+		private static void ApplicationStatus()
+		{
+			_isQuitting = false;
+			Application.quitting -= IsQuitting;
+			Application.quitting += IsQuitting;
+
+			void IsQuitting() => _isQuitting = true;
 		}
 	}
 }

@@ -18,21 +18,13 @@ namespace AstekUtility
 				return HasInstance ? _instance : null;
 			}
 		}
-		public static T Current
-		{
-			get
-			{
-				return _instance;
-			}
-		}
-
 		public static T Instance
 		{
 			get
 			{
 				if (!_instance)
 				{
-					_instance = FindFirstObjectByType<T>();
+					_instance = FindAnyObjectByType<T>();
 					if (!_instance)
 					{
 						GameObject obj = new GameObject
@@ -52,7 +44,7 @@ namespace AstekUtility
 			InitializeSingleton();
 		}
 
-		protected virtual void InitializeSingleton()
+		private void InitializeSingleton()
 		{
 			if (!Application.isPlaying)
 			{
@@ -60,6 +52,7 @@ namespace AstekUtility
 			}
 
 			_instance = this as T;
+			DontDestroyOnLoad(gameObject);
 		}
 	}
 }

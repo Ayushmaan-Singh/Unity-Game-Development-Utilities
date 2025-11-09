@@ -55,17 +55,26 @@ namespace AstekUtility.SceneManagement
 
 			EnableLoadingCanvas();
 			await manager.LoadScenes(sceneGroups[index], progress);
-			EnableLoadingCanvas(false);
+			DisableLoadingCanvas();
 		}
 
-		private void EnableLoadingCanvas(bool enable = true)
+		private void EnableLoadingCanvas()
 		{
 			if (!useLoadingUI)
 				return;
 
-			isLoading = enable;
-			loadingCanvas.gameObject.SetActive(enable);
-			loadingCamera.gameObject.SetActive(enable);
+			isLoading = true;
+			loadingCanvas.gameObject.SetActive(true);
+			loadingCamera.gameObject.SetActive(true);
+		}
+		private void DisableLoadingCanvas()
+		{
+			if (!useLoadingUI)
+				return;
+
+			isLoading = false;
+			loadingCanvas.gameObject.SetActive(false);
+			loadingCamera.gameObject.SetActive(false);
 		}
 	}
 

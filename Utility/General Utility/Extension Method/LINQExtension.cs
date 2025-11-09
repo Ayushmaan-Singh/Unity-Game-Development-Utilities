@@ -378,5 +378,28 @@ namespace AstekUtility
 				}
 			}
 		}
+
+		public static T ElementAt<T>(this IEnumerable<T> source, int index) => source.ToList()[index];
+
+		public static int Count<T>(this IEnumerable<T> source) => source.ToList().Count;
+		/// <summary>
+		/// Finds count of item which satisfy certain condition
+		/// </summary>
+		/// <param name="source"></param>
+		/// <typeparam name="T"></typeparam>
+		/// <returns></returns>
+		public static int Count<T>(this IEnumerable<T> source, Func<T, bool> predicate)
+		{
+			if (predicate == null)
+				throw new ArgumentNullException(nameof(predicate));
+			
+			int count = 0;
+			source.ForEach(item =>
+			{
+				if (predicate.Invoke(item))
+					count++;
+			});
+			return count;
+		}
 	}
 }

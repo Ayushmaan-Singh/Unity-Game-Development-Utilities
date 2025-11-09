@@ -29,8 +29,11 @@ namespace AstekUtility.DesignPattern.StateMachine
 
 		public void SetState(IState state)
 		{
+			if (state == null)
+				throw new ArgumentNullException(nameof(state));
+			
 			CurrentState = _nodes[state.GetType()];
-			CurrentState.State?.OnStateEnter();
+			CurrentState.State.OnStateEnter();
 		}
 
 		private void ChangeState(IState state)
