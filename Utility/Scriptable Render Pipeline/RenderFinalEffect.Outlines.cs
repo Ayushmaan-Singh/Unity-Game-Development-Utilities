@@ -169,7 +169,7 @@ namespace AstekUtility.ScriptableRenderPipelines
 			private readonly Material screenSpaceOutlineMaterial;
 
 			private RTHandle cameraColorTarget;
-			private RenderTargetIdentifier temporaryBuffer;
+			private RTHandle temporaryBuffer;
 
 			private readonly int temporaryBufferID = Shader.PropertyToID("_TemporaryBuffer");
 
@@ -196,7 +196,7 @@ namespace AstekUtility.ScriptableRenderPipelines
 				temporaryTargetDescriptor.depthBufferBits = 0;
 				cmd.GetTemporaryRT(temporaryBufferID, temporaryTargetDescriptor, FilterMode.Point);
 
-				temporaryBuffer = new RenderTargetIdentifier("_TemporaryBuffer");
+				//temporaryBuffer = new RenderTargetIdentifier("_TemporaryBuffer");
 
 				cameraColorTarget = renderingData.cameraData.renderer.cameraColorTargetHandle;
 			}
