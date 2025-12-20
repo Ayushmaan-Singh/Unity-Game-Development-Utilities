@@ -117,7 +117,6 @@ namespace AstekUtility.Odin
 			return (comp != null);
 		}
 
-
 		public static T Flags<T>(this Component self) where T:Enum
 		{
 			if (!self.TryGetComponent(out FlagsBehaviour<T> comp))

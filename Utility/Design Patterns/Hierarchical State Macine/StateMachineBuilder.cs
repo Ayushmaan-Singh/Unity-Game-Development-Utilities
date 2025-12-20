@@ -29,7 +29,7 @@ namespace AstekUtility.DesignPattern.HSM
 
             foreach (FieldInfo fld in s.GetType().GetFields(flags))
             {
-                if (typeof(State).IsAssignableFrom(fld.FieldType)) continue; //Only consider fields that are state
+                if (!typeof(State).IsAssignableFrom(fld.FieldType)) continue; //Only consider fields that are state
                 if(fld.Name=="Parent") continue; //Skip back-edge to parent
                 State child = (State)fld.GetValue(s);
                 if(child==null) continue;

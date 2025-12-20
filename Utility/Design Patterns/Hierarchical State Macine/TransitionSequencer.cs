@@ -78,6 +78,9 @@ namespace AstekUtility.DesignPattern.HSM
 
         private void BeginTransition(State from, State to)
         {
+            _cts?.Cancel();
+            _cts = new CancellationTokenSource();
+
             State lca = Lca(from, to);
             List<State> exitChain = StatesToExit(from, lca);
             List<State> enterChain = StatesToEnter(to, lca);
