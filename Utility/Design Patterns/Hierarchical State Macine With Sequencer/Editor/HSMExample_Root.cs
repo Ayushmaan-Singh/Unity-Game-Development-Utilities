@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices.ComTypes;
 using UnityEngine;
-namespace AstekUtility.DesignPattern.HSM.Editor
+namespace AstekUtility.DesignPattern.HSM_Sequencer.Editor
 {
     public class HSMExample_Root : State
     {

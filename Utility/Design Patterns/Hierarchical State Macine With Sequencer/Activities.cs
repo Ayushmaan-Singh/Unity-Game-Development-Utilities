@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-namespace AstekUtility.DesignPattern.HSM
+namespace AstekUtility.DesignPattern.HSM_Sequencer
 {
     public enum ActivityMode { Inactive, Activating, Active, Deactivating }
 

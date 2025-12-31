@@ -9,8 +9,8 @@ namespace AstekUtility.SOAP
 	{
 		private static readonly List<RuntimeScriptableObject> Instances = new();
 
-		private void OnEnable() => Instances.Add(this);
-		private void OnDisable() => Instances.Remove(this);
+		protected virtual void OnEnable() => Instances.Add(this);
+		protected virtual void OnDisable() => Instances.Remove(this);
 
 		protected abstract void OnReset();
 
