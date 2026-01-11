@@ -4,23 +4,38 @@ using UnityEngine;
 
 namespace AstekUtility
 {
-	public static class TypeExtensions
-	{
-		public static void InvokeMethodByName<T>(this Type scriptToInvokeMethodFrom, T objectInstance, string functionName, params object[] parameters) where T : class
-		{
-			ParameterInfo[] parametersRequired = scriptToInvokeMethodFrom.GetMethod(functionName)?.GetParameters();
-			if (parametersRequired != null && parametersRequired.Length == parameters.Length)
-			{
-				for (int i = 0; i < parametersRequired.Length; i++)
-				{
-					if (parametersRequired[i].ParameterType != parameters[i].GetType())
-					{
-						Debug.LogError($"Parameter Type Mismatch: {parametersRequired[i].GetType()} != {parameters[i].GetType()}");
-						return;
-					}
-				}
-			}
-			scriptToInvokeMethodFrom.GetMethod(functionName)?.Invoke(objectInstance, parameters);
-		}
-	}
+    public static class TypeExtensions
+    {
+        /// <summary>
+        /// Check if a given type inherits or implements a specified base type
+        /// </summary>
+        /// <param name="type">The type which needs to be checked</param>
+        /// <param name="baseType">The base type/interface which is expected to be inherited or implemented by the 'type'</param>
+        /// <returns>Return true if 'type' inherits or implements 'baseType'. False otherwise</returns>
+        public static bool InheritsOrImplements(this Type type, Type baseType)
+        {
+            type = ResolveGenericType(type);
+            baseType=ResolveGenericType(baseType);
+
+            while (type != typeof(object))
+            {
+                if (baseType == type || HasAnyInterfaces(type, baseType))
+                    return true;
+                type=ResolveGenericType(type.BaseType);
+                if (type == null) return false;
+            }
+
+            return false;
+        }
+        
+        private static Type ResolveGenericType(Type type)
+        {
+            if (type is not { IsGenericType: true }) return type;
+            Type genericType = type.GetGenericTypeDefinition();
+            return genericType != type ? genericType : type;
+        }
+
+        private static bool HasAnyInterfaces(Type type, Type interfaceType) =>
+            type.GetInterfaces().Any(i => ResolveGenericType(i) == interfaceType);
+    }
 }

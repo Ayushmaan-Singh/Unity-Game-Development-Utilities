@@ -15,7 +15,7 @@ namespace AstekUtility.Gameplay
 	/// animation events directly in the editor.
 	/// </summary>
 	[CustomEditor(typeof(AnimationEventStateBehaviour))]
-	public class AnimationEventStateBehaviourEditor : Editor
+	public class AnimationEventStateBehaviourEditor : UnityEditor.Editor
 	{
 		private Motion _previewClip;
 		private float _previewTime;
