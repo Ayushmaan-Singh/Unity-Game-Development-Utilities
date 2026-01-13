@@ -36,14 +36,14 @@ namespace AstekUtility
 			}
 		}
 
-		public static void RemoveRange<T>(this List<T> collection,IEnumerable<T> toBeRemoved,bool performParallel=false)
+		public static void RemoveRange<T>(this List<T> collection,IEnumerable<T> toBeRemoved)
 		{
 			if (collection == null)
 				throw new NullReferenceException("collection to be modified is null");
 			if (toBeRemoved == null)
 				throw new NullReferenceException("toBeRemoved collection is null");
 			
-			toBeRemoved.ForEach(item=>collection.Remove(item),performParallel);
+			toBeRemoved.ForEach(item=>collection.Remove(item));
 		}
 	}
 }
