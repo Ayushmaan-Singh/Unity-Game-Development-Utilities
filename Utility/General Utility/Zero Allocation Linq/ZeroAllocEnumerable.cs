@@ -606,5 +606,122 @@ namespace AstekUtility.ZeroAllocLinqInternal
         }
 
         #endregion
+
+        #region Aggregate
+
+        // Variant 1: Simple aggregation with default seed
+        public T Aggregate(Func<T, T, T> func)
+        {
+            using IEnumerator<T> enumerator = _source.GetEnumerator();
+            if (!enumerator.MoveNext())
+                throw new InvalidOperationException("Sequence contains no elements");
+
+            T accumulator = enumerator.Current;
+
+            while (enumerator.MoveNext())
+            {
+                accumulator = func(accumulator, enumerator.Current);
+            }
+
+            return accumulator;
+        }
+
+        // Variant 2: With seed value
+        public TAccumulate Aggregate<TAccumulate>(
+            TAccumulate seed,
+            Func<TAccumulate, T, TAccumulate> func)
+        {
+            return Aggregate(seed, func, r => r);
+        }
+
+        // Variant 3: With seed and result selector
+        public TResult Aggregate<TAccumulate, TResult>(
+            TAccumulate seed,
+            Func<TAccumulate, T, TAccumulate> func,
+            Func<TAccumulate, TResult> resultSelector)
+        {
+            TAccumulate accumulator = seed;
+
+            // Specialized implementations for common collections to avoid boxing
+            if (_source is T[] array)
+            {
+                AggregateArray(array, seed, func, ref accumulator);
+            }
+            else if (_source is List<T> list)
+            {
+                AggregateList(list, seed, func, ref accumulator);
+            }
+            else
+            {
+                foreach (T element in _source)
+                {
+                    accumulator = func(accumulator, element);
+                }
+            }
+
+            return resultSelector(accumulator);
+        }
+
+        // Array specialization - no allocation
+        private void AggregateArray<TAccumulate>(
+            T[] array,
+            TAccumulate seed,
+            Func<TAccumulate, T, TAccumulate> func,
+            ref TAccumulate accumulator)
+        {
+            accumulator = seed;
+            for (int i = 0; i < array.Length; i++)
+            {
+                accumulator = func(accumulator, array[i]);
+            }
+        }
+
+        // List specialization - no allocation
+        private void AggregateList<TAccumulate>(
+            List<T> list,
+            TAccumulate seed,
+            Func<TAccumulate, T, TAccumulate> func,
+            ref TAccumulate accumulator)
+        {
+            accumulator = seed;
+            for (int i = 0; i < list.Count; i++)
+            {
+                accumulator = func(accumulator, list[i]);
+            }
+        }
+
+        // Ref-struct enumerator version for arrays (most allocation-free)
+        public T Aggregate(
+            T[] array,
+            Func<T, T, T> func)
+        {
+            if (array.Length == 0) throw new InvalidOperationException("Sequence contains no elements");
+
+            T accumulator = array[0];
+            for (int i = 1; i < array.Length; i++)
+            {
+                accumulator = func(accumulator, array[i]);
+            }
+            return accumulator;
+        }
+
+        // Ref-struct enumerator version for List<T>
+        public T Aggregate(
+            List<T> list,
+            Func<T, T, T> func)
+        {
+            if (list == null) throw new ArgumentNullException(nameof(list));
+            if (list.Count == 0) throw new InvalidOperationException("Sequence contains no elements");
+            if (func == null) throw new ArgumentNullException(nameof(func));
+
+            T accumulator = list[0];
+            for (int i = 1; i < list.Count; i++)
+            {
+                accumulator = func(accumulator, list[i]);
+            }
+            return accumulator;
+        }
+
+        #endregion
     }
 }

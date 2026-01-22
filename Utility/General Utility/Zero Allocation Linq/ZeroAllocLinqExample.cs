@@ -177,6 +177,11 @@ namespace ZeroAllocLinqInternal
             result.ForEach(x => resultStr += $"{x.Name}, ");
             Debug.Log(resultStr);
         }
+
+        private void Aggregate()
+        {
+            Debug.Log(_first.Aggregate((x, y) => x + y));
+        }
     }
     public struct Item
     {

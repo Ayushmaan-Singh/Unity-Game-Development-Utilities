@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using AstekUtility.ZeroAllocLinqInternal;
 
@@ -344,6 +345,49 @@ namespace AstekUtility
         }
 
         #endregion
+        #region Aggregate Extension
+
+        public static TSource Aggregate<TSource>(
+            this IEnumerable<TSource> source,
+            Func<TSource, TSource, TSource> func)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            if (func == null)
+                throw new ArgumentNullException(nameof(func));
+
+            return new ZeroAllocEnumerable<TSource>(source).Aggregate(func);
+        }
+
+        public static TAccumulate Aggregate<TSource, TAccumulate>(
+            this IEnumerable<TSource> source,
+            TAccumulate seed,
+            Func<TAccumulate, TSource, TAccumulate> func)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            if (func == null)
+                throw new ArgumentNullException(nameof(func));
+
+            return new ZeroAllocEnumerable<TSource>(source).Aggregate(seed, func);
+        }
+
+        public static TResult Aggregate<TSource, TAccumulate, TResult>(
+            this IEnumerable<TSource> source,
+            TAccumulate seed,
+            Func<TAccumulate, TSource, TAccumulate> func,
+            Func<TAccumulate, TResult> resultSelector)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            if (func == null)
+                throw new ArgumentNullException(nameof(func));
+            if (resultSelector == null)
+                throw new ArgumentNullException(nameof(resultSelector));
+            return new ZeroAllocEnumerable<TSource>(source).Aggregate(seed, func, resultSelector);
+        }
+
+        #endregion
         #region Min Extension
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -468,7 +512,7 @@ namespace AstekUtility
 
         #region GroupBy Extensions
 
-        public static IZeroAllocEnumerable<IGrouping<TKey, TSource>> GroupBy<TSource, TKey>(
+        public static IZeroAllocEnumerable<ZeroAllocLinqInternal.IGrouping<TKey, TSource>> GroupBy<TSource, TKey>(
             this IEnumerable<TSource> source,
             Func<TSource, TKey> keySelector,
             IEqualityComparer<TKey> comparer = null)
@@ -480,7 +524,7 @@ namespace AstekUtility
             return new GroupByEnumerable1<TSource, TKey>(source, keySelector, comparer);
         }
 
-        public static IZeroAllocEnumerable<IGrouping<TKey, TElement>> GroupBy<TSource, TElement, TKey>(
+        public static IZeroAllocEnumerable<ZeroAllocLinqInternal.IGrouping<TKey, TElement>> GroupBy<TSource, TElement, TKey>(
             IEnumerable<TSource> source,
             Func<TSource, TKey> keySelector,
             Func<TSource, TElement> elementSelector,
@@ -535,7 +579,7 @@ namespace AstekUtility
 
         #region Lookup Extensions
 
-        public static IZeroAllocEnumerable<IGrouping<TKey, TElement>> Lookup<TKey, TElement>(
+        public static IZeroAllocEnumerable<ZeroAllocLinqInternal.IGrouping<TKey, TElement>> Lookup<TKey, TElement>(
             IEnumerable<TElement> source,
             Func<TElement, TKey> keySelector,
             IEqualityComparer<TKey> comparer = null)
@@ -545,21 +589,21 @@ namespace AstekUtility
             if (keySelector == null)
                 throw new ArgumentNullException(nameof(keySelector));
 
-            return new Lookup<TKey, TElement>(source, keySelector, comparer);
+            return new ZeroAllocLinqInternal.Lookup<TKey, TElement>(source, keySelector, comparer);
         }
-        
+
         #endregion
 
         #region OrderBy Extension
 
         //Ascending
-        public static IOrderedEnumerable<TSource> OrderBy<TSource>(this IEnumerable<TSource> source, IComparer<TSource> comparer = null)
+        public static ZeroAllocLinqInternal.IOrderedEnumerable<TSource> OrderBy<TSource>(this IEnumerable<TSource> source, IComparer<TSource> comparer = null)
         {
             if (source == null)
                 throw new ArgumentNullException(nameof(source));
             return new OrderedEnumerable<TSource>(source, comparer);
         }
-        public static IOrderedEnumerable<TSource> OrderBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey> comparer = null)
+        public static ZeroAllocLinqInternal.IOrderedEnumerable<TSource> OrderBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey> comparer = null)
         {
             if (source == null)
                 throw new ArgumentNullException(nameof(source));
@@ -569,13 +613,13 @@ namespace AstekUtility
         }
 
         //Descending
-        public static IOrderedEnumerable<TSource> OrderByDescending<TSource>(this IEnumerable<TSource> source, IComparer<TSource> comparer = null)
+        public static ZeroAllocLinqInternal.IOrderedEnumerable<TSource> OrderByDescending<TSource>(this IEnumerable<TSource> source, IComparer<TSource> comparer = null)
         {
             if (source == null)
                 throw new ArgumentNullException(nameof(source));
             return new OrderedEnumerable<TSource>(source, comparer).ThenByDescendingMethod();
         }
-        public static IOrderedEnumerable<TSource> OrderByDescending<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey> comparer = null)
+        public static ZeroAllocLinqInternal.IOrderedEnumerable<TSource> OrderByDescending<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey> comparer = null)
         {
             if (source == null)
                 throw new ArgumentNullException(nameof(source));
@@ -588,7 +632,7 @@ namespace AstekUtility
 
         #region ThenBy Extension
 
-        public static IOrderedEnumerable<TSource> ThenBy<TSource, TKey>(this IOrderedEnumerable<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey> comparer = null)
+        public static ZeroAllocLinqInternal.IOrderedEnumerable<TSource> ThenBy<TSource, TKey>(this ZeroAllocLinqInternal.IOrderedEnumerable<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey> comparer = null)
         {
             if (source == null)
                 throw new ArgumentNullException(nameof(source));
@@ -597,12 +641,53 @@ namespace AstekUtility
 
             return source.ThenByMethod(keySelector, comparer);
         }
-        public static IOrderedEnumerable<TSource> ThenBy<TSource>(this IOrderedEnumerable<TSource> source, IComparer<TSource> comparer = null)
+        public static ZeroAllocLinqInternal.IOrderedEnumerable<TSource> ThenBy<TSource>(this ZeroAllocLinqInternal.IOrderedEnumerable<TSource> source, IComparer<TSource> comparer = null)
         {
             if (source == null)
                 throw new ArgumentNullException(nameof(source));
 
             return source.ThenByMethod(comparer);
+        }
+
+        #endregion
+
+        #region Take Extension
+
+        public static IZeroAllocEnumerable<TSource> Take<TSource>(
+            this IEnumerable<TSource> source,
+            int count)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            return new TakeEnumerable<TSource>(source, count);
+        }
+        public static IZeroAllocEnumerable<TSource> TakeWhile<TSource>(
+            this IEnumerable<TSource> source,
+            Func<TSource, bool> predicate)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            return new TakeWhileEnumerable<TSource>(source, predicate);
+        }
+
+        #endregion
+        #region Skip Extension
+
+        public static IZeroAllocEnumerable<TSource> Skip<TSource>(
+            this IEnumerable<TSource> source,
+            int count)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            return new SkipEnumerable<TSource>(source, count);
+        }
+        public static IZeroAllocEnumerable<TSource> SkipWhile<TSource>(
+            this IEnumerable<TSource> source,
+            Func<TSource, bool> predicate)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            return new SkipWhileEnumerable<TSource>(source, predicate);
         }
 
         #endregion
