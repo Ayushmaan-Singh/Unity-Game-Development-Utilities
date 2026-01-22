@@ -5,11 +5,6 @@ using System.Runtime.CompilerServices;
 
 namespace AstekUtility.ZeroAllocLinqInternal
 {
-    // Core value delegates for zero-allocation lambdas
-    public delegate bool ValuePredicate<in T>(T arg);
-    public delegate TResult ValueFunc<in T, out TResult>(T arg);
-    public delegate TResult ValueFunc<in T1, in T2, out TResult>(T1 arg1, T2 arg2);
-
     // Main interface for zero-allocation enumerables
     public interface IZeroAllocEnumerable<T> : IEnumerable<T>
     {

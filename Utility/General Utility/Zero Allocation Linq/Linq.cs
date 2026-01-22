@@ -9,214 +9,378 @@ namespace AstekUtility
     {
         // Main entry point
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ZeroAllocEnumerable<T> AsZeroAlloc<T>(this IEnumerable<T> source)
-            => new ZeroAllocEnumerable<T>(source);
+        public static ZeroAllocEnumerable<TSource> AsZeroAlloc<TSource>(this IEnumerable<TSource> source)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+
+            return new ZeroAllocEnumerable<TSource>(source);
+        }
 
         // Array optimizations
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ZeroAllocEnumerable<T> AsZeroAlloc<T>(this T[] source)
-            => new ZeroAllocEnumerable<T>(source);
+        public static ZeroAllocEnumerable<TSource> AsZeroAlloc<TSource>(this TSource[] source)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+
+            return new ZeroAllocEnumerable<TSource>(source);
+        }
 
         // List optimizations
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ZeroAllocEnumerable<T> AsZeroAlloc<T>(this List<T> source)
-            => new ZeroAllocEnumerable<T>(source);
+        public static ZeroAllocEnumerable<TSource> AsZeroAlloc<TSource>(this List<TSource> source)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+
+            return new ZeroAllocEnumerable<TSource>(source);
+        }
 
         #region Filtering/Projection Extensions
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static WhereEnumerable<T> Where<T>(
-            this IEnumerable<T> source,
-            ValuePredicate<T> predicate)
-            => new WhereEnumerable<T>(source, predicate);
+        public static IZeroAllocEnumerable<TSource> Where<TSource>(
+            this IEnumerable<TSource> source,
+            Func<TSource, bool> predicate)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            if (predicate == null)
+                throw new ArgumentNullException(nameof(predicate));
+            return new WhereEnumerable<TSource>(source, predicate);
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SelectEnumerable<T, TResult> Select<T, TResult>(
-            this IEnumerable<T> source,
-            ValueFunc<T, TResult> selector)
-            => new SelectEnumerable<T, TResult>(source, selector);
+        public static SelectEnumerable<TSource, TResult> Select<TSource, TResult>(
+            this IEnumerable<TSource> source,
+            Func<TSource, TResult> selector)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            if (selector == null)
+                throw new ArgumentNullException(nameof(selector));
+
+            return new SelectEnumerable<TSource, TResult>(source, selector);
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SelectManyEnumerable<T, TResult> SelectMany<T, TResult>(
-            this IEnumerable<T> source,
-            ValueFunc<T, IEnumerable<TResult>> selector)
-            => new SelectManyEnumerable<T, TResult>(source, selector);
+        public static SelectManyEnumerable<TSource, TResult> SelectMany<TSource, TResult>(
+            this IEnumerable<TSource> source,
+            Func<TSource, IEnumerable<TResult>> selector)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            if (selector == null)
+                throw new ArgumentNullException(nameof(selector));
+            return new SelectManyEnumerable<TSource, TResult>(source, selector);
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SelectManyEnumerable<T, TCollection, TResult> SelectMany<T, TCollection, TResult>(
-            this IEnumerable<T> source,
-            ValueFunc<T, IEnumerable<TCollection>> collectionSelector,
-            ValueFunc<T, TCollection, TResult> resultSelector)
-            => new SelectManyEnumerable<T, TCollection, TResult>(source, collectionSelector, resultSelector);
+        public static SelectManyEnumerable<TSource, TCollection, TResult> SelectMany<TSource, TCollection, TResult>(
+            this IEnumerable<TSource> source,
+            Func<TSource, IEnumerable<TCollection>> collectionSelector,
+            Func<TSource, TCollection, TResult> resultSelector)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            if (collectionSelector == null)
+                throw new ArgumentNullException(nameof(collectionSelector));
+            if (resultSelector == null)
+                throw new ArgumentNullException(nameof(resultSelector));
+            return new SelectManyEnumerable<TSource, TCollection, TResult>(source, collectionSelector, resultSelector);
+        }
 
         #endregion
 
         #region First/Last Extensions
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static T First<T>(
-            this IEnumerable<T> source,
-            ValuePredicate<T> predicate = null)
-            => new ZeroAllocEnumerable<T>(source).First(predicate);
+        public static TSource First<TSource>(
+            this IEnumerable<TSource> source,
+            Func<TSource, bool> predicate = null)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            return new ZeroAllocEnumerable<TSource>(source).First(predicate);
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static T FirstOrDefault<T>(
-            this IEnumerable<T> source,
-            ValuePredicate<T> predicate = null)
-            => new ZeroAllocEnumerable<T>(source).FirstOrDefault(predicate);
+        public static TSource FirstOrDefault<TSource>(
+            this IEnumerable<TSource> source,
+            Func<TSource, bool> predicate = null)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            return new ZeroAllocEnumerable<TSource>(source).FirstOrDefault(predicate);
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static T Last<T>(
-            this IEnumerable<T> source,
-            ValuePredicate<T> predicate = null)
-            => new ZeroAllocEnumerable<T>(source).Last(predicate);
+        public static TSource Last<TSource>(
+            this IEnumerable<TSource> source,
+            Func<TSource, bool> predicate = null)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            return new ZeroAllocEnumerable<TSource>(source).Last(predicate);
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static T LastOrDefault<T>(
-            this IEnumerable<T> source,
-            ValuePredicate<T> predicate = null)
-            => new ZeroAllocEnumerable<T>(source).LastOrDefault(predicate);
+        public static TSource LastOrDefault<TSource>(
+            this IEnumerable<TSource> source,
+            Func<TSource, bool> predicate = null)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            return new ZeroAllocEnumerable<TSource>(source).LastOrDefault(predicate);
+        }
 
         #endregion
 
         #region Contains Extensions
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool Contains<T>(
-            this IEnumerable<T> source,
-            T value,
-            IEqualityComparer<T> comparer = null)
-            => new ZeroAllocEnumerable<T>(source).Contains(value, comparer);
+        public static bool Contains<TSource>(
+            this IEnumerable<TSource> source,
+            TSource value,
+            IEqualityComparer<TSource> comparer = null)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            return new ZeroAllocEnumerable<TSource>(source).Contains(value, comparer);
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool Contains<T>(
-            this IEnumerable<T> source,
-            ValuePredicate<T> predicate)
-            => new ZeroAllocEnumerable<T>(source).Contains(predicate);
+        public static bool Contains<TSource>(
+            this IEnumerable<TSource> source,
+            Func<TSource, bool> predicate)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            if (predicate == null)
+                throw new ArgumentNullException(nameof(predicate));
+            return new ZeroAllocEnumerable<TSource>(source).Contains(predicate);
+        }
 
         #endregion
 
         #region Any/All Extensions
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool Any<T>(
-            this IEnumerable<T> source,
-            ValuePredicate<T> predicate = null)
-            => new ZeroAllocEnumerable<T>(source).Any(predicate);
+        public static bool Any<TSource>(
+            this IEnumerable<TSource> source,
+            Func<TSource, bool> predicate = null)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            return new ZeroAllocEnumerable<TSource>(source).Any(predicate);
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool All<T>(
-            this IEnumerable<T> source,
-            ValuePredicate<T> predicate)
-            => new ZeroAllocEnumerable<T>(source).All(predicate);
-
-        #endregion
-
-        #region Count Extension
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Count<T>(
-            this IEnumerable<T> source,
-            ValuePredicate<T> predicate = null)
-            => new ZeroAllocEnumerable<T>(source).Count(predicate);
+        public static bool All<TSource>(
+            this IEnumerable<TSource> source,
+            Func<TSource, bool> predicate)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            if (predicate == null)
+                throw new ArgumentNullException(nameof(predicate));
+            return new ZeroAllocEnumerable<TSource>(source).All(predicate);
+        }
 
         #endregion
 
         #region FindIndex/Find Extensions
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int FindIndex<T>(
-            this IEnumerable<T> source,
-            ValuePredicate<T> predicate)
-            => new ZeroAllocEnumerable<T>(source).FindIndex(predicate);
+        public static int FindIndex<TSource>(
+            this IEnumerable<TSource> source,
+            Func<TSource, bool> predicate)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            if (predicate == null)
+                throw new ArgumentNullException(nameof(predicate));
+            return new ZeroAllocEnumerable<TSource>(source).FindIndex(predicate);
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static T Find<T>(
-            this IEnumerable<T> source,
-            ValuePredicate<T> predicate)
-            => new ZeroAllocEnumerable<T>(source).Find(predicate);
+        public static TSource Find<TSource>(
+            this IEnumerable<TSource> source,
+            Func<TSource, bool> predicate)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            if (predicate == null)
+                throw new ArgumentNullException(nameof(predicate));
+            return new ZeroAllocEnumerable<TSource>(source).Find(predicate);
+        }
 
         #endregion
 
         #region Set Operation Extensions
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntersectEnumerable<T> Intersect<T>(
-            this IEnumerable<T> first,
-            IEnumerable<T> second,
-            IEqualityComparer<T> comparer = null)
-            => new IntersectEnumerable<T>(first, second, comparer);
+        public static IZeroAllocEnumerable<TSource> Intersect<TSource>(
+            this IEnumerable<TSource> first,
+            IEnumerable<TSource> second,
+            IEqualityComparer<TSource> comparer = null)
+        {
+            if (first == null)
+                throw new ArgumentNullException(nameof(first));
+            if (second == null)
+                throw new ArgumentNullException(nameof(second));
+            return new ZeroAllocEnumerable<TSource>(first).Intersect(second, comparer);
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UnionEnumerable<T> Union<T>(
-            this IEnumerable<T> first,
-            IEnumerable<T> second,
-            IEqualityComparer<T> comparer = null)
-            => new UnionEnumerable<T>(first, second, comparer);
+        public static IZeroAllocEnumerable<TSource> Union<TSource>(
+            this IEnumerable<TSource> first,
+            IEnumerable<TSource> second,
+            IEqualityComparer<TSource> comparer = null)
+        {
+            if (first == null)
+                throw new ArgumentNullException(nameof(first));
+            if (second == null)
+                throw new ArgumentNullException(nameof(second));
+            return new ZeroAllocEnumerable<TSource>(first).Union(second, comparer);
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ExceptEnumerable<T> Except<T>(
-            this IEnumerable<T> first,
-            IEnumerable<T> second,
-            IEqualityComparer<T> comparer = null)
-            => new ExceptEnumerable<T>(first, second, comparer);
+        public static IZeroAllocEnumerable<TSource> Except<TSource>(
+            this IEnumerable<TSource> first,
+            IEnumerable<TSource> second,
+            IEqualityComparer<TSource> comparer = null)
+        {
+            if (first == null)
+                throw new ArgumentNullException(nameof(first));
+            if (second == null)
+                throw new ArgumentNullException(nameof(second));
+            return new ZeroAllocEnumerable<TSource>(first).Except(second, comparer);
+        }
 
         #endregion
 
         #region Reverse Extension
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ReverseEnumerable<T> Reverse<T>(
-            this IEnumerable<T> source)
-            => new ReverseEnumerable<T>(source);
+        public static IZeroAllocEnumerable<TSource> Reverse<TSource>(
+            this IEnumerable<TSource> source)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            return new ZeroAllocEnumerable<TSource>(source).Reverse();
+        }
 
         #endregion
 
         #region ForEach Extensions
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void ForEach<T>(
-            this IEnumerable<T> source,
-            Action<T> action)
-            => new ZeroAllocEnumerable<T>(source).ForEach(action);
+        public static void ForEach<TSource>(
+            this IEnumerable<TSource> source,
+            Action<TSource> action)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            if (action == null)
+                throw new ArgumentNullException(nameof(action));
+            new ZeroAllocEnumerable<TSource>(source).ForEach(action);
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void ForEach<T>(
-            this IEnumerable<T> source,
-            Action<T, int> action)
-            => new ZeroAllocEnumerable<T>(source).ForEach(action);
+        public static void ForEach<TSource>(
+            this IEnumerable<TSource> source,
+            Action<TSource, int> action)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            if (action == null)
+                throw new ArgumentNullException(nameof(action));
+            new ZeroAllocEnumerable<TSource>(source).ForEach(action);
+        }
 
         #endregion
 
+        #region Count Extension
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int Count<TSource>(this IEnumerable<TSource> source)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            return new ZeroAllocEnumerable<TSource>(source).Count();
+        }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int CountBy<TSource>(
+            this IEnumerable<TSource> source,
+            Func<TSource, bool> predicate = null)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            return new ZeroAllocEnumerable<TSource>(source).CountBy(predicate);
+        }
+
+        #endregion
         #region Sum Extensions
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Sum<T>(
-            this IEnumerable<T> source,
-            ValueFunc<T, int> selector = null)
-            => new ZeroAllocEnumerable<T>(source).Sum(selector);
+        public static TSource Sum<TSource>(this IEnumerable<TSource> source)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            return new ZeroAllocEnumerable<TSource>(source).Sum();
+        }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static TResult Sum<TSource, TResult>(
+            this IEnumerable<TSource> source,
+            Func<TSource, TResult> resultSelector)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            if (resultSelector == null)
+                throw new ArgumentNullException(nameof(resultSelector));
+            return new ZeroAllocEnumerable<TSource>(source).Sum(resultSelector);
+        }
+
+        #endregion
+        #region Min Extension
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float Sum<T>(
-            this IEnumerable<T> source,
-            ValueFunc<T, float> selector = null)
-            => new ZeroAllocEnumerable<T>(source).Sum(selector);
+        public static TSource Min<TSource>(this IEnumerable<TSource> source, Comparison<TSource> comparer = null)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+
+            return new ZeroAllocEnumerable<TSource>(source).Min(comparer);
+        }
+
+        #endregion
+        #region Max Extension
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static double Sum<T>(
-            this IEnumerable<T> source,
-            ValueFunc<T, double> selector = null)
-            => new ZeroAllocEnumerable<T>(source).Sum(selector);
+        public static TSource Max<TSource>(this IEnumerable<TSource> source, Comparison<TSource> comparer = null)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+
+            return new ZeroAllocEnumerable<TSource>(source).Max(comparer);
+        }
 
         #endregion
 
         #region Array-Specific Optimizations
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int FindIndex<T>(
-            this T[] array,
-            ValuePredicate<T> predicate)
+        public static int FindIndex<TSource>(
+            this TSource[] array,
+            Func<TSource, bool> predicate)
         {
+            if (array == null)
+                throw new ArgumentNullException(nameof(array));
+            if (predicate == null)
+                throw new ArgumentNullException(nameof(predicate));
+
             for (int i = 0; i < array.Length; i++)
             {
                 if (predicate(array[i]))
@@ -226,12 +390,14 @@ namespace AstekUtility
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool Contains<T>(
-            this T[] array,
-            T value,
-            IEqualityComparer<T> comparer = null)
+        public static bool Contains<TSource>(
+            this TSource[] array,
+            TSource value,
+            IEqualityComparer<TSource> comparer = null)
         {
-            comparer ??= EqualityComparer<T>.Default;
+            if (array == null)
+                throw new ArgumentNullException(nameof(array));
+            comparer ??= EqualityComparer<TSource>.Default;
             for (int i = 0; i < array.Length; i++)
             {
                 if (comparer.Equals(array[i], value))
@@ -241,10 +407,14 @@ namespace AstekUtility
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void ForEach<T>(
-            this T[] array,
-            Action<T> action)
+        public static void ForEach<TSource>(
+            this TSource[] array,
+            Action<TSource> action)
         {
+            if (array == null)
+                throw new ArgumentNullException(nameof(array));
+            if (action == null)
+                throw new ArgumentNullException(nameof(action));
             for (int i = 0; i < array.Length; i++)
             {
                 action(array[i]);
@@ -252,10 +422,14 @@ namespace AstekUtility
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void ForEach<T>(
-            this T[] array,
-            Action<T, int> action)
+        public static void ForEach<TSource>(
+            this TSource[] array,
+            Action<TSource, int> action)
         {
+            if (array == null)
+                throw new ArgumentNullException(nameof(array));
+            if (action == null)
+                throw new ArgumentNullException(nameof(action));
             for (int i = 0; i < array.Length; i++)
             {
                 action(array[i], i);
@@ -266,14 +440,170 @@ namespace AstekUtility
 
         #region Conversion Extensions
 
-        public static List<T> ToList<T>(this IEnumerable<T> source) => new ZeroAllocEnumerable<T>().ToList();
-        public static T[] ToArray<T>(this IEnumerable<T> source) => new ZeroAllocEnumerable<T>().ToArray();
+        public static List<TSource> ToList<TSource>(this IEnumerable<TSource> source)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            return new ZeroAllocEnumerable<TSource>(source).ToList();
+        }
+        public static TSource[] ToArray<TSource>(this IEnumerable<TSource> source)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            return new ZeroAllocEnumerable<TSource>(source).ToArray();
+        }
 
         #endregion
 
         #region ElementAt
 
-        public static T ElementAt<T>(this IEnumerable<T> source, int index) => new ZeroAllocEnumerable<T>().ElementAt(index);
+        public static TSource ElementAt<TSource>(this IEnumerable<TSource> source, int index)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            return new ZeroAllocEnumerable<TSource>(source).ElementAt(index);
+        }
+
+        #endregion
+
+        #region GroupBy Extensions
+
+        public static IZeroAllocEnumerable<IGrouping<TKey, TSource>> GroupBy<TSource, TKey>(
+            this IEnumerable<TSource> source,
+            Func<TSource, TKey> keySelector,
+            IEqualityComparer<TKey> comparer = null)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            if (keySelector == null)
+                throw new ArgumentNullException(nameof(keySelector));
+            return new GroupByEnumerable1<TSource, TKey>(source, keySelector, comparer);
+        }
+
+        public static IZeroAllocEnumerable<IGrouping<TKey, TElement>> GroupBy<TSource, TElement, TKey>(
+            IEnumerable<TSource> source,
+            Func<TSource, TKey> keySelector,
+            Func<TSource, TElement> elementSelector,
+            IEqualityComparer<TKey> comparer)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            if (elementSelector == null)
+                throw new ArgumentNullException(nameof(elementSelector));
+            if (keySelector == null)
+                throw new ArgumentNullException(nameof(keySelector));
+
+            return new GroupByEnumerable3<TSource, TKey, TElement>(source, keySelector, elementSelector, comparer);
+        }
+
+        public static IZeroAllocEnumerable<TResult> GroupBy<TSource, TKey, TResult>(
+            IEnumerable<TSource> source,
+            Func<TSource, TKey> keySelector,
+            Func<TKey, IEnumerable<TSource>, TResult> resultSelector,
+            IEqualityComparer<TKey> comparer = null)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            if (keySelector == null)
+                throw new ArgumentNullException(nameof(keySelector));
+            if (resultSelector == null)
+                throw new ArgumentNullException(nameof(resultSelector));
+
+            return new GroupByEnumerable5<TSource, TKey, TResult>(source, keySelector, resultSelector, comparer);
+        }
+
+        public static IZeroAllocEnumerable<TResult> GroupBy<TSource, TKey, TElement, TResult>(
+            IEnumerable<TSource> source,
+            Func<TSource, TKey> keySelector,
+            Func<TSource, TElement> elementSelector,
+            Func<TKey, IEnumerable<TElement>, TResult> resultSelector,
+            IEqualityComparer<TKey> comparer = null)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            if (keySelector == null)
+                throw new ArgumentNullException(nameof(keySelector));
+            if (elementSelector == null)
+                throw new ArgumentNullException(nameof(elementSelector));
+            if (resultSelector == null)
+                throw new ArgumentNullException(nameof(resultSelector));
+
+            return new GroupByEnumerable7<TSource, TKey, TElement, TResult>(source, keySelector, elementSelector, resultSelector, comparer);
+        }
+
+        #endregion
+
+        #region Lookup Extensions
+
+        public static IZeroAllocEnumerable<IGrouping<TKey, TElement>> Lookup<TKey, TElement>(
+            IEnumerable<TElement> source,
+            Func<TElement, TKey> keySelector,
+            IEqualityComparer<TKey> comparer = null)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            if (keySelector == null)
+                throw new ArgumentNullException(nameof(keySelector));
+
+            return new Lookup<TKey, TElement>(source, keySelector, comparer);
+        }
+        
+        #endregion
+
+        #region OrderBy Extension
+
+        //Ascending
+        public static IOrderedEnumerable<TSource> OrderBy<TSource>(this IEnumerable<TSource> source, IComparer<TSource> comparer = null)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            return new OrderedEnumerable<TSource>(source, comparer);
+        }
+        public static IOrderedEnumerable<TSource> OrderBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey> comparer = null)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            if (keySelector == null)
+                throw new ArgumentNullException(nameof(keySelector));
+            return new OrderedEnumerable<TSource, TKey>(source, keySelector, comparer);
+        }
+
+        //Descending
+        public static IOrderedEnumerable<TSource> OrderByDescending<TSource>(this IEnumerable<TSource> source, IComparer<TSource> comparer = null)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            return new OrderedEnumerable<TSource>(source, comparer).ThenByDescendingMethod();
+        }
+        public static IOrderedEnumerable<TSource> OrderByDescending<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey> comparer = null)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            if (keySelector == null)
+                throw new ArgumentNullException(nameof(keySelector));
+            return new OrderedEnumerable<TSource, TKey>(source, keySelector, comparer).ThenByDescendingMethod();
+        }
+
+        #endregion
+
+        #region ThenBy Extension
+
+        public static IOrderedEnumerable<TSource> ThenBy<TSource, TKey>(this IOrderedEnumerable<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey> comparer = null)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            if (keySelector == null)
+                throw new ArgumentNullException(nameof(keySelector));
+
+            return source.ThenByMethod(keySelector, comparer);
+        }
+        public static IOrderedEnumerable<TSource> ThenBy<TSource>(this IOrderedEnumerable<TSource> source, IComparer<TSource> comparer = null)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+
+            return source.ThenByMethod(comparer);
+        }
 
         #endregion
     }

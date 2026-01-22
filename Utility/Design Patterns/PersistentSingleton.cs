@@ -75,7 +75,6 @@ namespace AstekUtility
 			}
 		}
 
-		[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
 		private static void ApplicationStatus()
 		{
 			_isQuitting = false;

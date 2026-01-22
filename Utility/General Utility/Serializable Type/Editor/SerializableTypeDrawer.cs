@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -35,7 +34,7 @@ namespace AstekUtility.Editor
 
             if (string.IsNullOrEmpty(typeIdProperty.stringValue))
             {
-                typeIdProperty.stringValue = typeFullNames.First();
+                typeIdProperty.stringValue = typeFullNames.FirstOrDefault();
                 property.serializedObject.ApplyModifiedProperties();
             }
 

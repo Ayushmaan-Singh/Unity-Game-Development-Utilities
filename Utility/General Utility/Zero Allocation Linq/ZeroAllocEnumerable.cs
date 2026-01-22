@@ -29,78 +29,10 @@ namespace AstekUtility.ZeroAllocLinqInternal
 
         #endregion
 
-        #region Core Filtering/Projection Methods
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public WhereEnumerable<T> Where(ValuePredicate<T> predicate)
-            => new WhereEnumerable<T>(_source, predicate);
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public SelectEnumerable<T, TResult> Select<TResult>(ValueFunc<T, TResult> selector)
-            => new SelectEnumerable<T, TResult>(_source, selector);
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public SelectManyEnumerable<T, TResult> SelectMany<TResult>(ValueFunc<T, IEnumerable<TResult>> selector)
-            => new SelectManyEnumerable<T, TResult>(_source, selector);
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public SelectManyEnumerable<T, TCollection, TResult> SelectMany<TCollection, TResult>(
-            ValueFunc<T, IEnumerable<TCollection>> collectionSelector,
-            ValueFunc<T, TCollection, TResult> resultSelector)
-            => new SelectManyEnumerable<T, TCollection, TResult>(_source, collectionSelector, resultSelector);
-
-        #endregion
-
-        #region Set Operations
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public IntersectEnumerable<T> Intersect(IEnumerable<T> second, IEqualityComparer<T> comparer = null)
-            => new IntersectEnumerable<T>(_source, second, comparer);
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public UnionEnumerable<T> Union(IEnumerable<T> second, IEqualityComparer<T> comparer = null)
-            => new UnionEnumerable<T>(_source, second, comparer);
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public ExceptEnumerable<T> Except(IEnumerable<T> second, IEqualityComparer<T> comparer = null)
-            => new ExceptEnumerable<T>(_source, second, comparer);
-
-        #endregion
-
-        #region Reverse Method
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public ReverseEnumerable<T> Reverse()
-            => new ReverseEnumerable<T>(_source);
-
-        #endregion
-
-        #region ForEach Method
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void ForEach(Action<T> action)
-        {
-            foreach (T item in _source)
-                action(item);
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void ForEach(Action<T, int> action)
-        {
-            int index = 0;
-            foreach (T item in _source)
-            {
-                action(item, index);
-                index++;
-            }
-        }
-
-        #endregion
-
         #region First/Last Methods
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public T First(ValuePredicate<T> predicate = null)
+        public T First(Func<T, bool> predicate = null)
         {
             if (predicate == null)
             {
@@ -119,7 +51,7 @@ namespace AstekUtility.ZeroAllocLinqInternal
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public T FirstOrDefault(ValuePredicate<T> predicate = null)
+        public T FirstOrDefault(Func<T, bool> predicate = null)
         {
             if (predicate == null)
             {
@@ -136,7 +68,7 @@ namespace AstekUtility.ZeroAllocLinqInternal
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public T Last(ValuePredicate<T> predicate = null)
+        public T Last(Func<T, bool> predicate = null)
         {
             T result = default;
             bool found = false;
@@ -168,7 +100,7 @@ namespace AstekUtility.ZeroAllocLinqInternal
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public T LastOrDefault(ValuePredicate<T> predicate = null)
+        public T LastOrDefault(Func<T, bool> predicate = null)
         {
             T result = default;
 
@@ -211,7 +143,7 @@ namespace AstekUtility.ZeroAllocLinqInternal
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool Contains(ValuePredicate<T> predicate)
+        public bool Contains(Func<T, bool> predicate)
         {
             foreach (T item in _source)
             {
@@ -222,7 +154,7 @@ namespace AstekUtility.ZeroAllocLinqInternal
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool Any(ValuePredicate<T> predicate = null)
+        public bool Any(Func<T, bool> predicate = null)
         {
             if (predicate == null)
             {
@@ -239,7 +171,7 @@ namespace AstekUtility.ZeroAllocLinqInternal
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool All(ValuePredicate<T> predicate)
+        public bool All(Func<T, bool> predicate)
         {
             foreach (T item in _source)
             {
@@ -251,38 +183,10 @@ namespace AstekUtility.ZeroAllocLinqInternal
 
         #endregion
 
-        #region Count Methods
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public int Count(ValuePredicate<T> predicate = null)
-        {
-            if (predicate == null)
-            {
-                if (_source is ICollection<T> collection)
-                    return collection.Count;
-                if (_source is ICollection nonGenericCollection)
-                    return nonGenericCollection.Count;
-
-                int count = 0;
-                foreach (T _ in _source) count++;
-                return count;
-            }
-
-            int countWithPredicate = 0;
-            foreach (T item in _source)
-            {
-                if (predicate(item))
-                    countWithPredicate++;
-            }
-            return countWithPredicate;
-        }
-
-        #endregion
-
         #region FindIndex Methods
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public int FindIndex(ValuePredicate<T> predicate)
+        public int FindIndex(Func<T, bool> predicate)
         {
             int index = 0;
             foreach (T item in _source)
@@ -295,7 +199,7 @@ namespace AstekUtility.ZeroAllocLinqInternal
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public T Find(ValuePredicate<T> predicate)
+        public T Find(Func<T, bool> predicate)
         {
             foreach (T item in _source)
             {
@@ -336,60 +240,337 @@ namespace AstekUtility.ZeroAllocLinqInternal
 
         #endregion
 
+        #region Count Methods
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public int Count()
+        {
+            if (_source is ICollection<T> collection)
+                return collection.Count;
+            if (_source is ICollection nonGenericCollection)
+                return nonGenericCollection.Count;
+
+            int count = 0;
+            foreach (T _ in _source) count++;
+            return count;
+        }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public int CountBy(Func<T, bool> predicate = null)
+        {
+            if (predicate == null)
+            {
+                if (_source is ICollection<T> collection)
+                    return collection.Count;
+                if (_source is ICollection nonGenericCollection)
+                    return nonGenericCollection.Count;
+
+                int count = 0;
+                foreach (T _ in _source) count++;
+                return count;
+            }
+
+            int countWithPredicate = 0;
+            foreach (T item in _source)
+            {
+                if (predicate(item))
+                    countWithPredicate++;
+            }
+            return countWithPredicate;
+        }
+
+        #endregion
         #region Sum Methods
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public int Sum(ValueFunc<T, int> selector = null)
+        public T Sum()
         {
-            int sum = 0;
-            if (selector == null)
+            if (typeof(T) == typeof(Int32))
             {
-                if (typeof(T) != typeof(int))
-                    throw new InvalidOperationException("Cannot calculate the sum of a non-integer number");
-
+                Int32 sum = 0;
                 foreach (T item in _source)
-                    sum += (int)(object)item;
-                return sum;
+                    sum += (Int32)(object)item;
+                return (T)(object)sum;
             }
-            foreach (T item in _source)
-                sum += selector(item);
-            return sum;
+            if (typeof(T) == typeof(Nullable<Int32>))
+            {
+                Int32 sum = 0;
+                foreach (T item in _source)
+                    sum += (Nullable<Int32>)(object)item ?? 0;
+                return (T)(object)sum;
+            }
+
+            if (typeof(T) == typeof(Int64))
+            {
+                Int64 sum = 0;
+                foreach (T item in _source)
+                    sum += (Int64)(object)item;
+                return (T)(object)sum;
+            }
+            if (typeof(T) == typeof(Nullable<Int64>))
+            {
+                Int64 sum = 0;
+                foreach (T item in _source)
+                    sum += (Nullable<Int64>)(object)item ?? 0;
+                return (T)(object)sum;
+            }
+
+            if (typeof(T) == typeof(Single))
+            {
+                Single sum = 0;
+                foreach (T item in _source)
+                    sum += (Single)(object)item;
+                return (T)(object)sum;
+            }
+            if (typeof(T) == typeof(Nullable<Single>))
+            {
+                Single sum = 0;
+                foreach (T item in _source)
+                    sum += (Nullable<Single>)(object)item ?? 0;
+                return (T)(object)sum;
+            }
+
+            if (typeof(T) == typeof(Double))
+            {
+                Double sum = 0;
+                foreach (T item in _source)
+                    sum += (Double)(object)item;
+                return (T)(object)sum;
+            }
+            if (typeof(T) == typeof(Nullable<Double>))
+            {
+                Double sum = 0;
+                foreach (T item in _source)
+                    sum += (Nullable<Double>)(object)item ?? 0;
+                return (T)(object)sum;
+            }
+
+            if (typeof(T) == typeof(Decimal))
+            {
+                Decimal sum = 0;
+                foreach (T item in _source)
+                    sum += (Decimal)(object)item;
+                return (T)(object)sum;
+            }
+            if (typeof(T) == typeof(Nullable<Decimal>))
+            {
+                Decimal sum = 0;
+                foreach (T item in _source)
+                    sum += (Nullable<Decimal>)(object)item ?? 0;
+                return (T)(object)sum;
+            }
+
+            throw new Exception("Cannot calculate the sum of a non-number collection");
+        }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public TResult Sum<TResult>(Func<T, TResult> keySelector)
+        {
+            if (typeof(TResult) == typeof(Int32))
+            {
+                Int32 sum = 0;
+                foreach (T item in _source)
+                    sum += (Int32)(object)keySelector(item);
+                return (TResult)(object)sum;
+            }
+            if (typeof(TResult) == typeof(Nullable<Int32>))
+            {
+                Int32 sum = 0;
+                foreach (T item in _source)
+                    sum += (Nullable<Int32>)(object)keySelector(item) ?? 0;
+                return (TResult)(object)sum;
+            }
+
+            if (typeof(TResult) == typeof(Int64))
+            {
+                Int64 sum = 0;
+                foreach (T item in _source)
+                    sum += (Int64)(object)keySelector(item);
+                return (TResult)(object)sum;
+            }
+            if (typeof(TResult) == typeof(Nullable<Int64>))
+            {
+                Int64 sum = 0;
+                foreach (T item in _source)
+                    sum += (Nullable<Int64>)(object)keySelector(item) ?? 0;
+                return (TResult)(object)sum;
+            }
+
+            if (typeof(TResult) == typeof(Single))
+            {
+                Single sum = 0;
+                foreach (T item in _source)
+                    sum += (Single)(object)keySelector(item);
+                return (TResult)(object)sum;
+            }
+            if (typeof(TResult) == typeof(Nullable<Single>))
+            {
+                Single sum = 0;
+                foreach (T item in _source)
+                    sum += (Nullable<Single>)(object)keySelector(item) ?? 0;
+                return (TResult)(object)sum;
+            }
+
+            if (typeof(TResult) == typeof(Double))
+            {
+                Double sum = 0;
+                foreach (T item in _source)
+                    sum += (Double)(object)keySelector(item);
+                return (TResult)(object)sum;
+            }
+            if (typeof(TResult) == typeof(Nullable<Double>))
+            {
+                Double sum = 0;
+                foreach (T item in _source)
+                    sum += (Nullable<Double>)(object)keySelector(item) ?? 0;
+                return (TResult)(object)sum;
+            }
+
+            if (typeof(TResult) == typeof(Decimal))
+            {
+                Decimal sum = 0;
+                foreach (T item in _source)
+                    sum += (Decimal)(object)keySelector(item);
+                return (TResult)(object)sum;
+            }
+            if (typeof(TResult) == typeof(Nullable<Decimal>))
+            {
+                Decimal sum = 0;
+                foreach (T item in _source)
+                    sum += (Nullable<Decimal>)(object)keySelector(item) ?? 0;
+                return (TResult)(object)sum;
+            }
+
+            throw new Exception("Cannot calculate the sum of a non-number Key");
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public float Sum(ValueFunc<T, float> selector = null)
-        {
-            float sum = 0;
-            if (selector == null)
-            {
-                if (typeof(T) != typeof(float))
-                    throw new InvalidOperationException("Cannot calculate the sum of a non-float number");
+        #endregion
+        #region Min Methods
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public T Min(Comparison<T> comparer = null)
+        {
+            if (typeof(T) == typeof(int))
+            {
+                int min = (int)(object)_source.First();
                 foreach (T item in _source)
-                    sum += (float)(object)item;
-                return sum;
+                {
+                    int val = (int)(object)item;
+                    if (min > val)
+                        min = val;
+                }
+                return (T)(object)min;
             }
-            foreach (T item in _source)
-                sum += selector(item);
-            return sum;
+            if (typeof(T) == typeof(long))
+            {
+                long min = (long)(object)_source.First();
+                foreach (T item in _source)
+                {
+                    long val = (long)(object)item;
+                    if (min > val)
+                        min = val;
+                }
+                return (T)(object)min;
+            }
+            if (typeof(T) == typeof(float))
+            {
+                float min = (float)(object)_source.First();
+                foreach (T item in _source)
+                {
+                    float val = (float)(object)item;
+                    if (min > val)
+                        min = val;
+                }
+                return (T)(object)min;
+            }
+            if (typeof(T) == typeof(double))
+            {
+                double min = (double)(object)_source.First();
+                foreach (T item in _source)
+                {
+                    double val = (double)(object)item;
+                    if (min > val)
+                        min = val;
+                }
+                return (T)(object)min;
+            }
+            if (comparer != null)
+            {
+                T min = _source.First();
+                foreach (T item in _source)
+                {
+                    if (comparer(min, item) >= 0)
+                        min = item;
+                }
+                return min;
+            }
+
+            throw new Exception("Cannot calculate the min of a non-number collection without a comparer");
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public double Sum(ValueFunc<T, double> selector = null)
-        {
-            double sum = 0;
-            if (selector == null)
-            {
-                if (typeof(T) != typeof(double))
-                    throw new InvalidOperationException("Cannot calculate the sum of a non-double number");
+        #endregion
+        #region Max Methods
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public T Max(Comparison<T> comparer = null)
+        {
+            if (typeof(T) == typeof(int))
+            {
+                int max = (int)(object)_source.First();
                 foreach (T item in _source)
-                    sum += (float)(object)item;
-                return sum;
+                {
+                    int val = (int)(object)item;
+                    if (max < val)
+                        max = val;
+                }
+                return (T)(object)max;
             }
-            foreach (T item in _source)
-                sum += selector(item);
-            return sum;
+            if (typeof(T) == typeof(long))
+            {
+                long max = (long)(object)_source.First();
+                foreach (T item in _source)
+                {
+                    long val = (long)(object)item;
+                    if (max < val)
+                        max = val;
+                }
+                return (T)(object)max;
+            }
+            if (typeof(T) == typeof(float))
+            {
+                float max = (float)(object)_source.First();
+                ;
+                foreach (T item in _source)
+                {
+                    float val = (float)(object)item;
+                    if (max < val)
+                        max = val;
+                }
+                return (T)(object)max;
+            }
+            if (typeof(T) == typeof(double))
+            {
+                double max = (double)(object)_source.First();
+                ;
+                foreach (T item in _source)
+                {
+                    double val = (double)(object)item;
+                    if (max < val)
+                        max = val;
+                }
+                return (T)(object)max;
+            }
+            if (comparer != null)
+            {
+                T max = _source.First();
+                ;
+                foreach (T item in _source)
+                {
+                    if (comparer(max, item) < 0)
+                        max = item;
+                }
+                return max;
+            }
+
+            throw new Exception("Cannot calculate the max of a non-number collection without a comparer");
         }
 
         #endregion
@@ -399,11 +580,14 @@ namespace AstekUtility.ZeroAllocLinqInternal
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public List<T> ToList()
         {
+            if (_source == null)
+                return new List<T>();
+
             if (_source is ICollection<T> collection)
                 return new List<T>(collection);
 
-            var list = new List<T>();
-            foreach (var item in _source)
+            List<T> list = new List<T>();
+            foreach (T item in _source)
                 list.Add(item);
             return list;
         }
@@ -413,7 +597,7 @@ namespace AstekUtility.ZeroAllocLinqInternal
         {
             if (_source is ICollection<T> collection)
             {
-                var array = new T[collection.Count];
+                T[] array = new T[collection.Count];
                 collection.CopyTo(array, 0);
                 return array;
             }

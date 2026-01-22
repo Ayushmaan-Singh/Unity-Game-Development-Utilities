@@ -4,7 +4,6 @@ namespace AstekUtility.CustomAttribute
 	[AttributeUsage(AttributeTargets.Class, AllowMultiple = true, Inherited = false)]
 	public class ClassGroupAttribute : Attribute
 	{
-
         /// <summary>
         /// </summary>
         /// <param name="classGroupName">Name of group this class belongs to</param>
