@@ -13,9 +13,12 @@ This Project contains generic design patterns for </br>
 -Blackboard Architecture</br>
 
 It also contains following utility scripts:</br>
--Event manager</br>
+-Zero Allocation Linq(Can be used by any c# code)</br>
+-Global Level Event manager</br>
 -Collision Event(A wrapper providing collision event from one script to multiple subscriber through unity events)</br>
 -Serialized Dictionary(Unity only)</br>
+-Serialized Type(Unity only)</br>
+-Custom Auto Detect Cast(Using colliders can perform shape or ray cast)</br>
 -Extension Methods For Transform, GameObject, float, int, Vector3, AnimationCurve, type, object, IEnumerator, AsyncOperationHandle<T>, AsyncOperatoion, Task, Renderer, Material and extension utilizing Odin Inspector.</br>
 -local Timers-countdown and stopwatch</br>
 -Global Playerloop registered timer- countdown and stopwatch controlled cia TimerManager</br>
