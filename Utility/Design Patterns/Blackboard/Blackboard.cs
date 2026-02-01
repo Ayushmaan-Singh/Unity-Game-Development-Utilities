@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine.InputSystem;
-namespace AstekUtility.DesignPattern.Blackboard
+namespace Astek.DesignPattern.Blackboard
 {
 	[Serializable]
 	public readonly struct BlackboardKey : IEquatable<BlackboardKey>

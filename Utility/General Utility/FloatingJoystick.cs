@@ -1,5 +1,5 @@
 using UnityEngine;
-namespace AstekUtility.Input
+namespace Astek.Input
 {
 	[RequireComponent(typeof(RectTransform))] [DisallowMultipleComponent]
 	public class FloatingJoystick : MonoBehaviour

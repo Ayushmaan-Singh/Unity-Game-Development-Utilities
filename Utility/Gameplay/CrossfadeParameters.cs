@@ -1,6 +1,6 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
-namespace AstekUtility.Gameplay
+namespace Astek.Gameplay
 {
 	[System.Serializable]
 	public class CrossfadeParameters

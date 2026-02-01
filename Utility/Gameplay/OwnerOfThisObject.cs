@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace AstekUtility.Gameplay
+namespace Astek.Gameplay
 {
 	public class OwnerOfThisObject : MonoBehaviour
 	{

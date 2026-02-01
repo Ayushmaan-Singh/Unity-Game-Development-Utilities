@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace AstekUtility
+namespace Astek
 {
 	/// <summary>
 	/// This is the alternate of OnCollisionStayEvent. It uses a combination of OnCollisionEnter and OnCollisionExit instead of OnCollisionStay.

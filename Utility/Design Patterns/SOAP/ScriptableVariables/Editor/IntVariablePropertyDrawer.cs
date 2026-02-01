@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using ObjectField = UnityEditor.Search.ObjectField;
 
-namespace AstekUtility.SOAP.Editor
+namespace Astek.SOAP.Editor
 {
 	[CustomPropertyDrawer(typeof(IntVariable))]
 	public class IntVariablePropertyDrawer : PropertyDrawer

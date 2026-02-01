@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
-namespace AstekUtility.DesignPattern.HSM_Sequencer
+namespace Astek.DesignPattern.HSM_Sequencer
 {
     public class TransitionSequencer
     {

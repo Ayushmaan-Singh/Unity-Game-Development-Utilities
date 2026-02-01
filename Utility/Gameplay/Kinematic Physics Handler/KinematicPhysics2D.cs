@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using AstekUtility.Gameplay.Collision;
+using Astek.Gameplay.Collision;
 using UnityEngine;
 
-namespace AstekUtility.Gameplay.CustomPhysics2D
+namespace Astek.Gameplay.CustomPhysics2D
 {
 	[RequireComponent(typeof(Rigidbody2D))]
 	public class KinematicPhysics2D : MonoBehaviour

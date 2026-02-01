@@ -1,6 +1,6 @@
 using System.Linq;
 using UnityEngine;
-namespace AstekUtility.Gameplay
+namespace Astek.Gameplay
 {
 	public class SeekBehaviour : SteeringBehaviour
 	{

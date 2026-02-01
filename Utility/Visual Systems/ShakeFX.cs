@@ -1,7 +1,7 @@
 ﻿using Unity.Cinemachine;
 using UnityEngine;
 
-namespace AstekUtility.VisualFeedback
+namespace Astek.VisualFeedback
 {
 	public class ShakeFX : VisualFX
 	{

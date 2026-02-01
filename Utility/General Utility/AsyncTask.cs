@@ -1,7 +1,7 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-namespace AstekUtility
+namespace Astek
 {
 	public class AsyncTask
 	{

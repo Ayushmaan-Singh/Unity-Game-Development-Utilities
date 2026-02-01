@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace AstekUtility.Gameplay.Collision
+namespace Astek.Gameplay.Collision
 {
 	public static class CollisionCast2D
 	{

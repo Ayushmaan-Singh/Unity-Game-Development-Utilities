@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
-namespace AstekUtility
+namespace Astek
 {
 	public static class MathOperationExtension
 	{

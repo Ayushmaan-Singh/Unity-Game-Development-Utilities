@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-namespace AstekUtility.DesignPattern.StateMachine
+namespace Astek.DesignPattern.StateMachine
 {
     public class StateMachine
     {

@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using AstekUtility;
-using AstekUtility.Gameplay.Timer;
+using Astek.Gameplay.Timer;
+using Astek;
 using UnityEngine;
 
-namespace AstekUtility.Gameplay
+namespace Astek.Gameplay
 {
 	public class LerpOnPath
 	{

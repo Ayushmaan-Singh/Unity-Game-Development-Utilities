@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace AstekUtility
+namespace Astek
 {
     [Serializable]
     public class SerializableType : ISerializationCallbackReceiver

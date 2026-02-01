@@ -1,5 +1,5 @@
 ﻿using System;
-namespace AstekUtility.DesignPattern.GenericPiplelineChains
+namespace Astek.DesignPattern.GenericPiplelineChains
 {
     public class Chain<TIn, TOut>
     {

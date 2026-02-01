@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
-namespace AstekUtility.ZeroAllocLinqInternal
+namespace Astek.ZeroAllocLinqInternal
 {
     // IGrouping interface (same as .NET)
     public interface IGrouping<out TKey, out TElement> : IEnumerable<TElement>

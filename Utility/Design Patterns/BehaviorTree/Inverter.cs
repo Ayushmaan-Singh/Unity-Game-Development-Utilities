@@ -1,1 +1,1 @@
-namespace AstekUtility.BehaviorTree { }
+namespace Astek.BehaviorTree { }

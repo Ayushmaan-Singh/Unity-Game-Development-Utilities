@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-namespace AstekUtility.ZeroAllocLinqInternal
+namespace Astek.ZeroAllocLinqInternal
 {
     // Intersect operation
     public readonly struct IntersectEnumerable<TSource> : IZeroAllocEnumerable<TSource>

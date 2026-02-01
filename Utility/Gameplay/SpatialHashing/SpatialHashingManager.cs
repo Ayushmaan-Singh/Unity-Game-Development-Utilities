@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using AstekUtility.Gameplay.SpatialHashing;
+using Astek.Gameplay.SpatialHashing;
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
 using UnityEngine;
-namespace AstekUtility.Gameplay.SpatialHashing
+namespace Astek.Gameplay.SpatialHashing
 {
 	public class SpatialHashingManager : MonoBehaviour
 	{

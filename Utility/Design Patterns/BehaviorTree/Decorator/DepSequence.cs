@@ -3,7 +3,7 @@
 //Add child nodes to this node
 //With above setup every frame 
 
-namespace AstekUtility.BehaviorTree
+namespace Astek.BehaviorTree
 {
     /// <summary>
     ///     This is a dependency sequence used when we want to check a condition while a particular sequence

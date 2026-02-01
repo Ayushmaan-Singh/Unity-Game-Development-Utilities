@@ -1,11 +1,11 @@
 ﻿#if ODIN_INSPECTOR
 using System.Collections.Generic;
-using AstekUtility.DesignPattern.ServiceLocatorTool;
+using Astek.DesignPattern.ServiceLocatorTool;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace AstekUtility.Odin.SFX
+namespace Astek.Odin.SFX
 {
 	public class SFXManager : Singleton<SFXManager>
 	{

@@ -2,7 +2,7 @@
 using System.Linq;
 using Eflatun.SceneReference;
 
-namespace AstekUtility.SceneManagement
+namespace Astek.SceneManagement
 {
 	[System.Serializable]
 	public class SceneGroup

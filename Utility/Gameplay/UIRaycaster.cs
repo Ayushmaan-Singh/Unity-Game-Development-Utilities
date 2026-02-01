@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using AstekUtility.DesignPattern.ServiceLocatorTool;
+using Astek.DesignPattern.ServiceLocatorTool;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-namespace AstekUtility.Gameplay
+namespace Astek.Gameplay
 {
 	[RequireComponent(typeof(GraphicRaycaster))]
 	public class UIRaycaster : MonoBehaviour

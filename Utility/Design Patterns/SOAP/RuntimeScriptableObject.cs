@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace AstekUtility.SOAP
+namespace Astek.SOAP
 {
 	//Use this so that value of scriptable object always resets
 	public abstract class RuntimeScriptableObject : ScriptableObject

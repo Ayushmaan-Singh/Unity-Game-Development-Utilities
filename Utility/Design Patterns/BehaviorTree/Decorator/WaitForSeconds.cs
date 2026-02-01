@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-namespace AstekUtility.BehaviorTree
+namespace Astek.BehaviorTree
 {
 	public class WaitForSeconds : Node
 	{

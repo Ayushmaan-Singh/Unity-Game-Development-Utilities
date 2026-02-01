@@ -1,4 +1,4 @@
-namespace AstekUtility.BehaviorTree
+namespace Astek.BehaviorTree
 {
     /// <summary>
     ///     Act as if, else if and else

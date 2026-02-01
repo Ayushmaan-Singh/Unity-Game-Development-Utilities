@@ -3,7 +3,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace AstekUtility.InterfaceReferenceTest
+namespace Astek.InterfaceReferenceTest
 {
 	public class Example : MonoBehaviour,ITestable
 	{

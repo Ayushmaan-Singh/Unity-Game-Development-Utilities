@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace AstekUtility
+namespace Astek
 {
 	[AttributeUsage(AttributeTargets.Field)]
 	public class RequireInterfaceAttribute : PropertyAttribute

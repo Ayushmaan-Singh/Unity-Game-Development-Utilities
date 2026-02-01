@@ -1,9 +1,9 @@
-using AstekUtility.DesignPattern.ServiceLocatorTool;
+using Astek.DesignPattern.ServiceLocatorTool;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.PlayerLoop;
 
-namespace AstekUtility.Input
+namespace Astek.Input
 {
 	public class InputUtils : MonoBehaviour
 	{

@@ -1,10 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using AstekUtility.ZeroAllocLinqInternal;
+using Astek.ZeroAllocLinqInternal;
 
-namespace AstekUtility
+namespace Astek
 {
     public static class ZeroAllocLinq
     {
@@ -92,6 +92,13 @@ namespace AstekUtility
             return new SelectManyEnumerable<TSource, TCollection, TResult>(source, collectionSelector, resultSelector);
         }
 
+        public static IZeroAllocEnumerable<TResult> OfType<TResult>(this IEnumerable source)
+        {
+            if(source==null)
+                throw new ArgumentNullException(nameof(source));
+            return new OfTypeEnumerable<TResult>(source);
+        }
+        
         #endregion
 
         #region First/Last Extensions
@@ -409,75 +416,6 @@ namespace AstekUtility
                 throw new ArgumentNullException(nameof(source));
 
             return new ZeroAllocEnumerable<TSource>(source).Max(comparer);
-        }
-
-        #endregion
-
-        #region Array-Specific Optimizations
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int FindIndex<TSource>(
-            this TSource[] array,
-            Func<TSource, bool> predicate)
-        {
-            if (array == null)
-                throw new ArgumentNullException(nameof(array));
-            if (predicate == null)
-                throw new ArgumentNullException(nameof(predicate));
-
-            for (int i = 0; i < array.Length; i++)
-            {
-                if (predicate(array[i]))
-                    return i;
-            }
-            return -1;
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool Contains<TSource>(
-            this TSource[] array,
-            TSource value,
-            IEqualityComparer<TSource> comparer = null)
-        {
-            if (array == null)
-                throw new ArgumentNullException(nameof(array));
-            comparer ??= EqualityComparer<TSource>.Default;
-            for (int i = 0; i < array.Length; i++)
-            {
-                if (comparer.Equals(array[i], value))
-                    return true;
-            }
-            return false;
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void ForEach<TSource>(
-            this TSource[] array,
-            Action<TSource> action)
-        {
-            if (array == null)
-                throw new ArgumentNullException(nameof(array));
-            if (action == null)
-                throw new ArgumentNullException(nameof(action));
-            for (int i = 0; i < array.Length; i++)
-            {
-                action(array[i]);
-            }
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void ForEach<TSource>(
-            this TSource[] array,
-            Action<TSource, int> action)
-        {
-            if (array == null)
-                throw new ArgumentNullException(nameof(array));
-            if (action == null)
-                throw new ArgumentNullException(nameof(action));
-            for (int i = 0; i < array.Length; i++)
-            {
-                action(array[i], i);
-            }
         }
 
         #endregion

@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 using ObjectField = UnityEditor.Search.ObjectField;
-namespace AstekUtility.SOAP.Editor
+namespace Astek.SOAP.Editor
 {
 	[CustomPropertyDrawer(typeof(FloatVariable))]
 	public class FloatPropertyDrawer : PropertyDrawer

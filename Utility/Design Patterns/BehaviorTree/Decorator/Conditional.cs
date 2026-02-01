@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-namespace AstekUtility.BehaviorTree
+namespace Astek.BehaviorTree
 {
     /// <summary>
     ///     Runs the child node if the provided condition is satisfied else fails

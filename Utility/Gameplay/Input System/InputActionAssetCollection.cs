@@ -4,7 +4,7 @@ using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine.InputSystem;
 
-namespace AstekUtility
+namespace Astek
 {
 	public class InputActionAssetCollection : SerializedScriptableObject
 	{

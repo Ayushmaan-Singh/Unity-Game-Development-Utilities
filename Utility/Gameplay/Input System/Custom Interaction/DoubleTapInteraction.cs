@@ -1,5 +1,5 @@
 ﻿using System;
-using AstekUtility.Gameplay.ImprovedTimer;
+using Astek.Gameplay.ImprovedTimer;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,7 +9,7 @@ using UnityEngine.InputSystem.Controls;
 using UnityEditor;
 #endif
 
-namespace AstekUtility
+namespace Astek
 {
 	[System.Serializable]
 	public class DoubleTapInteraction : IInputInteraction<float>

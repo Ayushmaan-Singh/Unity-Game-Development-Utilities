@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace AstekUtility.DesignPattern.MediatorPattern
+namespace Astek.DesignPattern.MediatorPattern
 {
 	public abstract class Mediator<T> : MonoBehaviour where T : Component, IVisitable
 	{

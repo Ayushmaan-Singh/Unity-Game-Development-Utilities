@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
-namespace AstekUtility.ZeroAllocLinqInternal
+namespace Astek.ZeroAllocLinqInternal
 {
     #region Order By And Then By
 

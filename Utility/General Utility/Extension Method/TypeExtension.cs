@@ -2,7 +2,7 @@ using System;
 using System.Reflection;
 using UnityEngine;
 
-namespace AstekUtility
+namespace Astek
 {
     public static class TypeExtensions
     {

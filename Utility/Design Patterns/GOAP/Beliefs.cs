@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace AstekUtility.DesignPattern.GOAP
+namespace Astek.DesignPattern.GOAP
 {
 	public class BeliefFactory
 	{

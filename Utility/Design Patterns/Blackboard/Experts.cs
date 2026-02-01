@@ -1,4 +1,4 @@
-﻿namespace AstekUtility.DesignPattern.Blackboard
+﻿namespace Astek.DesignPattern.Blackboard
 {
 	public interface IExpert
 	{

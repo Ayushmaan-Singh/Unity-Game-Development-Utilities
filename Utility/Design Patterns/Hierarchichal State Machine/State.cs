@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-namespace AstekUtility.DesignPattern.HSM
+namespace Astek.DesignPattern.HSM
 {
     public abstract class State
     {

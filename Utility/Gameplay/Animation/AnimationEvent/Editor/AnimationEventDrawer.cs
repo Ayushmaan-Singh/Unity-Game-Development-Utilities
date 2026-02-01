@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace AstekUtility.Gameplay
+namespace Astek.Gameplay
 {
 	[CustomPropertyDrawer(typeof(AnimationEvent))]
 	public class AnimationEventDrawer : PropertyDrawer

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
-namespace AstekUtility.EventArchitecture
+namespace Astek.EventArchitecture
 {
 	[CreateAssetMenu(menuName = "Event Architecture/ GameEvent_SO")]
 	public class GameEvent_SO : SerializedScriptableObject

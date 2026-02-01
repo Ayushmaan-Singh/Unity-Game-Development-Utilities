@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 using UnityEngine;
-namespace AstekUtility.DesignPattern.GOAP
+namespace Astek.DesignPattern.GOAP
 {
 	public interface ISensor
 	{

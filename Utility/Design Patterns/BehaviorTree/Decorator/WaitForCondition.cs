@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-namespace AstekUtility.BehaviorTree
+namespace Astek.BehaviorTree
 {
     /// <summary>
     ///     Holds any further action until the condition is satisfied

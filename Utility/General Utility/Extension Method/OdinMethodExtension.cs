@@ -8,7 +8,7 @@ using AnimatorControllerLayer = UnityEditor.Animations.AnimatorControllerLayer;
 using AnimatorControllerParameter = UnityEngine.AnimatorControllerParameter;
 using AnimatorControllerParameterType = UnityEngine.AnimatorControllerParameterType;
 
-namespace AstekUtility
+namespace Astek
 {
 	public static class OdinMethodExtension
 	{

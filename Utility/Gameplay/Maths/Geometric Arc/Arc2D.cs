@@ -2,7 +2,7 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace AstekUtility.Gameplay.Geometric_Calculations
+namespace Astek.Gameplay.Geometric_Calculations
 {
     [Serializable]
     public class Arc2D

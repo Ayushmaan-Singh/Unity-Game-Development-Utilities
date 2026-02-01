@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-namespace AstekUtility.Gameplay
+namespace Astek.Gameplay
 {
 	[Serializable]
 	public class ContextSolver

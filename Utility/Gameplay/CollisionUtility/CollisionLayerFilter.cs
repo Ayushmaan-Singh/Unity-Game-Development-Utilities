@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace AstekUtility.Gameplay
+namespace Astek.Gameplay
 {
 	public class CollisionLayerFilter : MonoBehaviour
 	{

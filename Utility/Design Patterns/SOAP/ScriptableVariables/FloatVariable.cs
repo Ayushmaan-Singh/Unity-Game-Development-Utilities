@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
-namespace AstekUtility.SOAP
+namespace Astek.SOAP
 {
 	public class FloatVariable : RuntimeScriptableObject
 	{

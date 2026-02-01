@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-namespace AstekUtility.ZeroAllocLinqInternal
+namespace Astek.ZeroAllocLinqInternal
 {
     // Take operation implementation
     public readonly struct TakeEnumerable<TSource> : IZeroAllocEnumerable<TSource>

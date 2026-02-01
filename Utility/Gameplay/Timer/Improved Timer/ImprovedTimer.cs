@@ -1,6 +1,6 @@
 ﻿using System;
 using UnityEngine;
-namespace AstekUtility.Gameplay.ImprovedTimer
+namespace Astek.Gameplay.ImprovedTimer
 {
 	public abstract class Timer : IDisposable
 	{

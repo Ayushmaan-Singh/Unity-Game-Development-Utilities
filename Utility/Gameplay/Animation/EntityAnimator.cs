@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using AstekUtility.DesignPattern.Blackboard;
-using AstekUtility.DesignPattern.ServiceLocatorTool;
-using AstekUtility.Gameplay.ImprovedTimer;
+using Astek.DesignPattern.ServiceLocatorTool;
+using Astek.Gameplay.ImprovedTimer;
+using Astek.DesignPattern.Blackboard;
 using UnityEngine;
-namespace AstekUtility.Gameplay
+namespace Astek.Gameplay
 {
 	[RequireComponent(typeof(Animator))]
 	public class EntityAnimator : MonoBehaviour

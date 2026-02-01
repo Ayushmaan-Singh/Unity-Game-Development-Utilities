@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Object = System.Object;
-namespace AstekUtility.Gameplay
+namespace Astek.Gameplay
 {
 	public class ObstacleDetector : Detector
 	{

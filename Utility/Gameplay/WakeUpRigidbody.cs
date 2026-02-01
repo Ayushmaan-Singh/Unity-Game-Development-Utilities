@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace AstekUtility.Gameplay
+namespace Astek.Gameplay
 {
 	public class WakeUpRigidbody : MonoBehaviour
 	{

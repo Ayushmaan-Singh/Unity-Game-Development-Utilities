@@ -1,10 +1,10 @@
 ﻿using System;
-using AstekUtility.DesignPattern.ServiceLocatorTool;
+using Astek.DesignPattern.ServiceLocatorTool;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace AstekUtility
+namespace Astek
 {
 	public class InputManager : Singleton<InputManager>
 	{

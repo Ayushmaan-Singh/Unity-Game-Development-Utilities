@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace AstekUtility
+namespace Astek
 {
 	public static class GameObjectExtensions
 	{

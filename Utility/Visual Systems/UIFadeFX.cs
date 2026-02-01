@@ -1,7 +1,7 @@
 ﻿using System;
-using AstekUtility.Gameplay.Timer;
+using Astek.Gameplay.Timer;
 using UnityEngine;
-namespace AstekUtility.VisualFeedback
+namespace Astek.VisualFeedback
 {
 	public class UIFadeFX : VisualFX
 	{

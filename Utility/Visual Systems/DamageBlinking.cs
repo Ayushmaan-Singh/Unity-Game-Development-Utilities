@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace AstekUtility.VisualFeedback
+namespace Astek.VisualFeedback
 {
 	public class DamageBlinking : VisualFX
 	{

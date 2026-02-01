@@ -1,6 +1,6 @@
 ﻿using UnityEditor;
 using UnityEngine;
-namespace AstekUtility
+namespace Astek
 {
 	[System.Serializable]
 	public class IRef<T> : ISerializationCallbackReceiver where T : class

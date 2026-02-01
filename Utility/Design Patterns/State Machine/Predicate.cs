@@ -1,5 +1,5 @@
 using System;
-namespace AstekUtility.DesignPattern.StateMachine
+namespace Astek.DesignPattern.StateMachine
 {
 	public interface IPredicate
 	{

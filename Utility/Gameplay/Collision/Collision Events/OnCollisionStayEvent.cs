@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace AstekUtility
+namespace Astek
 {
 	internal class OnCollisionStayEvent : MonoBehaviour
 	{

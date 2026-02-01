@@ -1,5 +1,5 @@
 using UnityEngine;
-namespace AstekUtility
+namespace Astek
 {
 	public class Singleton<T> : MonoBehaviour where T : Component
 	{

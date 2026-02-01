@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-namespace AstekUtility
+namespace Astek
 {
 	#region Coroutine Task Manager
 

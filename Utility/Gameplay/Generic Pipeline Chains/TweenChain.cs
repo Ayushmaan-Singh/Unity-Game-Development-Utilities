@@ -1,6 +1,6 @@
-﻿using AstekUtility.DesignPattern.GenericPiplelineChains;
+﻿using Astek.DesignPattern.GenericPiplelineChains;
 using UnityEngine;
-namespace AstekUtility.Gameplay
+namespace Astek.Gameplay
 {
     public class SetPosition : IProcessor<Transform, Transform>
     {

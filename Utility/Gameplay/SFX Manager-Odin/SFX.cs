@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using AstekUtility.DesignPattern.ServiceLocatorTool;
+using Astek.DesignPattern.ServiceLocatorTool;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 #if ODIN_INSPECTOR
 
-namespace AstekUtility.Odin.SFX
+namespace Astek.Odin.SFX
 {
 	[Serializable]
 	public class SFX

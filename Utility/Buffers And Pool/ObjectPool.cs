@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 #nullable enable
-namespace AstekUtility
+namespace Astek
 {
 	[Serializable]
 	public class ObjectPool<T>

@@ -1,4 +1,4 @@
-namespace AstekUtility.Gameplay
+namespace Astek.Gameplay
 {
 	public interface IDamageable
 	{

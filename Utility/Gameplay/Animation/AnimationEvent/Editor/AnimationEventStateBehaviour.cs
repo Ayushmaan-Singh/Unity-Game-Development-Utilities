@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.Playables;
 
-namespace AstekUtility.Gameplay
+namespace Astek.Gameplay
 {
 	/// <summary>
 	/// Custom editor for the AnimationEventStateBehaviour class, providing a GUI for previewing animation states

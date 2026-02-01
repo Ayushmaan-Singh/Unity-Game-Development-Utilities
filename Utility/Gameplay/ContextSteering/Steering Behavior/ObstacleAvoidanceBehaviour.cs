@@ -1,5 +1,5 @@
 using UnityEngine;
-namespace AstekUtility.Gameplay
+namespace Astek.Gameplay
 {
 	/// <summary>
 	///     Used by objects that are treated to be avoided by the AI to a certain degree

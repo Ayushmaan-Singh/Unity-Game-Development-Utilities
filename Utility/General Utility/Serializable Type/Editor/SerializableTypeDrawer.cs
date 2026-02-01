@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace AstekUtility.Editor
+namespace Astek.Editor
 {
     [CustomPropertyDrawer(typeof(SerializableType))]
     public class SerializableTypeDrawer : PropertyDrawer

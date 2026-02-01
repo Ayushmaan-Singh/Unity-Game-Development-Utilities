@@ -9,7 +9,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace AstekUtility.Gameplay.SpatialHashing
+namespace Astek.Gameplay.SpatialHashing
 {
 	public class SpatialHashingExample : MonoBehaviour
 	{

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace AstekUtility.DesignPattern.MediatorPattern
+namespace Astek.DesignPattern.MediatorPattern
 {
 	/// <summary>
 	/// Concrete implementation of this required top make payload of data to be sent

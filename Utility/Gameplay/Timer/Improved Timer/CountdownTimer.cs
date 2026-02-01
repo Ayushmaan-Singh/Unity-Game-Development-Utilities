@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace AstekUtility.Gameplay.ImprovedTimer
+namespace Astek.Gameplay.ImprovedTimer
 {
 	/// <summary>
 	/// Timer that counts down from a specific value to zero.

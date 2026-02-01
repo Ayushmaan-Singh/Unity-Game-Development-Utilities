@@ -1,7 +1,7 @@
 ﻿using System;
-using AstekUtility;
+using Astek;
 
-namespace AstekUtility.DesignPattern.Blackboard
+namespace Astek.DesignPattern.Blackboard
 {
 	public class Preconditions
 	{

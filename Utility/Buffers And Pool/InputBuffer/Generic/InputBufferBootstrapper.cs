@@ -1,12 +1,12 @@
 ﻿//#if GENERIC_INPUT_BUFFER
 
-using AstekUtility.Gameplay;
+using Astek.Gameplay;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.LowLevel;
 using UnityEngine.PlayerLoop;
 
-namespace AstekUtility.InputBuffer.Generic
+namespace Astek.InputBuffer.Generic
 {
 	public static class InputBufferBootstrapper
 	{

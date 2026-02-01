@@ -1,4 +1,4 @@
-namespace AstekUtility
+namespace Astek
 {
     /// <summary>
     ///     Manually add all the scenes in game and use this for reference

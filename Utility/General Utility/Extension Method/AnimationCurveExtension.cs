@@ -4,7 +4,7 @@ using Unity.Collections;
 using Unity.Jobs;
 using UnityEngine;
 
-namespace AstekUtility
+namespace Astek
 {
 	public static class AnimationCurveExtension
 	{

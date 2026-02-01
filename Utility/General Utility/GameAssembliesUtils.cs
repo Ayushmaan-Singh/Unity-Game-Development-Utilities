@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-namespace AstekUtility.Assembly
+namespace Astek.Assembly
 {
 
 	/// <summary>

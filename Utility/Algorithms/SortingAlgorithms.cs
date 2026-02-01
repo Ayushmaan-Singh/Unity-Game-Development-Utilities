@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AstekUtility
+namespace Astek
 {
     public static class SortingAlgorithms
     {

@@ -9,7 +9,7 @@ using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace AstekUtility.Odin.Extensions
+namespace Astek.Odin.Extensions
 {
 	public class ScriptableObjectCreator : OdinMenuEditorWindow
 	{

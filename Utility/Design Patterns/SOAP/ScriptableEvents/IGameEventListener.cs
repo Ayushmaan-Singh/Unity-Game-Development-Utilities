@@ -1,4 +1,4 @@
-namespace AstekUtility.SOAP.ScriptableEvents
+namespace Astek.SOAP.ScriptableEvents
 {
 	public interface IGameEventListener<T>
 	{

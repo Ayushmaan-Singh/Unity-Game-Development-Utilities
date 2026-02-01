@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-namespace AstekUtility.CustomAttribute
+namespace Astek.CustomAttribute
 {
 	[Serializable]
 	public class ClassGroupFunctionality

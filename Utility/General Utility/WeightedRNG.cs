@@ -7,7 +7,7 @@ using Sirenix.OdinInspector;
 using Random = UnityEngine.Random;
 using UnityEngine;
 
-namespace AstekUtility
+namespace Astek
 {
 	/// <summary>
 	///     Create a object that can be randomly selected from a set of other with a set chance of getting selected

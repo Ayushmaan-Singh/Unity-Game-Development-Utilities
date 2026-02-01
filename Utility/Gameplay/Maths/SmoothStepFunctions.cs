@@ -1,6 +1,6 @@
 ﻿using System;
 using UnityEngine;
-namespace AstekUtility
+namespace Astek
 {
 	//https://www.shadertoy.com/view/st2BRd
 	public static class Smoothstep

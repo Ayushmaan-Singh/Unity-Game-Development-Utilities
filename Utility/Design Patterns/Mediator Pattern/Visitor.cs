@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-namespace AstekUtility.DesignPattern.MediatorPattern
+namespace Astek.DesignPattern.MediatorPattern
 {
 	public interface IVisitor
 	{

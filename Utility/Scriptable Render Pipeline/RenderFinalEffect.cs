@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
-namespace AstekUtility.ScriptableRenderPipelines
+namespace Astek.ScriptableRenderPipelines
 {
 	public partial class RenderFinalEffect : ScriptableRendererFeature
 	{

@@ -1,7 +1,7 @@
 ﻿# if UNITY_EDITOR
 using System;
 using UnityEngine;
-namespace AstekUtility.Editor
+namespace Astek.Editor
 {
     public class ExampleSerializableType : MonoBehaviour
     {

@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.InputSystem;
-namespace AstekUtility.DesignPattern.Blackboard
+namespace Astek.DesignPattern.Blackboard
 {
 	[CustomEditor(typeof(BlackBoardData))]
 	public class BlackboardDataEditor : OdinEditor

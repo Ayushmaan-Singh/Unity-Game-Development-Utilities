@@ -2,7 +2,7 @@
 using Unity.Collections;
 using Unity.Jobs;
 using UnityEngine;
-namespace AstekUtility.Gameplay.Collision
+namespace Astek.Gameplay.Collision
 {
     [System.Serializable]
     public class BatchRaycast

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 
-namespace AstekUtility.DesignPattern.DependencyInjection
+namespace Astek.DesignPattern.DependencyInjection
 {
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Method)]
     public sealed class InjectAttribute : Attribute { }

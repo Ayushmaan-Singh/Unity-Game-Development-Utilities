@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-namespace AstekUtility.DesignPattern.GenericPiplelineChains
+namespace Astek.DesignPattern.GenericPiplelineChains
 {
     public static class Chain
     {

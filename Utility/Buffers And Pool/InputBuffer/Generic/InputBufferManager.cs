@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AstekUtility.InputBuffer.Generic
+namespace Astek.InputBuffer.Generic
 {
 	public static class InputBufferManager
 	{

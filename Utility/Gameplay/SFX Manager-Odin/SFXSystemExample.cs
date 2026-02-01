@@ -2,7 +2,7 @@
 
 using System;
 using UnityEngine;
-namespace AstekUtility.Odin.SFX
+namespace Astek.Odin.SFX
 {
 	public class SFXSystemExample : MonoBehaviour
 	{

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-namespace AstekUtility
+namespace Astek
 {
 	public static class RendererMethodExtension
 	{

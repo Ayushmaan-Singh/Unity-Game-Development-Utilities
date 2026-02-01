@@ -1,6 +1,6 @@
 ﻿using System;
 using UnityEngine;
-namespace AstekUtility.DesignPattern.GenericPiplelineChains
+namespace Astek.DesignPattern.GenericPiplelineChains
 {
     public class PiplelineProcessorExample : MonoBehaviour
     {

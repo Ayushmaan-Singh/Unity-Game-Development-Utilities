@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using AstekUtility.Gameplay;
+using Astek.Gameplay;
 using UnityEngine;
 
-namespace AstekUtility
+namespace Astek
 {
 	[RequireComponent(typeof(OwnerOfThisObject))]
 	public class ParticleFX : MonoBehaviour

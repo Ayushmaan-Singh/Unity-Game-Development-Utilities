@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace AstekUtility.Gameplay.ImprovedTimer
+namespace Astek.Gameplay.ImprovedTimer
 {
 	public static class TimerManager
 	{

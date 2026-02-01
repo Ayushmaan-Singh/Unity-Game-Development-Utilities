@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
 
-namespace AstekUtility.InputBuffer.Generic
+namespace Astek.InputBuffer.Generic
 {
 	public interface IInputBuffer
 	{

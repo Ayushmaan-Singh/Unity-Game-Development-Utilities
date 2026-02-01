@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace AstekUtility
+namespace Astek
 {
 	public class PersistentSingleton<T> : MonoBehaviour where T : Component
 	{

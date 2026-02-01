@@ -2,7 +2,7 @@
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-namespace AstekUtility.Odin
+namespace Astek.Odin
 {
 	public interface IFlagsBehaviour<in T> where T : Enum
 	{

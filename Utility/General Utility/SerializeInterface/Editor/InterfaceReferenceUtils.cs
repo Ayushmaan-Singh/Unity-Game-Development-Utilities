@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace AstekUtility
+namespace Astek
 {
 	public class InterfaceReferenceUtil
 	{

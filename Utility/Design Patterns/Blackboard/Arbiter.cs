@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-namespace AstekUtility.DesignPattern.Blackboard
+namespace Astek.DesignPattern.Blackboard
 {
 	public class Arbiter
 	{

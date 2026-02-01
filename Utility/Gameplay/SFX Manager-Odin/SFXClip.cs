@@ -2,7 +2,7 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace AstekUtility.Odin.SFX
+namespace Astek.Odin.SFX
 {
 
 	public class SFXClip : ScriptableObject

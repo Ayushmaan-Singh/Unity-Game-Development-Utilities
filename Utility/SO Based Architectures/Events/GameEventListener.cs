@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
-namespace AstekUtility.EventArchitecture
+namespace Astek.EventArchitecture
 {
 	public class GameEventListener : MonoBehaviour
 	{

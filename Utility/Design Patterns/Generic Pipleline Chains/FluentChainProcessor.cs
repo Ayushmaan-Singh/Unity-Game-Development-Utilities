@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AstekUtility.DesignPattern.GenericPiplelineChains
+namespace Astek.DesignPattern.GenericPiplelineChains
 {
      public abstract class FluentChain<TIn, TOut, TDerived> where TDerived : FluentChain<TIn, TOut, TDerived>
     {

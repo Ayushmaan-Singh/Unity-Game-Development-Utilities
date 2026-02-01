@@ -1,10 +1,10 @@
-﻿using AstekUtility.Gameplay;
+﻿using Astek.Gameplay;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.LowLevel;
 using UnityEngine.PlayerLoop;
 
-namespace AstekUtility.Gameplay.ImprovedTimer
+namespace Astek.Gameplay.ImprovedTimer
 {
 	public static class TimerBootstrapper
 	{

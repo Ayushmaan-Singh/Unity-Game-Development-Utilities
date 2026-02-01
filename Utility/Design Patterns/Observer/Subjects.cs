@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-namespace AstekUtility.Observer
+namespace Astek.Observer
 {
 	namespace Managed
 	{

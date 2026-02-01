@@ -1,5 +1,5 @@
 using System;
-namespace AstekUtility.CustomAttribute
+namespace Astek.CustomAttribute
 {
 	[AttributeUsage(AttributeTargets.Class, AllowMultiple = true, Inherited = false)]
 	public class ClassGroupAttribute : Attribute

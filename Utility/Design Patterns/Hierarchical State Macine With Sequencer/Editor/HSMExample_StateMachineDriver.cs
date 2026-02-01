@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace AstekUtility.DesignPattern.HSM_Sequencer.Editor
+namespace Astek.DesignPattern.HSM_Sequencer.Editor
 {
     public class HSMExample_StateMachineDriver : MonoBehaviour
     {

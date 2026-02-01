@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-namespace AstekUtility.BehaviorTree
+namespace Astek.BehaviorTree
 {
 	public class Node
 	{

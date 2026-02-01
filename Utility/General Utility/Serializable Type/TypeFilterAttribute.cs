@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace AstekUtility
+namespace Astek
 {
     public class TypeFilterAttribute : PropertyAttribute
     {

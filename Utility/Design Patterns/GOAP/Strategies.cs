@@ -1,4 +1,4 @@
-﻿namespace AstekUtility.DesignPattern.GOAP
+﻿namespace Astek.DesignPattern.GOAP
 {
 	public interface Strategies
 	{

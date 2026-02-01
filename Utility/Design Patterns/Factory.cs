@@ -1,4 +1,4 @@
-namespace AstekUtility.DesignPattern
+namespace Astek.DesignPattern
 {
     /// <summary>
     ///     Factory Pattern

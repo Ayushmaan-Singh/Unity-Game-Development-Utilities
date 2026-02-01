@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-namespace AstekUtility.Gameplay.Collision
+namespace Astek.Gameplay.Collision
 {
 	/// <summary>
 	/// This is script is used in the case where a single rigidbody gets collision event from multiple colliders, but object that is in collision with any

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-namespace AstekUtility.Observer.Managed
+namespace Astek.Observer.Managed
 {
 	public sealed class ObserverManager
 	{

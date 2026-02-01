@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-namespace AstekUtility.Gameplay
+namespace Astek.Gameplay
 {
 	public class AIData
 	{

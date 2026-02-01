@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace AstekUtility.SOAP.ScriptableEvents
+namespace Astek.SOAP.ScriptableEvents
 {
 	public class GameEventListener<T> : MonoBehaviour,IGameEventListener<T>
 	{

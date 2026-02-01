@@ -2,7 +2,7 @@
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace AstekUtility
+namespace Astek
 {
 	[Serializable]
 	public class InterfaceReference<TInterface, TObject> where TObject : Object where TInterface : class

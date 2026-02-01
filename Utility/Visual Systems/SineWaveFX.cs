@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace AstekUtility.VisualFeedback
+namespace Astek.VisualFeedback
 {
 	public class SineWaveFX : MonoBehaviour
 	{

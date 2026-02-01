@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-namespace AstekUtility.DesignPattern.HSM_Sequencer
+namespace Astek.DesignPattern.HSM_Sequencer
 {
     public class Sequences
     {

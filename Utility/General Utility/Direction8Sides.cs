@@ -1,5 +1,5 @@
 using UnityEngine;
-namespace AstekUtility.CardinalDirection
+namespace Astek.CardinalDirection
 {
 
 	public enum Direction8Sides

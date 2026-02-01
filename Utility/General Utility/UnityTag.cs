@@ -3,7 +3,7 @@ using Sirenix.Utilities;
 
 #if ODIN_INSPECTOR
 
-namespace AstekUtility.Odin.Utility
+namespace Astek.Odin.Utility
 {
 	[System.Serializable]
 	public class UnityTag

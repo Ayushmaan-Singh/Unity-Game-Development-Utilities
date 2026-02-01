@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace AstekUtility
+namespace Astek
 {
 	//https://easings.net/#easeInOutExpo
 	public static class EasingFunctionImplementations

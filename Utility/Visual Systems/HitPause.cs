@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace AstekUtility.VisualFeedback
+namespace Astek.VisualFeedback
 {
 	public class HitPause : Singleton<HitPause>
 	{

@@ -1,8 +1,9 @@
 ﻿using System;
-using ServiceLocator = AstekUtility.DesignPattern.ServiceLocatorTool.ServiceLocator;
+using Astek.DesignPattern.ServiceLocatorTool;
+using ServiceLocator = Astek.DesignPattern.ServiceLocatorTool.ServiceLocator;
 using Sirenix.OdinInspector;
 using UnityEngine;
-namespace AstekUtility.DesignPattern.Blackboard
+namespace Astek.DesignPattern.Blackboard
 {
 	public class BlackboardController : MonoBehaviour
 	{

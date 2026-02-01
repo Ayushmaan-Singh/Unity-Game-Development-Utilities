@@ -4,7 +4,7 @@
 //Github => https://github.com/adammyhre/Unity-Hierarchical-StateMachine
 //Youtube => https://www.youtube.com/watch?v=c-XoTg6Fba4
 
-namespace AstekUtility.DesignPattern.HSM_Sequencer
+namespace Astek.DesignPattern.HSM_Sequencer
 {
     public class StateMachine
     {

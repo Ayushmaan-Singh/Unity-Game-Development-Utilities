@@ -1,4 +1,4 @@
-﻿namespace AstekUtility.DesignPattern.GenericPiplelineChains
+﻿namespace Astek.DesignPattern.GenericPiplelineChains
 {
     public interface IProcessor<in TIn, out TOut>
     {

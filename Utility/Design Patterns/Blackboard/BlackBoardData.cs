@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using Astek.DesignPattern.Blackboard;
 using UnityEngine;
-using AstekUtility.DesignPattern.Blackboard;
 
-namespace AstekUtility
+namespace Astek
 {
 	[CreateAssetMenu(menuName = "AstekUtility/Blackboard Data", order = 0)]
 	public class BlackBoardData : ScriptableObject

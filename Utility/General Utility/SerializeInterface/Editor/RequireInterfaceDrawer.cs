@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace AstekUtility
+namespace Astek
 {
 	[CustomPropertyDrawer(typeof(RequireInterfaceAttribute))]
 	public class RequireInterfaceDrawer : PropertyDrawer

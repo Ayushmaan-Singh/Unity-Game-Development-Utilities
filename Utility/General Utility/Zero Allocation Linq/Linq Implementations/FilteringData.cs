@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-namespace AstekUtility.ZeroAllocLinqInternal
+namespace Astek.ZeroAllocLinqInternal
 {
     // Where operation implementation
     public readonly struct WhereEnumerable<TSource> : IZeroAllocEnumerable<TSource>
@@ -37,12 +37,12 @@ namespace AstekUtility.ZeroAllocLinqInternal
     }
 
     //OfType operation implementation
-    public readonly struct OfType<TResult> : IZeroAllocEnumerable<TResult>
+    public readonly struct OfTypeEnumerable<TResult> : IZeroAllocEnumerable<TResult>
     {
         private readonly IEnumerable _source;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public OfType(IEnumerable source)
+        public OfTypeEnumerable(IEnumerable source)
         {
             _source = source;
         }

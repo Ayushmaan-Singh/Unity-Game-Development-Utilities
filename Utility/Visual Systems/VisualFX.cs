@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace AstekUtility.VisualFeedback
+namespace Astek.VisualFeedback
 {
 	public abstract class VisualFX : MonoBehaviour
 	{

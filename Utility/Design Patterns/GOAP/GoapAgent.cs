@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-namespace AstekUtility.DesignPattern.GOAP
+namespace Astek.DesignPattern.GOAP
 {
 	public abstract class GoapAgent : MonoBehaviour
 	{

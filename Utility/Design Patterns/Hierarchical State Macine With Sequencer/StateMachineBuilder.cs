@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
-namespace AstekUtility.DesignPattern.HSM_Sequencer
+namespace Astek.DesignPattern.HSM_Sequencer
 {
     public class StateMachineBuilder
     {

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-namespace AstekUtility.DesignPattern.GOAP
+namespace Astek.DesignPattern.GOAP
 {
 	public class AgentGoal
 	{

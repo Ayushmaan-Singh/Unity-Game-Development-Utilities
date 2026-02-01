@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
-namespace AstekUtility.ScriptableRenderPipelines
+namespace Astek.ScriptableRenderPipelines
 {
 	public partial class RenderFinalEffect
 	{

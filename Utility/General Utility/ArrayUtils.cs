@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 using UnityEngine;
-namespace AstekUtility.Arrays
+namespace Astek.Arrays
 {
 	public class ArrayUtils<T>
 	{

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using AstekUtility.DesignPattern.ServiceLocatorTool;
+using Astek.DesignPattern.ServiceLocatorTool;
 using UnityEngine;
 using UnityEngine.Events;
-namespace AstekUtility.Gameplay
+namespace Astek.Gameplay
 {
 	public class AnimationLayerInfoReceiver : MonoBehaviour
 	{
@@ -41,9 +41,9 @@ namespace AstekUtility.Gameplay
 		}
 
 		public bool InProgress(string stateName, int layerIndex) => _activeStateInfo.TryGetValue(layerIndex, out AnimatorStateInfo stateInfo) && stateInfo.IsName(stateName)
-		                                                                                                                                      && !(stateInfo.normalizedTime >= 1f || stateInfo.normalizedTime.Approx(1f));
+		                                                                                                                                      && !(stateInfo.normalizedTime >= 1f || stateInfo.normalizedTime.Approximately(1f));
 		public bool InProgress(int stateHash, int layerIndex) => _activeStateInfo.TryGetValue(layerIndex, out AnimatorStateInfo stateInfo) && stateInfo.shortNameHash == stateHash
-		                                                                                                                                   && !(stateInfo.normalizedTime >= 1f || stateInfo.normalizedTime.Approx(1f));
+		                                                                                                                                   && !(stateInfo.normalizedTime >= 1f || stateInfo.normalizedTime.Approximately(1f));
 
 		public bool IsLooping(int layerIndex) => _activeStateInfo.TryGetValue(layerIndex, out AnimatorStateInfo stateInfo) && stateInfo.loop;
 	}

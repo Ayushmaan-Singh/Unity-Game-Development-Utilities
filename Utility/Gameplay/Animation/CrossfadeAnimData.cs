@@ -4,7 +4,7 @@ using Sirenix.Serialization;
 using UnityEditor.Animations;
 using UnityEngine;
 
-namespace AstekUtility.Gameplay
+namespace Astek.Gameplay
 {
 	public class CrossfadeAnimData : SerializedScriptableObject
 	{

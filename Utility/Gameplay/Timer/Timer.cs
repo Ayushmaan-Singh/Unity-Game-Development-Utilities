@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace AstekUtility.Gameplay.Timer
+namespace Astek.Gameplay.Timer
 {
 
 	/// <summary>

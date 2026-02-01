@@ -10,7 +10,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-namespace AstekUtility.VisualFeedback
+namespace Astek.VisualFeedback
 {
 	/// <summary>
 	/// To dissolve => dissolveFX.SetFXState(FXState.Dissolve).Play();

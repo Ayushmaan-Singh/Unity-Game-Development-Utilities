@@ -1,4 +1,4 @@
-namespace AstekUtility.Observer
+namespace Astek.Observer
 {
 	namespace Managed
 	{

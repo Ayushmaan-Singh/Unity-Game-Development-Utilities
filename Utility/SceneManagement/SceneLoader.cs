@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
-using AstekUtility.DesignPattern.ServiceLocatorTool;
+using Astek.DesignPattern.ServiceLocatorTool;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace AstekUtility.SceneManagement
+namespace Astek.SceneManagement
 {
 	public class SceneLoader : MonoBehaviour
 	{

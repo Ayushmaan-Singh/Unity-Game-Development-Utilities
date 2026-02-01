@@ -1,6 +1,6 @@
 ﻿using System;
 using UnityEngine;
-namespace AstekUtility.Gameplay
+namespace Astek.Gameplay
 {
 	public class AnimationLayerInfoLogger : StateMachineBehaviour
 	{

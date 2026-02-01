@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace AstekUtility.DesignPattern.ServiceLocatorTool
+namespace Astek.DesignPattern.ServiceLocatorTool
 {
 	public sealed class ServiceLocator : MonoBehaviour
 	{
@@ -99,6 +99,34 @@ namespace AstekUtility.DesignPattern.ServiceLocatorTool
 
 			return Global;
 		}
+		
+		/// <summary>
+		/// Returns the <see cref="ServiceLocator"/> configured for the scene of a GameObject. Falls back to the global instance.
+		/// </summary>
+		public static ServiceLocator ForSceneOf(GameObject obj)
+		{
+			Scene scene = obj.scene;
+
+			if (_sceneContainers.TryGetValue(scene, out ServiceLocator container)
+			 && obj.GetComponents<MonoBehaviour>().Any(component => component == container))
+			{
+				return container;
+			}
+
+			_tmpSceneGameObjects.Clear();
+			scene.GetRootGameObjects(_tmpSceneGameObjects);
+
+			foreach (GameObject go in _tmpSceneGameObjects.Where(go => go.GetComponent<ServiceLocatorScene>()))
+			{
+				if (!go.TryGetComponent(out ServiceLocatorScene bootstrapper) || 
+				    obj.GetComponents<MonoBehaviour>().Any(component => component == bootstrapper))
+					continue;
+				bootstrapper.BootstrapOnDemand();
+				return bootstrapper.Container;
+			}
+
+			return Global;
+		}
 
 		/// <summary>
 		/// Returns the <see cref="ServiceLocator"/> configured for the scene of a Renderer. Falls back to the global instance.
@@ -135,6 +163,11 @@ namespace AstekUtility.DesignPattern.ServiceLocatorTool
 		public static ServiceLocator For(MonoBehaviour mb)
 		{
 			return mb.GetComponentInParent<ServiceLocator>().OrNull() ?? ForSceneOf(mb) ?? Global;
+		}
+
+		public static ServiceLocator For(GameObject go)
+		{
+			return go.GetComponentInParent<ServiceLocator>().OrNull() ?? ForSceneOf(go) ?? Global;
 		}
 
 		#endregion

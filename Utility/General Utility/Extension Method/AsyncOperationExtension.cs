@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace AstekUtility
+namespace Astek
 {
 	public static class AsyncOperationExtension
 	{

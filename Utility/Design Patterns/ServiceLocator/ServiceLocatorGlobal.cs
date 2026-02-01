@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-namespace AstekUtility.DesignPattern.ServiceLocatorTool
+namespace Astek.DesignPattern.ServiceLocatorTool
 {
 	[AddComponentMenu("ServiceLocator/ServiceLocator Global")]
 	public class ServiceLocatorGlobal : Bootstrapper

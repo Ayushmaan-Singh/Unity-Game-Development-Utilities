@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace AstekUtility.RuntimeSetArchitecture
+namespace Astek.RuntimeSetArchitecture
 {
 	public abstract class RuntimeSet<T> : ScriptableObject
 	{

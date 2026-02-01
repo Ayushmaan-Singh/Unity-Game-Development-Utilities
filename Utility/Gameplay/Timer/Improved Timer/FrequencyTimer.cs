@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace AstekUtility.Gameplay.ImprovedTimer
+namespace Astek.Gameplay.ImprovedTimer
 {
 	/// <summary>
 	/// Timer that ticks at a specific frequency. (N times per second)

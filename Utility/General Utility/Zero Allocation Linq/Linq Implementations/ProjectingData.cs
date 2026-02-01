@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
-namespace AstekUtility.ZeroAllocLinqInternal
+namespace Astek.ZeroAllocLinqInternal
 {
     // Select operation implementation
     public readonly struct SelectEnumerable<TSource, TResult> : IZeroAllocEnumerable<TResult>

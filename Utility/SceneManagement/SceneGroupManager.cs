@@ -9,7 +9,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
 
-namespace AstekUtility.SceneManagement
+namespace Astek.SceneManagement
 {
 	public class SceneGroupManager
 	{

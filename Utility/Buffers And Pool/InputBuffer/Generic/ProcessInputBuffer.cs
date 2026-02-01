@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using AstekUtility;
+using Astek;
 
-namespace AstekUtility.InputBuffer.Generic
+namespace Astek.InputBuffer.Generic
 {
 	public static class ProcessInputBuffer
 	{

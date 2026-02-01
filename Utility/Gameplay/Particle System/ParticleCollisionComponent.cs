@@ -1,11 +1,11 @@
 using System;
-using AstekUtility;
+using Astek;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace AstekUtility
+namespace Astek
 {
 	/// <summary>
 	/// Use this class when we need particle to collider in kinematic sense and only detect collision without other physics

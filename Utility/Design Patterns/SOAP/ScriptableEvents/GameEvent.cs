@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-namespace AstekUtility.SOAP.ScriptableEvents
+namespace Astek.SOAP.ScriptableEvents
 {
 	public class GameEvent<T> : ScriptableObject
 	{

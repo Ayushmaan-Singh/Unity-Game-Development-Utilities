@@ -1,6 +1,6 @@
 using Unity.Mathematics;
 using UnityEngine;
-namespace AstekUtility
+namespace Astek
 {
     /// <summary>
     ///     This class converts data type

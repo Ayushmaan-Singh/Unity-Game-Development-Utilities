@@ -1,7 +1,7 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace AstekUtility
+namespace Astek
 {
 	public class SerializedSingleton<T> : SerializedMonoBehaviour where T : Component
 	{

@@ -7,7 +7,7 @@ using Sirenix.OdinInspector;
 using Sirenix.Utilities;
 using UnityEngine;
 using Random = UnityEngine.Random;
-namespace AstekUtility.VisualFeedback
+namespace Astek.VisualFeedback
 {
 	public class MeshFlashFX : VisualFX
 	{

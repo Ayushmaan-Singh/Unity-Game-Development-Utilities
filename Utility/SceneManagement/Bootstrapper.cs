@@ -2,7 +2,7 @@
 using UnityEngine.AddressableAssets;
 using UnityEngine.SceneManagement;
 
-namespace AstekUtility.SceneManagement
+namespace Astek.SceneManagement
 {
 	public class Bootstrapper : Singleton<Bootstrapper>
 	{

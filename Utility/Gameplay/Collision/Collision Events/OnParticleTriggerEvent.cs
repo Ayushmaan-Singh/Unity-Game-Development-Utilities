@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace AstekUtility.Gameplay.Collision
+namespace Astek.Gameplay.Collision
 {
 	[RequireComponent(typeof(ParticleSystem))]
 	public class OnParticleTriggerEvent : MonoBehaviour

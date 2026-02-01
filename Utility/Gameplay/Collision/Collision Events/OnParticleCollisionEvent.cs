@@ -3,7 +3,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace AstekUtility.Gameplay.Collision
+namespace Astek.Gameplay.Collision
 {
 	/// <summary>
 	/// Use this class when the particle isn't affected by physics in particle collision or you only need 1 collision per particle system

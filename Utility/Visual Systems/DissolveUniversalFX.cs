@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace AstekUtility.VisualFeedback
+namespace Astek.VisualFeedback
 {
 	public class DissolveUniversalFX : MonoBehaviour
 	{

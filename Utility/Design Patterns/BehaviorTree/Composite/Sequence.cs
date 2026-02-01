@@ -1,4 +1,4 @@
-namespace AstekUtility.BehaviorTree
+namespace Astek.BehaviorTree
 {
 	public class Sequence : Node
 	{

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace AstekUtility.DesignPattern.HSM_Sequencer
+namespace Astek.DesignPattern.HSM_Sequencer
 {
     public abstract class State
     {

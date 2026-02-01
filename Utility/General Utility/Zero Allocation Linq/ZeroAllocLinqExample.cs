@@ -1,7 +1,7 @@
 ﻿#if UNITY_EDITOR
 using System.Collections.Generic;
-using AstekUtility;
-using AstekUtility.ZeroAllocLinqInternal;
+using Astek;
+using Astek.ZeroAllocLinqInternal;
 using UnityEngine;
 
 namespace ZeroAllocLinqInternal

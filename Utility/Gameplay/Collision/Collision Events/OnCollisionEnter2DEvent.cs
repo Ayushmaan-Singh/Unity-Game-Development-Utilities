@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-namespace AstekUtility
+namespace Astek
 {
 	public class OnCollisionEnter2DEvent : MonoBehaviour
 	{

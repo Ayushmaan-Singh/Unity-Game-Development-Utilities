@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using AstekUtility.DesignPattern.ServiceLocatorTool;
+using Astek.DesignPattern.ServiceLocatorTool;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace AstekUtility.Gameplay
+namespace Astek.Gameplay
 {
 	public class AnimationEventReceiver : MonoBehaviour
 	{

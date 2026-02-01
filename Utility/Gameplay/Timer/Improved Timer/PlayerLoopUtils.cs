@@ -3,7 +3,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.LowLevel;
 using UnityEngine.XR;
-namespace AstekUtility.Gameplay
+namespace Astek.Gameplay
 {
 	public static class PlayerLoopUtils
 	{

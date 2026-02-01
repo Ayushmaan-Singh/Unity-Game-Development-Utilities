@@ -6,7 +6,7 @@ using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace AstekUtility
+namespace Astek
 {
 	[CustomPropertyDrawer(typeof(InterfaceReference<>))]
 	[CustomPropertyDrawer(typeof(InterfaceReference<,>))]

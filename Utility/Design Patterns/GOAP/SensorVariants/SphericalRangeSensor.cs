@@ -1,8 +1,8 @@
 ﻿using System;
-using AstekUtility.Gameplay.Timer;
+using Astek.Gameplay.Timer;
 using UnityEngine;
 
-namespace AstekUtility.DesignPattern.GOAP
+namespace Astek.DesignPattern.GOAP
 {
 	[RequireComponent(typeof(SphereCollider))]
 	public class SphericalRangeSensor : MonoBehaviour, ISensor
