@@ -3,6 +3,7 @@ using Astek.AdvancedStatSys.Core;
 
 namespace Astek.AdvancedStatSys.Default
 {
+    [Serializable]
     public sealed class Stat : Stat<StatModifierData>
     {
         public Stat(float baseValue = 0) : base(baseValue, GetInnerStats()) { }
