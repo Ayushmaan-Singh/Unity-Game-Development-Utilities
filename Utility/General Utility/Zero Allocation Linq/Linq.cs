@@ -293,19 +293,10 @@ namespace Astek
                 throw new ArgumentNullException(nameof(source));
             if (action == null)
                 throw new ArgumentNullException(nameof(action));
-            new ZeroAllocEnumerable<TSource>(source).ForEach(action);
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void ForEach<TSource>(
-            this IEnumerable<TSource> source,
-            Action<TSource, int> action)
-        {
-            if (source == null)
-                throw new ArgumentNullException(nameof(source));
-            if (action == null)
-                throw new ArgumentNullException(nameof(action));
-            new ZeroAllocEnumerable<TSource>(source).ForEach(action);
+            foreach (TSource item in source)
+            {
+                action(item);
+            }
         }
 
         #endregion
