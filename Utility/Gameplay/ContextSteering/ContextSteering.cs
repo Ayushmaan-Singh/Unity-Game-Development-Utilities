@@ -3,104 +3,103 @@ using UnityEngine;
 
 namespace Astek.Gameplay
 {
-	public sealed class ContextSteering : MonoBehaviour
-	{
-		[Header("Context Steering Data")]
-		[SerializeField]
-		private ContextSolver contextSolver;
-		[SerializeField]
-		private Detector[] detectors;
-		[SerializeField]
-		private SteeringBehaviour[] steeringBehaviours;
+    public sealed class ContextSteering : MonoBehaviour
+    {
+        [Header("Context Steering Data")]
 
-		[Space]
-		[SerializeField, MaxValue(360)]
-		private int dirMapResolution = 16;
+        [SerializeField] private ContextSolver contextSolver;
+        [SerializeField] private Detector[] detectors;
+        [SerializeField] private SteeringBehaviour[] steeringBehaviours;
 
-		[Header("Main Model Data")]
-		[SerializeField]
-		private Transform mainModel;
-		[SerializeField]
-		private Collider[] colliders;
+        [Space]
+        [SerializeField, MaxValue(360)] private int dirMapResolution = 16;
 
-		private AIData _aiData;
-		private Vector3[] directionXZ;
-		public Vector3 Direction { get; private set; } = Vector3.zero;
+        [Header("Main Model Data")]
 
-		private void Awake()
-		{
-			Init();
-		}
+        [SerializeField] private Transform mainModel;
+        [SerializeField] private Collider[] colliders;
 
-		private void Init()
-		{
-			_aiData = new AIData();
-			InitDirections();
-			contextSolver = new ContextSolver(directionXZ, mainModel);
+        private AIData _aiData;
+        private Vector3[] directionXZ;
+        public Vector3 Direction { get; private set; } = Vector3.zero;
 
-			foreach (SteeringBehaviour behavior in steeringBehaviours)
-			{
-				new SteeringBehaviour.Builder()
-					.InitAIData(_aiData)
-					.InitMainModel(mainModel)
-					.InitDirectionXZ(directionXZ)
-					.Build(behavior);
-			}
-			foreach (Detector detector in this.detectors)
-			{
-				new Detector.Builder()
-					.InitAIData(_aiData)
-					.InitMainModel(mainModel)
-					.Build(detector);
-			}
-		}
+        private void Awake()
+        {
+            Init();
+        }
 
-		private void InitDirections()
-		{
-			directionXZ = new Vector3[dirMapResolution];
-			float directionInterval = Mathf.PI * 2 / dirMapResolution;
-			for (int i = 0; i < dirMapResolution; i++)
-			{
-				float currentAngle = i * directionInterval;
-				directionXZ[i] = new Vector3(Mathf.Cos(currentAngle), 0, Mathf.Sin(currentAngle));
-			}
-		}
+        private void Init()
+        {
+            _aiData = new AIData();
+            InitDirections();
+            contextSolver = new ContextSolver(directionXZ, mainModel);
 
-		private void FixedUpdate()
-		{
-			Direction = UpdateDirection();
-		}
+            foreach (SteeringBehaviour behavior in steeringBehaviours)
+            {
+                new SteeringBehaviour.Builder()
+                   .InitAIData(_aiData)
+                   .InitMainModel(mainModel)
+                   .InitDirectionXZ(directionXZ)
+                   .Build(behavior);
+            }
 
-		private Vector3 UpdateDirection()
-		{
-			foreach (Detector detector in detectors)
-			{
-				detector.Detect();
-			}
+            foreach (Detector detector in this.detectors)
+            {
+                new Detector.Builder()
+                   .InitAIData(_aiData)
+                   .InitMainModel(mainModel)
+                   .Build(detector);
+            }
+        }
 
-			if (_aiData.CurrentTarget)
-			{
-				if (!_aiData.CurrentTarget)
-				{
-					//Stopping Logic
-					return Vector3.zero;
-				}
-				return contextSolver.GetDirectionToMove(steeringBehaviours);
-			}
-			if (_aiData.GetTargetsCount() > 0)
-			{
-				//Target acquisition logic
-				_aiData.CurrentTarget = _aiData.Targets[0];
-			}
+        private void InitDirections()
+        {
+            directionXZ = new Vector3[dirMapResolution];
+            float directionInterval = Mathf.PI * 2 / dirMapResolution;
+            for (int i = 0; i < dirMapResolution; i++)
+            {
+                float currentAngle = i * directionInterval;
+                directionXZ[i] = new Vector3(Mathf.Cos(currentAngle), 0, Mathf.Sin(currentAngle));
+            }
+        }
 
-			return Vector3.zero;
-		}
+        private void FixedUpdate()
+        {
+            Direction = UpdateDirection();
+        }
 
-		#if UNITY_EDITOR
-		private void OnDrawGizmos()
-		{
-			contextSolver.OnDrawGizmos();
-		}
-		#endif
-	}
+        private Vector3 UpdateDirection()
+        {
+            foreach (Detector detector in detectors)
+            {
+                detector.Detect();
+            }
+
+            if (_aiData.CurrentTarget)
+            {
+                if (!_aiData.CurrentTarget)
+                {
+                    //Stopping Logic
+                    return Vector3.zero;
+                }
+
+                return contextSolver.GetDirectionToMove(steeringBehaviours);
+            }
+
+            if (_aiData.GetTargetsCount() > 0)
+            {
+                //Target acquisition logic
+                _aiData.CurrentTarget = _aiData.Targets[0];
+            }
+
+            return Vector3.zero;
+        }
+
+#if UNITY_EDITOR
+        private void OnDrawGizmos()
+        {
+            contextSolver.OnDrawGizmos();
+        }
+#endif
+    }
 }

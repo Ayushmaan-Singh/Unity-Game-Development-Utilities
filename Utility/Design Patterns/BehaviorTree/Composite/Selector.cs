@@ -21,7 +21,7 @@ namespace Astek.BehaviorTree
 			}
 
 			_currentChild++;
-			if (_currentChild >= Children.Count)
+			if (_currentChild >= Children.Length)
 			{
 				_currentChild = 0;
 				return Status.Failure;

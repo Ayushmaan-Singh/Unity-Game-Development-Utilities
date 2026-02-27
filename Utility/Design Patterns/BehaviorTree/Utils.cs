@@ -1,24 +1,24 @@
 using System;
 using System.Collections.Generic;
+
 namespace Astek.BehaviorTree
 {
-	public class Utils
-	{
-		public Random r = new Random();
+    public class Utils
+    {
+        private Random _randomizer = new Random();
 
-		public List<T> Shuffle<T>(List<T> list)
-		{
-			int n = list.Count;
-			List<T> newList = list;
-			while (n > 1)
-			{
-				int k = r.Next(n + 1);
-				T val = newList[k];
-				newList[k] = newList[n];
-				newList[n] = val;
-			}
+        public T[] Shuffle<T>(T[] list)
+        {
+            int count = list.Length;
+            T[] newList = new T[count];
+            Array.Copy(list, newList, count);
+            while (count > 1)
+            {
+                int k = _randomizer.Next(count + 1);
+                (newList[k], newList[count]) = (newList[count], newList[k]);
+            }
 
-			return newList;
-		}
-	}
+            return newList;
+        }
+    }
 }

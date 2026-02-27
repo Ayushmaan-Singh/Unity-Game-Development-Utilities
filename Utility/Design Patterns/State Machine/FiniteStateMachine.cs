@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-namespace Astek.DesignPattern.StateMachine
+namespace Astek.DesignPattern.FSM
 {
-    public class StateMachine
+    public class FiniteStateMachine
     {
         private readonly HashSet<ITransition> _anyTransitions = new HashSet<ITransition>();
         private readonly Dictionary<Type, StateNode> _nodes = new Dictionary<Type, StateNode>();

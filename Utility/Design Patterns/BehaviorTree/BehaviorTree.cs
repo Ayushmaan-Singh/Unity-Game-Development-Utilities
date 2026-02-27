@@ -13,7 +13,7 @@ namespace Astek.BehaviorTree
 
 		public override Status Process()
 		{
-			if (Children.Count == 0)
+			if (Children.Length == 0)
 			{
 				return Status.Success;
 			}
@@ -46,7 +46,7 @@ namespace Astek.BehaviorTree
 				NodeLevel nextNode = nodeStack.Pop();
 				printTree += new string('-', nextNode.level) + nextNode.node.Name + "\n";
 
-				for (int i = nextNode.node.Children.Count - 1; i >= 0; i--)
+				for (int i = nextNode.node.Children.Length - 1; i >= 0; i--)
 				{
 					nodeStack.Push(new NodeLevel
 					{
