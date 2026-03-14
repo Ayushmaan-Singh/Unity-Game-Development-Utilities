@@ -4,7 +4,7 @@ namespace Astek.Gameplay
 {
 	public class AIData
 	{
-		public Dictionary<Detector, Collider[]> AvoidedObjectCollection = new Dictionary<Detector, Collider[]>();
+		public readonly Dictionary<Detector, Collider[]> AvoidedObjectCollection = new Dictionary<Detector, Collider[]>();
 
 		public Collider CurrentTarget;
 		public readonly List<Collider> Targets = new List<Collider>();

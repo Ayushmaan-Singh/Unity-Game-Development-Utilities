@@ -1,44 +1,39 @@
+using System;
+using System.Runtime.CompilerServices;
+
 namespace Astek.BehaviorTree
 {
-	public class Leaf : Node
-	{
-		public delegate Status Tick();
+    public class Leaf : Node
+    {
+        public delegate Status Tick();
+        public event Tick ProcessMethod;
 
-		public delegate Status TickM(int val);
+        public Leaf() : base()
+        {
+            Children = Array.Empty<Node>();
+        }
 
-		public int index;
-		public TickM multiProcessMethod;
-		public Tick processMethod;
+        public Leaf(string name, Tick pm) : base(name)
+        {
+            ProcessMethod = pm ?? throw new ArgumentNullException(nameof(pm));
+            Children = Array.Empty<Node>();
+        }
 
-		public Leaf() { }
+        public Leaf(string name, Tick pm, int order) : base(name)
+        {
+            Name = name;
+            SortOrder = order;
+            ProcessMethod = pm ?? throw new ArgumentNullException(nameof(pm));
+            Children = Array.Empty<Node>();
+        }
 
-		public Leaf(string name, Tick pm)
-		{
-			Name = name;
-			processMethod = pm;
-		}
-		public Leaf(string name, Tick pm, int order)
-		{
-			Name = name;
-			processMethod = pm;
-			SortOrder = order;
-		}
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public new void AddChild(Node n)
+        {
+            throw new Exception("Cannot add a child to a leaf");
+        }
 
-		public Leaf(string name, TickM pm, int index)
-		{
-			Name = name;
-			multiProcessMethod = pm;
-			this.index = index;
-		}
-
-		public override Status Process()
-		{
-			if (processMethod != null)
-				return processMethod();
-			if (multiProcessMethod != null)
-				return multiProcessMethod(index);
-
-			return Status.Failure;
-		}
-	}
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public override Status Process() => ProcessMethod?.Invoke() ?? Status.Success;
+    }
 }

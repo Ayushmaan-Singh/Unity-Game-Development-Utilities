@@ -6,7 +6,6 @@ namespace Astek.Gameplay
     public sealed class ContextSteering : MonoBehaviour
     {
         [Header("Context Steering Data")]
-
         [SerializeField] private ContextSolver contextSolver;
         [SerializeField] private Detector[] detectors;
         [SerializeField] private SteeringBehaviour[] steeringBehaviours;
@@ -15,12 +14,11 @@ namespace Astek.Gameplay
         [SerializeField, MaxValue(360)] private int dirMapResolution = 16;
 
         [Header("Main Model Data")]
-
         [SerializeField] private Transform mainModel;
         [SerializeField] private Collider[] colliders;
 
         private AIData _aiData;
-        private Vector3[] directionXZ;
+        private Vector3[] _directionXZ;
         public Vector3 Direction { get; private set; } = Vector3.zero;
 
         private void Awake()
@@ -32,18 +30,18 @@ namespace Astek.Gameplay
         {
             _aiData = new AIData();
             InitDirections();
-            contextSolver = new ContextSolver(directionXZ, mainModel);
+            contextSolver = new ContextSolver(_directionXZ, mainModel);
 
             foreach (SteeringBehaviour behavior in steeringBehaviours)
             {
                 new SteeringBehaviour.Builder()
                    .InitAIData(_aiData)
                    .InitMainModel(mainModel)
-                   .InitDirectionXZ(directionXZ)
+                   .InitDirectionXZ(_directionXZ)
                    .Build(behavior);
             }
 
-            foreach (Detector detector in this.detectors)
+            foreach (Detector detector in detectors)
             {
                 new Detector.Builder()
                    .InitAIData(_aiData)
@@ -54,12 +52,12 @@ namespace Astek.Gameplay
 
         private void InitDirections()
         {
-            directionXZ = new Vector3[dirMapResolution];
+            _directionXZ = new Vector3[dirMapResolution];
             float directionInterval = Mathf.PI * 2 / dirMapResolution;
             for (int i = 0; i < dirMapResolution; i++)
             {
                 float currentAngle = i * directionInterval;
-                directionXZ[i] = new Vector3(Mathf.Cos(currentAngle), 0, Mathf.Sin(currentAngle));
+                _directionXZ[i] = new Vector3(Mathf.Cos(currentAngle), 0, Mathf.Sin(currentAngle));
             }
         }
 

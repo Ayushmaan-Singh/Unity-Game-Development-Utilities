@@ -1,3 +1,5 @@
+using System.Runtime.CompilerServices;
+
 namespace Astek.BehaviorTree
 {
     public class RSelector : Node
@@ -11,6 +13,7 @@ namespace Astek.BehaviorTree
             _shuffleOnce = shuffleOnce;
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public override Status Process()
         {
             if (_shuffleOnce)

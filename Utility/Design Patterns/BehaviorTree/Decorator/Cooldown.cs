@@ -1,8 +1,9 @@
 using System;
+using System.Runtime.CompilerServices;
 
 namespace Astek.BehaviorTree
 {
-    public class Cooldown : Node
+    public class Cooldown : DecoratorNode
     {
         private readonly float _cooldown;
         private double _timeCounter;
@@ -12,24 +13,10 @@ namespace Astek.BehaviorTree
         {
             _cooldown = cooldown;
             _tickTime += timeTick;
-            Children = new Node[1];
             _timeCounter = 0;
         }
 
-        public new void AddChild(Node n)
-        {
-            if (Children.Length > 0)
-            {
-                try
-                {
-                    throw new Exception($"Conditional Node {Name}: Value overriden by new Value");
-                }
-                catch { }
-            }
-
-            Children[0] = n;
-        }
-
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public override Status Process()
         {
             _timeCounter += _tickTime.Invoke();

@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 
 namespace Astek.BehaviorTree
 {
@@ -22,7 +23,10 @@ namespace Astek.BehaviorTree
         //Put in order they are to be executed if it's a sequence type Node
         public Node[] Children { get; protected set; } = Array.Empty<Node>();
 
-        public Node() { }
+        public Node()
+        {
+            Name = "Node";
+        }
 
         public Node(string name)
         {
@@ -35,6 +39,7 @@ namespace Astek.BehaviorTree
             SortOrder = order;
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void AddChild(Node n)
         {
             if (n == null)
@@ -42,13 +47,19 @@ namespace Astek.BehaviorTree
             Node[] newCollection = new Node[Children.Length + 1];
             Array.Copy(Children, newCollection, Children.Length);
             newCollection[Children.Length] = n;
+            Children = newCollection.OrderBy(child => child.SortOrder).ToArray();
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public virtual Status Process()
         {
+            if (Children.Length == 0)
+                return Status.Success;
+
             return Children[_currentChild].Process();
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Reset()
         {
             Children.ForEach(child => child.Reset());

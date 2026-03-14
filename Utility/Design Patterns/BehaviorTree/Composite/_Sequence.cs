@@ -2,9 +2,9 @@ using System.Runtime.CompilerServices;
 
 namespace Astek.BehaviorTree
 {
-    public class PSelector : Node
+    public class Sequence : Node
     {
-        public PSelector(string name) : base(name) { }
+        public Sequence(string name) : base(name) { }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public override Status Process()
@@ -13,18 +13,14 @@ namespace Astek.BehaviorTree
 
             if (childStatus == Status.Running)
                 return Status.Running;
-            if (childStatus == Status.Success)
-            {
-                _currentChild = 0;
-                return Status.Success;
-            }
+            if (childStatus == Status.Failure)
+                return Status.Failure;
 
             _currentChild++;
-
             if (_currentChild >= Children.Length)
             {
                 _currentChild = 0;
-                return Status.Failure;
+                return Status.Success;
             }
 
             return Status.Running;
