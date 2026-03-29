@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Astek;
 
 namespace AstekUtility.InputBuffer.NewInputSystem
 {

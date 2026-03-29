@@ -1,6 +1,6 @@
 ﻿#if NEW_INPUT_SYSTEM_INPUT_BUFFER
 
-using AstekUtility.Gameplay;
+using Astek.Gameplay;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.LowLevel;

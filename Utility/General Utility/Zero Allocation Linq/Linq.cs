@@ -94,11 +94,11 @@ namespace Astek
 
         public static IZeroAllocEnumerable<TResult> OfType<TResult>(this IEnumerable source)
         {
-            if(source==null)
+            if (source == null)
                 throw new ArgumentNullException(nameof(source));
             return new OfTypeEnumerable<TResult>(source);
         }
-        
+
         #endregion
 
         #region First/Last Extensions
@@ -238,7 +238,7 @@ namespace Astek
                 throw new ArgumentNullException(nameof(first));
             if (second == null)
                 throw new ArgumentNullException(nameof(second));
-            return new ZeroAllocEnumerable<TSource>(first).Intersect(second, comparer);
+            return new IntersectEnumerable<TSource>(first, second, comparer);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -251,7 +251,7 @@ namespace Astek
                 throw new ArgumentNullException(nameof(first));
             if (second == null)
                 throw new ArgumentNullException(nameof(second));
-            return new ZeroAllocEnumerable<TSource>(first).Union(second, comparer);
+            return new UnionEnumerable<TSource>(first, second, comparer);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -264,7 +264,7 @@ namespace Astek
                 throw new ArgumentNullException(nameof(first));
             if (second == null)
                 throw new ArgumentNullException(nameof(second));
-            return new ZeroAllocEnumerable<TSource>(first).Except(second, comparer);
+            return new ExceptEnumerable<TSource>(first, second, comparer);
         }
 
         #endregion
@@ -310,6 +310,7 @@ namespace Astek
                 throw new ArgumentNullException(nameof(source));
             return new ZeroAllocEnumerable<TSource>(source).Count();
         }
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int CountBy<TSource>(
             this IEnumerable<TSource> source,
@@ -321,6 +322,7 @@ namespace Astek
         }
 
         #endregion
+
         #region Sum Extensions
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -330,6 +332,7 @@ namespace Astek
                 throw new ArgumentNullException(nameof(source));
             return new ZeroAllocEnumerable<TSource>(source).Sum();
         }
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static TResult Sum<TSource, TResult>(
             this IEnumerable<TSource> source,
@@ -343,6 +346,7 @@ namespace Astek
         }
 
         #endregion
+
         #region Aggregate Extension
 
         public static TSource Aggregate<TSource>(
@@ -386,6 +390,7 @@ namespace Astek
         }
 
         #endregion
+
         #region Min Extension
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -398,6 +403,7 @@ namespace Astek
         }
 
         #endregion
+
         #region Max Extension
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -419,6 +425,7 @@ namespace Astek
                 throw new ArgumentNullException(nameof(source));
             return new ZeroAllocEnumerable<TSource>(source).ToList();
         }
+
         public static TSource[] ToArray<TSource>(this IEnumerable<TSource> source)
         {
             if (source == null)
@@ -532,7 +539,9 @@ namespace Astek
                 throw new ArgumentNullException(nameof(source));
             return new OrderedEnumerable<TSource>(source, comparer);
         }
-        public static ZeroAllocLinqInternal.IOrderedEnumerable<TSource> OrderBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey> comparer = null)
+
+        public static ZeroAllocLinqInternal.IOrderedEnumerable<TSource> OrderBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector,
+                                                                                               IComparer<TKey> comparer = null)
         {
             if (source == null)
                 throw new ArgumentNullException(nameof(source));
@@ -548,7 +557,9 @@ namespace Astek
                 throw new ArgumentNullException(nameof(source));
             return new OrderedEnumerable<TSource>(source, comparer).ThenByDescendingMethod();
         }
-        public static ZeroAllocLinqInternal.IOrderedEnumerable<TSource> OrderByDescending<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey> comparer = null)
+
+        public static ZeroAllocLinqInternal.IOrderedEnumerable<TSource> OrderByDescending<TSource, TKey>(
+            this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey> comparer = null)
         {
             if (source == null)
                 throw new ArgumentNullException(nameof(source));
@@ -561,7 +572,8 @@ namespace Astek
 
         #region ThenBy Extension
 
-        public static ZeroAllocLinqInternal.IOrderedEnumerable<TSource> ThenBy<TSource, TKey>(this ZeroAllocLinqInternal.IOrderedEnumerable<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey> comparer = null)
+        public static ZeroAllocLinqInternal.IOrderedEnumerable<TSource> ThenBy<TSource, TKey>(this ZeroAllocLinqInternal.IOrderedEnumerable<TSource> source,
+                                                                                              Func<TSource, TKey> keySelector, IComparer<TKey> comparer = null)
         {
             if (source == null)
                 throw new ArgumentNullException(nameof(source));
@@ -570,7 +582,9 @@ namespace Astek
 
             return source.ThenByMethod(keySelector, comparer);
         }
-        public static ZeroAllocLinqInternal.IOrderedEnumerable<TSource> ThenBy<TSource>(this ZeroAllocLinqInternal.IOrderedEnumerable<TSource> source, IComparer<TSource> comparer = null)
+
+        public static ZeroAllocLinqInternal.IOrderedEnumerable<TSource> ThenBy<TSource>(this ZeroAllocLinqInternal.IOrderedEnumerable<TSource> source,
+                                                                                        IComparer<TSource> comparer = null)
         {
             if (source == null)
                 throw new ArgumentNullException(nameof(source));
@@ -590,6 +604,7 @@ namespace Astek
                 throw new ArgumentNullException(nameof(source));
             return new TakeEnumerable<TSource>(source, count);
         }
+
         public static IZeroAllocEnumerable<TSource> TakeWhile<TSource>(
             this IEnumerable<TSource> source,
             Func<TSource, bool> predicate)
@@ -600,6 +615,7 @@ namespace Astek
         }
 
         #endregion
+
         #region Skip Extension
 
         public static IZeroAllocEnumerable<TSource> Skip<TSource>(
@@ -610,6 +626,7 @@ namespace Astek
                 throw new ArgumentNullException(nameof(source));
             return new SkipEnumerable<TSource>(source, count);
         }
+
         public static IZeroAllocEnumerable<TSource> SkipWhile<TSource>(
             this IEnumerable<TSource> source,
             Func<TSource, bool> predicate)
