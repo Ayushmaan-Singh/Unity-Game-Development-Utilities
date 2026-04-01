@@ -15,19 +15,30 @@ namespace Astek
         public static bool InheritsOrImplements(this Type type, Type baseType)
         {
             type = ResolveGenericType(type);
-            baseType=ResolveGenericType(baseType);
+            baseType = ResolveGenericType(baseType);
 
             while (type != typeof(object))
             {
                 if (baseType == type || HasAnyInterfaces(type, baseType))
                     return true;
-                type=ResolveGenericType(type.BaseType);
+                type = ResolveGenericType(type.BaseType);
                 if (type == null) return false;
             }
 
             return false;
         }
-        
+
+        /// <summary>
+        /// Return true if the type to be checked is a number type data structure
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public static bool IsNumericType(this Type type) => type == typeof(float) || type == typeof(double) || type == typeof(int) ||
+                                                            type == typeof(long) || type == typeof(short) || type == typeof(byte) ||
+                                                            type == typeof(uint) || type == typeof(ulong) || type == typeof(ushort) ||
+                                                            type == typeof(sbyte) || type == typeof(decimal);
+
+
         private static Type ResolveGenericType(Type type)
         {
             if (type is not { IsGenericType: true }) return type;
