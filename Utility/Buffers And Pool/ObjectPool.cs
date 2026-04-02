@@ -5,24 +5,26 @@ using UnityEngine;
 #nullable enable
 namespace Astek
 {
-    [Serializable]
     public class ObjectPool<T>
     {
         private readonly LinkedList<T> FIFO = new LinkedList<T>();
-        [SerializeField, Min(1)] private int maxSize;
-        [SerializeField] private bool canExpand = true;
+        private readonly int _maxSize;
+        private readonly bool _canExpand = true;
 
-        public int Count=> FIFO.Count;
-        public bool CanBePooled => FIFO.Count < maxSize || canExpand;
+        public int Count => FIFO.Count;
+        public bool CanBePooled => FIFO.Count < _maxSize || _canExpand;
         public bool CanRelease => FIFO.Count > 0;
 
         public event Action<T> OnPooled = delegate { };
         public event Action<T> OnRelease = delegate { };
         public event Action<T> OnClear = delegate { };
 
-        public ObjectPool() { }
-        public ObjectPool(int maxSize) => this.maxSize = maxSize;
-        public ObjectPool(bool canExpand) => this.canExpand = canExpand;
+        public ObjectPool() => _canExpand = true;
+        public ObjectPool(int maxSize = 1)
+        {
+            _maxSize = maxSize;
+            _canExpand = false;
+        }
 
         public void Pool(T obj)
         {

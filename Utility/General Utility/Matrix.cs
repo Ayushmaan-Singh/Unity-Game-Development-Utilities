@@ -9,8 +9,8 @@ namespace Astek
         private readonly T[,] _matrix;
         public T this[int column, int row]
         {
-            get => _matrix[column, row];
-            set => _matrix[column, row] = value;
+            get => _matrix[row, column];
+            set => _matrix[row, column] = value;
         }
         public readonly int RowCount;
         public readonly int ColumnCount;
@@ -116,6 +116,29 @@ namespace Astek
                 for (int column = 0; column < ColumnCount; column++)
                     _matrix[row, column] = copy._matrix[column, row];
             }
+        }
+
+        public T[] GetRow(int row)
+        {
+            if (row < 0 || row > RowCount)
+                throw new ArgumentOutOfRangeException(nameof(row));
+
+            T[] rowArray = new T[ColumnCount];
+            for (int i = 0; i < ColumnCount; i++)
+                rowArray[i] = _matrix[row, i];
+
+            return rowArray;
+        }
+        public T[] GetColumn(int col)
+        {
+            if (col < 0 || col > ColumnCount)
+                throw new ArgumentOutOfRangeException(nameof(col));
+
+            T[] colArray = new T[RowCount];
+            for (int i = 0; i < RowCount; i++)
+                colArray[i] = _matrix[i, col];
+
+            return colArray;
         }
 
         /// <summary> 
@@ -374,12 +397,7 @@ namespace Astek
             return result;
         }
 
-        private static T Abs(T val)
-        {
-            // Simple Absolute value helper for pivoting
-            dynamic d = val;
-            return d < 0 ? _negateFunc(val) : val;
-        }
+        private static T Abs(T val) => Comparer<T>.Default.Compare(val, default(T)) < 0 ? _negateFunc(val) : val;
 
         public bool Equals(Matrix<T> other) => Equals(_matrix, other._matrix) && RowCount == other.RowCount && ColumnCount == other.ColumnCount;
         public override bool Equals(object obj) => obj is Matrix<T> other && Equals(other);
