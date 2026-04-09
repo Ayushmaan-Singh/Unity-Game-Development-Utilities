@@ -4,14 +4,17 @@ using System.Linq.Expressions;
 
 namespace Astek
 {
-    public readonly struct Matrix<T> : IEquatable<Matrix<T>>
+    public readonly struct Matrix<T> : IEquatable<Matrix<T>>, IEquatable<T[,]>
     {
         private readonly T[,] _matrix;
-        public T this[int column, int row]
+        /// <param name="col">x in matrix i.e. left and right</param>
+        /// <param name="row">y in matrix i.e. up and down</param>
+        public T this[int col, int row]
         {
-            get => _matrix[row, column];
-            set => _matrix[row, column] = value;
+            get => _matrix[row, col];
+            set => _matrix[row, col] = value;
         }
+
         public readonly int RowCount;
         public readonly int ColumnCount;
 
@@ -89,16 +92,20 @@ namespace Astek
             _one = (T)Convert.ChangeType(1, typeof(T));
         }
 
-        public Matrix(int column, int row)
+        /// <param name="columnCount">column count/width of matrix</param>
+        /// <param name="rowCount">row count/height of matrix</param>
+        public Matrix(int columnCount, int rowCount)
         {
             Type type = typeof(T);
             if (!typeof(T).IsNumericType())
                 throw new InvalidOperationException("Cannot make a matrix of type " + type.ToString());
 
-            _matrix = new T[column, row];
-            RowCount = row;
-            ColumnCount = column;
+            _matrix = new T[columnCount, rowCount];
+            RowCount = rowCount;
+            ColumnCount = columnCount;
         }
+
+        /// <param name="size">row and column count of square matrix</param>
         public Matrix(int size)
         {
             _matrix = new T[size, size];
@@ -111,32 +118,30 @@ namespace Astek
             ColumnCount = copy.ColumnCount;
 
             _matrix = new T[RowCount, ColumnCount];
-            for (int row = 0; row < RowCount; row++)
-            {
-                for (int column = 0; column < ColumnCount; column++)
-                    _matrix[row, column] = copy._matrix[column, row];
-            }
+            for (int r = 0; r < RowCount; r++)
+                for (int c = 0; c < ColumnCount; c++)
+                    _matrix[r, c] = copy._matrix[c, r];
         }
 
-        public T[] GetRow(int row)
+        public T[] GetRow(int rowIndex)
         {
-            if (row < 0 || row > RowCount)
-                throw new ArgumentOutOfRangeException(nameof(row));
+            if (rowIndex < 0 || rowIndex > RowCount)
+                throw new ArgumentOutOfRangeException(nameof(rowIndex));
 
             T[] rowArray = new T[ColumnCount];
-            for (int i = 0; i < ColumnCount; i++)
-                rowArray[i] = _matrix[row, i];
+            for (int c = 0; c < ColumnCount; c++)
+                rowArray[c] = _matrix[rowIndex, c];
 
             return rowArray;
         }
-        public T[] GetColumn(int col)
+        public T[] GetColumn(int columnIndex)
         {
-            if (col < 0 || col > ColumnCount)
-                throw new ArgumentOutOfRangeException(nameof(col));
+            if (columnIndex < 0 || columnIndex > ColumnCount)
+                throw new ArgumentOutOfRangeException(nameof(columnIndex));
 
             T[] colArray = new T[RowCount];
-            for (int i = 0; i < RowCount; i++)
-                colArray[i] = _matrix[i, col];
+            for (int r = 0; r < RowCount; r++)
+                colArray[r] = _matrix[r, columnIndex];
 
             return colArray;
         }
@@ -218,60 +223,60 @@ namespace Astek
             if (matrix.RowCount != matrix.ColumnCount)
                 throw new InvalidOperationException("Only square matrices are invertible.");
 
-            int n = matrix.RowCount;
+            int rowCount = matrix.RowCount;
             // Create an augmented matrix [A | I]
-            T[,] aug = new T[n, 2 * n];
-            for (int i = 0; i < n; i++)
+            T[,] aug = new T[rowCount, 2 * rowCount];
+            for (int r = 0; r < rowCount; r++)
             {
-                for (int j = 0; j < n; j++)
-                    aug[i, j] = matrix[i, j];
-                aug[i, i + n] = _one;
+                for (int c = 0; c < rowCount; c++)
+                    aug[r, c] = matrix[r, c];
+                aug[r, r + rowCount] = _one;
             }
 
             // Gauss-Jordan Elimination
-            for (int i = 0; i < n; i++)
+            for (int r = 0; r < rowCount; r++)
             {
                 // 1. Partial Pivoting: Find the largest pivot to reduce numerical error
-                int pivotRow = i;
-                for (int k = i + 1; k < n; k++)
+                int pivotRow = r;
+                for (int k = r + 1; k < rowCount; k++)
                 {
-                    if (Comparer<T>.Default.Compare(Abs(aug[k, i]), Abs(aug[pivotRow, i])) > 0)
+                    if (Comparer<T>.Default.Compare(Abs(aug[k, r]), Abs(aug[pivotRow, r])) > 0)
                         pivotRow = k;
                 }
 
                 // Swap current row with pivot row
-                if (pivotRow != i)
+                if (pivotRow != r)
                 {
-                    for (int j = 0; j < 2 * n; j++)
+                    for (int c = 0; c < 2 * rowCount; c++)
                     {
-                        (aug[i, j], aug[pivotRow, j]) = (aug[pivotRow, j], aug[i, j]);
+                        (aug[r, c], aug[pivotRow, c]) = (aug[pivotRow, c], aug[r, c]);
                     }
                 }
 
                 // 2. Normalize the pivot row
-                T pivotVal = aug[i, i];
+                T pivotVal = aug[r, r];
                 if (pivotVal.Equals(_zero)) throw new Exception("Matrix is singular (not invertible).");
 
-                for (int j = 0; j < 2 * n; j++)
-                    aug[i, j] = _divFunc(aug[i, j], pivotVal);
+                for (int c = 0; c < 2 * rowCount; c++)
+                    aug[r, c] = _divFunc(aug[r, c], pivotVal);
 
                 // 3. Eliminate other entries in the current column
-                for (int k = 0; k < n; k++)
+                for (int k = 0; k < rowCount; k++)
                 {
-                    if (k != i)
+                    if (k != r)
                     {
-                        T factor = aug[k, i];
-                        for (int j = 0; j < 2 * n; j++)
-                            aug[k, j] = _subtractFunc(aug[k, j], _multFunc(factor, aug[i, j]));
+                        T factor = aug[k, r];
+                        for (int j = 0; j < 2 * rowCount; j++)
+                            aug[k, j] = _subtractFunc(aug[k, j], _multFunc(factor, aug[r, j]));
                     }
                 }
             }
 
             // Extract the right side (the inverse)
-            Matrix<T> inverse = new Matrix<T>(n, n);
-            for (int i = 0; i < n; i++)
-                for (int j = 0; j < n; j++)
-                    inverse[i, j] = aug[i, j + n];
+            Matrix<T> inverse = new Matrix<T>(rowCount, rowCount);
+            for (int i = 0; i < rowCount; i++)
+                for (int j = 0; j < rowCount; j++)
+                    inverse[i, j] = aug[i, j + rowCount];
 
             return inverse;
         }
@@ -283,9 +288,9 @@ namespace Astek
 
             Matrix<T> result = new Matrix<T>(a.RowCount, a.ColumnCount);
 
-            for (int i = 0; i < a.RowCount; i++)
-                for (int j = 0; j < a.ColumnCount; j++)
-                    result[i, j] = _addFunc(a[i, j], b[i, j]);
+            for (int r = 0; r < a.RowCount; r++)
+                for (int c = 0; c < a.ColumnCount; c++)
+                    result[r, c] = _addFunc(a[r, c], b[r, c]);
 
             return result;
         }
@@ -299,9 +304,9 @@ namespace Astek
 
             Matrix<T> result = new Matrix<T>(a.RowCount, a.ColumnCount);
 
-            for (int i = 0; i < a.RowCount; i++)
-                for (int j = 0; j < a.ColumnCount; j++)
-                    result[i, j] = _addFunc(a[i, j], b[i, j]);
+            for (int r = 0; r < a.RowCount; r++)
+                for (int c = 0; c < a.ColumnCount; c++)
+                    result[r, c] = _addFunc(a[r, c], b[r, c]);
 
             return result;
         }
@@ -315,9 +320,9 @@ namespace Astek
 
             Matrix<T> result = new Matrix<T>(cols, rows);
 
-            for (int row = 0; row < rows; row++)
-                for (int column = 0; column < cols; column++)
-                    result[row, column] = _addFunc(a[row, column], b[row, column]);
+            for (int r = 0; r < rows; r++)
+                for (int c = 0; c < cols; c++)
+                    result[r, c] = _addFunc(a[r, c], b[r, c]);
 
             return result;
         }
@@ -326,9 +331,9 @@ namespace Astek
         {
             Matrix<T> result = new Matrix<T>(a.RowCount, a.ColumnCount);
 
-            for (int i = 0; i < a.RowCount; i++)
-                for (int j = 0; j < a.ColumnCount; j++)
-                    result[i, j] = _multFunc(a[i, j], b);
+            for (int r = 0; r < a.RowCount; r++)
+                for (int c = 0; c < a.ColumnCount; c++)
+                    result[r, c] = _multFunc(a[r, c], b);
 
             return result;
         }
@@ -370,29 +375,25 @@ namespace Astek
 
         public static implicit operator T[,](Matrix<T> matrix)
         {
-            int rows = matrix.RowCount;
-            int columns = matrix.ColumnCount;
+            int rowCount = matrix.RowCount;
+            int columnCount = matrix.ColumnCount;
 
-            T[,] result = new T[rows, columns];
-            for (int row = 0; row < rows; row++)
-            {
-                for (int col = 0; col < columns; col++)
-                    result[col, row] = matrix[row, col];
-            }
+            T[,] result = new T[rowCount, columnCount];
+            for (int r = 0; r < rowCount; r++)
+                for (int c = 0; c < columnCount; c++)
+                    result[c, r] = matrix[r, c];
 
             return result;
         }
         public static implicit operator Matrix<T>(T[,] arr2d)
         {
-            int rows = arr2d.GetLength(0);
-            int columns = arr2d.GetLength(1);
+            int rowCount = arr2d.GetLength(0);
+            int columnCount = arr2d.GetLength(1);
 
-            Matrix<T> result = new Matrix<T>(rows, columns);
-            for (int row = 0; row < rows; row++)
-            {
-                for (int col = 0; col < columns; col++)
-                    result[col, row] = arr2d[row, col];
-            }
+            Matrix<T> result = new Matrix<T>(rowCount, columnCount);
+            for (int r = 0; r < rowCount; r++)
+                for (int c = 0; c < columnCount; c++)
+                    result[c, r] = arr2d[r, c];
 
             return result;
         }
@@ -400,7 +401,20 @@ namespace Astek
         private static T Abs(T val) => Comparer<T>.Default.Compare(val, default(T)) < 0 ? _negateFunc(val) : val;
 
         public bool Equals(Matrix<T> other) => Equals(_matrix, other._matrix) && RowCount == other.RowCount && ColumnCount == other.ColumnCount;
-        public override bool Equals(object obj) => obj is Matrix<T> other && Equals(other);
+        public bool Equals(T[,] other) =>
+            other != null &&
+            Equals(_matrix, other) &&
+            RowCount == other.GetLength(0) &&
+            ColumnCount == other.GetLength(1);
+
+        public override bool Equals(object obj)
+        {
+            if (obj is Matrix<T> matrix)
+                return Equals(matrix);
+            if (obj is T[,] arr2d)
+                return Equals(arr2d);
+            return false;
+        }
         public override int GetHashCode() => HashCode.Combine(_matrix, RowCount, ColumnCount);
     }
 }
