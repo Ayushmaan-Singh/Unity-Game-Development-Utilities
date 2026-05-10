@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+
 namespace Astek.AdvancedStatSys.Core
 {
     public abstract class Stat<T> : IStat<T> where T : struct, IStatModifierData<T>
@@ -11,7 +12,7 @@ namespace Astek.AdvancedStatSys.Core
         private float _baseValue;
         private float _currentValue;
 
-        public event Action? OnValueChanged;
+        public event Action OnValueChanged = delegate { };
 
         public float BaseValue { get => _baseValue; set => SetBaseValue(value); }
         public float FinalValue => GetFinalValue();
@@ -25,15 +26,13 @@ namespace Astek.AdvancedStatSys.Core
 
         protected Stat(float baseValue = 0, params IStat<T>[] stats)
         {
-            _stats = stats;
-            _baseValue = baseValue;
+            _stats        = stats;
+            _baseValue    = baseValue;
             _currentValue = CalculateFinalValue(baseValue);
-
-            Action onChangedDelegate = OnChanged;
 
             for (int i = 0; i < stats.Length; i++)
             {
-                stats[i].OnValueChanged += onChangedDelegate;
+                stats[i].OnValueChanged += OnChanged;
             }
         }
 
@@ -72,9 +71,9 @@ namespace Astek.AdvancedStatSys.Core
         {
             if (!_baseValue.Approximately(value))
             {
-                _isDirty = true;
+                _isDirty   = true;
                 _baseValue = value;
-                OnValueChanged?.Invoke();
+                OnValueChanged();
             }
         }
 
@@ -83,7 +82,7 @@ namespace Astek.AdvancedStatSys.Core
         {
             if (_isDirty)
             {
-                _isDirty = false;
+                _isDirty      = false;
                 _currentValue = CalculateFinalValue(_baseValue);
             }
             return _currentValue;

@@ -7,11 +7,11 @@ public class LookAtCamera : MonoBehaviour
 {
 	[SerializeField] private bool invertDirection = true;
 
-	private Camera _camera;
+	private UnityEngine.Camera _camera;
 
 	private void Start()
 	{
-		_camera = Camera.main;
+		_camera = UnityEngine.Camera.main;
 	}
 	private void LateUpdate()
 	{

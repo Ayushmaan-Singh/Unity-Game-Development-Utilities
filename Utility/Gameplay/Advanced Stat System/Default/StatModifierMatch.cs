@@ -4,7 +4,7 @@ using Astek.AdvancedStatSys.Core;
 
 namespace Astek.AdvancedStatSys.Default
 {
-    public readonly struct StatModifierMatch : IEquatable<StatModifier<StatModifierData>>
+    public readonly struct StatModifierMatch : IEquatable<StatModifier<ModifierData>>
     {
         public readonly ValueContainer<float> ModifierValue;
         public readonly ValueContainer<StatModifierType> Type;
@@ -18,7 +18,7 @@ namespace Astek.AdvancedStatSys.Default
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool Equals(StatModifier<StatModifierData> modifier) =>
+        public bool Equals(StatModifier<ModifierData> modifier) =>
             (!ModifierValue.HasValue || ModifierValue.Value.Approximately(modifier.Value)) &&
             (!Type.HasValue || Type.Value == modifier.Data.Type) &&
             (!Source.HasValue || Source.Value == modifier.Data.Source);

@@ -8,7 +8,7 @@ namespace Astek.Input
 	public class InputUtils : MonoBehaviour
 	{
 		public delegate Vector3 MousePosition();
-		public delegate void UpdateMousePos(Camera camera);
+		public delegate void UpdateMousePos(UnityEngine.Camera camera);
 
 		public MousePosition GetMousePosition { get; private set; }
 		public UpdateMousePos UpdateMousePosition { get; private set; }
@@ -29,7 +29,7 @@ namespace Astek.Input
 			return _currentMousePos;
 		}
 
-		private void MousePositionToXZPlane(Camera camera)
+		private void MousePositionToXZPlane(UnityEngine.Camera camera)
 		{
 			Plane plane = new Plane(Vector3.up, 0);
 			Ray ray = camera.ScreenPointToRay(Mouse.current.position.ReadValue());
@@ -43,7 +43,7 @@ namespace Astek.Input
 		/// Not used in current game
 		/// </summary>
 		/// <param name="camera"></param>
-		private void MousePositionToXYPlane(Camera camera)
+		private void MousePositionToXYPlane(UnityEngine.Camera camera)
 		{
 			_currentMousePos = camera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 		}

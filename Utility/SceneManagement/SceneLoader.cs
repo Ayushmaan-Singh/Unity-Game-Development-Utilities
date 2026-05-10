@@ -13,7 +13,7 @@ namespace Astek.SceneManagement
 		[SerializeField, FoldoutGroup("Loading UI"), ShowIf("@useLoadingUI")] private Image loadingBar;
 		[SerializeField, FoldoutGroup("Loading UI"), ShowIf("@useLoadingUI")] private float fillSpeed = 0.5f;
 		[SerializeField, FoldoutGroup("Loading UI"), ShowIf("@useLoadingUI")] private Canvas loadingCanvas;
-		[SerializeField, FoldoutGroup("Loading UI"), ShowIf("@useLoadingUI")] private Camera loadingCamera;
+		[SerializeField, FoldoutGroup("Loading UI"), ShowIf("@useLoadingUI")] private UnityEngine.Camera loadingCamera;
 		[SerializeField] private SceneGroup[] sceneGroups;
 
 		private float targetProgress;

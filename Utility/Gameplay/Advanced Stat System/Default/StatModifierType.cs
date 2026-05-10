@@ -6,6 +6,6 @@
         Mult,
         MultTotal,
         Max,
-        Min,
+        Min
     }
 }
