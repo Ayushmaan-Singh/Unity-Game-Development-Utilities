@@ -9,7 +9,7 @@ namespace Astek.Gameplay.Collision
 {
 	public static class OverlapCollisionExtension
 	{
-		private enum CastType
+		public enum CastType
 		{
 			Invalid,
 			Box,
@@ -17,7 +17,7 @@ namespace Astek.Gameplay.Collision
 			Capsule
 		}
 
-		private enum CastType2D
+		public enum CastType2D
 		{
 			Invalid,
 			Box,
