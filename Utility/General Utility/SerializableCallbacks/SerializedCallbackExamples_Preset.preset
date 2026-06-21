@@ -1,0 +1,2856 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!181963792 &2655988077585873504
+Preset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SerializedCallbackExamples_Preset
+  m_TargetType:
+    m_NativeTypeID: 114
+    m_ManagedTypePPtr: {fileID: 11500000, guid: 1dde2657a55b4af5827982683b8a97a3, type: 3}
+    m_ManagedTypeFallback: 
+  m_Properties:
+  - target: {fileID: 0}
+    propertyPath: m_Enabled
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorHideFlags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorClassIdentifier
+    value: Assembly-CSharp::Astek.SerializableMethods.Editor.Example
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.targetObject
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.methodName
+    value: Returns_Int
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.size
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[0].Type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[0].BoolValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[0].IntValue
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[0].FloatValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[0].StringValue
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[0].Vector2Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[0].Vector2Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[0].Vector2IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[0].Vector2IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[0].Vector3Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[0].Vector3Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[0].Vector3Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[0].Vector3IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[0].Vector3IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[0].Vector3IntValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[0].Vector4Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[0].Vector4Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[0].Vector4Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[0].Vector4Value.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[0].ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[0].ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[0].ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[0].ColorValue.a
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[1].Type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[1].BoolValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[1].IntValue
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[1].FloatValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[1].StringValue
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[1].Vector2Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[1].Vector2Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[1].Vector2IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[1].Vector2IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[1].Vector3Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[1].Vector3Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[1].Vector3Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[1].Vector3IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[1].Vector3IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[1].Vector3IntValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[1].Vector4Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[1].Vector4Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[1].Vector4Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[1].Vector4Value.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[1].ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[1].ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[1].ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: intCallback.parameters.Array.data[1].ColorValue.a
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.targetObject
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.methodName
+    value: Returns_Float
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.size
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[0].Type
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[0].BoolValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[0].IntValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[0].FloatValue
+    value: 1.3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[0].StringValue
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[0].Vector2Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[0].Vector2Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[0].Vector2IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[0].Vector2IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[0].Vector3Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[0].Vector3Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[0].Vector3Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[0].Vector3IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[0].Vector3IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[0].Vector3IntValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[0].Vector4Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[0].Vector4Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[0].Vector4Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[0].Vector4Value.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[0].ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[0].ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[0].ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[0].ColorValue.a
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[1].Type
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[1].BoolValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[1].IntValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[1].FloatValue
+    value: 2.4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[1].StringValue
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[1].Vector2Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[1].Vector2Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[1].Vector2IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[1].Vector2IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[1].Vector3Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[1].Vector3Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[1].Vector3Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[1].Vector3IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[1].Vector3IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[1].Vector3IntValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[1].Vector4Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[1].Vector4Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[1].Vector4Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[1].Vector4Value.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[1].ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[1].ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[1].ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: floatCallback.parameters.Array.data[1].ColorValue.a
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.targetObject
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.methodName
+    value: Returns_Bool
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.size
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[0].Type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[0].BoolValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[0].IntValue
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[0].FloatValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[0].StringValue
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[0].Vector2Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[0].Vector2Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[0].Vector2IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[0].Vector2IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[0].Vector3Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[0].Vector3Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[0].Vector3Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[0].Vector3IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[0].Vector3IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[0].Vector3IntValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[0].Vector4Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[0].Vector4Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[0].Vector4Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[0].Vector4Value.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[0].ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[0].ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[0].ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[0].ColorValue.a
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[1].Type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[1].BoolValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[1].IntValue
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[1].FloatValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[1].StringValue
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[1].Vector2Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[1].Vector2Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[1].Vector2IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[1].Vector2IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[1].Vector3Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[1].Vector3Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[1].Vector3Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[1].Vector3IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[1].Vector3IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[1].Vector3IntValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[1].Vector4Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[1].Vector4Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[1].Vector4Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[1].Vector4Value.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[1].ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[1].ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[1].ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: boolCallback.parameters.Array.data[1].ColorValue.a
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.targetObject
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.methodName
+    value: Returns_String
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.size
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[0].Type
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[0].BoolValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[0].IntValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[0].FloatValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[0].StringValue
+    value: This is
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[0].Vector2Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[0].Vector2Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[0].Vector2IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[0].Vector2IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[0].Vector3Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[0].Vector3Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[0].Vector3Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[0].Vector3IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[0].Vector3IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[0].Vector3IntValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[0].Vector4Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[0].Vector4Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[0].Vector4Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[0].Vector4Value.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[0].ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[0].ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[0].ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[0].ColorValue.a
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[1].Type
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[1].BoolValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[1].IntValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[1].FloatValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[1].StringValue
+    value: ASTEK
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[1].Vector2Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[1].Vector2Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[1].Vector2IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[1].Vector2IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[1].Vector3Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[1].Vector3Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[1].Vector3Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[1].Vector3IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[1].Vector3IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[1].Vector3IntValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[1].Vector4Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[1].Vector4Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[1].Vector4Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[1].Vector4Value.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[1].ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[1].ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[1].ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: stringCallback.parameters.Array.data[1].ColorValue.a
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.targetObject
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.methodName
+    value: Returns_Vector2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.size
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[0].Type
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[0].BoolValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[0].IntValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[0].FloatValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[0].StringValue
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[0].Vector2Value.x
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[0].Vector2Value.y
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[0].Vector2IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[0].Vector2IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[0].Vector3Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[0].Vector3Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[0].Vector3Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[0].Vector3IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[0].Vector3IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[0].Vector3IntValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[0].Vector4Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[0].Vector4Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[0].Vector4Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[0].Vector4Value.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[0].ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[0].ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[0].ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[0].ColorValue.a
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[1].Type
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[1].BoolValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[1].IntValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[1].FloatValue
+    value: 1.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[1].StringValue
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[1].Vector2Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[1].Vector2Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[1].Vector2IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[1].Vector2IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[1].Vector3Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[1].Vector3Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[1].Vector3Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[1].Vector3IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[1].Vector3IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[1].Vector3IntValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[1].Vector4Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[1].Vector4Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[1].Vector4Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[1].Vector4Value.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[1].ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[1].ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[1].ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[1].ColorValue.a
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[2].Type
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[2].BoolValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[2].IntValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[2].FloatValue
+    value: 2.67
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[2].StringValue
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[2].Vector2Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[2].Vector2Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[2].Vector2IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[2].Vector2IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[2].Vector3Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[2].Vector3Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[2].Vector3Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[2].Vector3IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[2].Vector3IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[2].Vector3IntValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[2].Vector4Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[2].Vector4Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[2].Vector4Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[2].Vector4Value.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[2].ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[2].ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[2].ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2Callback.parameters.Array.data[2].ColorValue.a
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.targetObject
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.methodName
+    value: Returns_Vector2Int
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.size
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[0].Type
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[0].BoolValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[0].IntValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[0].FloatValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[0].StringValue
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[0].Vector2Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[0].Vector2Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[0].Vector2IntValue.x
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[0].Vector2IntValue.y
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[0].Vector3Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[0].Vector3Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[0].Vector3Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[0].Vector3IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[0].Vector3IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[0].Vector3IntValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[0].Vector4Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[0].Vector4Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[0].Vector4Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[0].Vector4Value.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[0].ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[0].ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[0].ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[0].ColorValue.a
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[1].Type
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[1].BoolValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[1].IntValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[1].FloatValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[1].StringValue
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[1].Vector2Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[1].Vector2Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[1].Vector2IntValue.x
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[1].Vector2IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[1].Vector3Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[1].Vector3Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[1].Vector3Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[1].Vector3IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[1].Vector3IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[1].Vector3IntValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[1].Vector4Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[1].Vector4Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[1].Vector4Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[1].Vector4Value.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[1].ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[1].ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[1].ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector2IntCallback.parameters.Array.data[1].ColorValue.a
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.targetObject
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.methodName
+    value: Returns_Vector3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.size
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[0].Type
+    value: 6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[0].BoolValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[0].IntValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[0].FloatValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[0].StringValue
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[0].Vector2Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[0].Vector2Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[0].Vector2IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[0].Vector2IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[0].Vector3Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[0].Vector3Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[0].Vector3Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[0].Vector3IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[0].Vector3IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[0].Vector3IntValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[0].Vector4Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[0].Vector4Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[0].Vector4Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[0].Vector4Value.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[0].ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[0].ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[0].ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[0].ColorValue.a
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[1].Type
+    value: 6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[1].BoolValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[1].IntValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[1].FloatValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[1].StringValue
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[1].Vector2Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[1].Vector2Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[1].Vector2IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[1].Vector2IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[1].Vector3Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[1].Vector3Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[1].Vector3Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[1].Vector3IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[1].Vector3IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[1].Vector3IntValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[1].Vector4Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[1].Vector4Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[1].Vector4Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[1].Vector4Value.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[1].ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[1].ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[1].ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[1].ColorValue.a
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[2].Type
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[2].BoolValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[2].IntValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[2].FloatValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[2].StringValue
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[2].Vector2Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[2].Vector2Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[2].Vector2IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[2].Vector2IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[2].Vector3Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[2].Vector3Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[2].Vector3Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[2].Vector3IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[2].Vector3IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[2].Vector3IntValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[2].Vector4Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[2].Vector4Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[2].Vector4Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[2].Vector4Value.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[2].ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[2].ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[2].ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3Callback.parameters.Array.data[2].ColorValue.a
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.targetObject
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.methodName
+    value: Returns_Vector3Int
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.size
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[0].Type
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[0].BoolValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[0].IntValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[0].FloatValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[0].StringValue
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[0].Vector2Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[0].Vector2Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[0].Vector2IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[0].Vector2IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[0].Vector3Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[0].Vector3Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[0].Vector3Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[0].Vector3IntValue.x
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[0].Vector3IntValue.y
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[0].Vector3IntValue.z
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[0].Vector4Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[0].Vector4Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[0].Vector4Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[0].Vector4Value.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[0].ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[0].ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[0].ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[0].ColorValue.a
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[1].Type
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[1].BoolValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[1].IntValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[1].FloatValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[1].StringValue
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[1].Vector2Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[1].Vector2Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[1].Vector2IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[1].Vector2IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[1].Vector3Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[1].Vector3Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[1].Vector3Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[1].Vector3IntValue.x
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[1].Vector3IntValue.y
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[1].Vector3IntValue.z
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[1].Vector4Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[1].Vector4Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[1].Vector4Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[1].Vector4Value.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[1].ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[1].ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[1].ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[1].ColorValue.a
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[2].Type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[2].BoolValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[2].IntValue
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[2].FloatValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[2].StringValue
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[2].Vector2Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[2].Vector2Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[2].Vector2IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[2].Vector2IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[2].Vector3Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[2].Vector3Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[2].Vector3Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[2].Vector3IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[2].Vector3IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[2].Vector3IntValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[2].Vector4Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[2].Vector4Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[2].Vector4Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[2].Vector4Value.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[2].ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[2].ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[2].ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector3IntCallback.parameters.Array.data[2].ColorValue.a
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.targetObject
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.methodName
+    value: Returns_Vector4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.size
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[0].Type
+    value: 8
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[0].BoolValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[0].IntValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[0].FloatValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[0].StringValue
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[0].Vector2Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[0].Vector2Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[0].Vector2IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[0].Vector2IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[0].Vector3Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[0].Vector3Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[0].Vector3Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[0].Vector3IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[0].Vector3IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[0].Vector3IntValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[0].Vector4Value.x
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[0].Vector4Value.y
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[0].Vector4Value.z
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[0].Vector4Value.w
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[0].ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[0].ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[0].ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[0].ColorValue.a
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[1].Type
+    value: 8
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[1].BoolValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[1].IntValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[1].FloatValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[1].StringValue
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[1].Vector2Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[1].Vector2Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[1].Vector2IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[1].Vector2IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[1].Vector3Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[1].Vector3Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[1].Vector3Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[1].Vector3IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[1].Vector3IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[1].Vector3IntValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[1].Vector4Value.x
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[1].Vector4Value.y
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[1].Vector4Value.z
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[1].Vector4Value.w
+    value: 8
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[1].ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[1].ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[1].ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: vector4Callback.parameters.Array.data[1].ColorValue.a
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.targetObject
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.methodName
+    value: Returns_Color
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.size
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[0].Type
+    value: 9
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[0].BoolValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[0].IntValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[0].FloatValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[0].StringValue
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[0].Vector2Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[0].Vector2Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[0].Vector2IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[0].Vector2IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[0].Vector3Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[0].Vector3Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[0].Vector3Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[0].Vector3IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[0].Vector3IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[0].Vector3IntValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[0].Vector4Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[0].Vector4Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[0].Vector4Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[0].Vector4Value.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[0].ColorValue.r
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[0].ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[0].ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[0].ColorValue.a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[1].Type
+    value: 9
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[1].BoolValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[1].IntValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[1].FloatValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[1].StringValue
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[1].Vector2Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[1].Vector2Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[1].Vector2IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[1].Vector2IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[1].Vector3Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[1].Vector3Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[1].Vector3Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[1].Vector3IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[1].Vector3IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[1].Vector3IntValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[1].Vector4Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[1].Vector4Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[1].Vector4Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[1].Vector4Value.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[1].ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[1].ColorValue.g
+    value: 0.03808403
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[1].ColorValue.b
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[1].ColorValue.a
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[2].Type
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[2].BoolValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[2].IntValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[2].FloatValue
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[2].StringValue
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[2].Vector2Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[2].Vector2Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[2].Vector2IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[2].Vector2IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[2].Vector3Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[2].Vector3Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[2].Vector3Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[2].Vector3IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[2].Vector3IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[2].Vector3IntValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[2].Vector4Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[2].Vector4Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[2].Vector4Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[2].Vector4Value.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[2].ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[2].ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[2].ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: colorCallback.parameters.Array.data[2].ColorValue.a
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: noParamsCallback.targetObject
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: noParamsCallback.methodName
+    value: Returns_NoParameters
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: noParamsCallback.parameters.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.targetObject
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.methodName
+    value: Returns_MixedTypes
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.size
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[0].Type
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[0].BoolValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[0].IntValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[0].FloatValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[0].StringValue
+    value: This is ASTEK
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[0].Vector2Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[0].Vector2Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[0].Vector2IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[0].Vector2IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[0].Vector3Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[0].Vector3Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[0].Vector3Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[0].Vector3IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[0].Vector3IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[0].Vector3IntValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[0].Vector4Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[0].Vector4Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[0].Vector4Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[0].Vector4Value.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[0].ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[0].ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[0].ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[0].ColorValue.a
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[1].Type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[1].BoolValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[1].IntValue
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[1].FloatValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[1].StringValue
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[1].Vector2Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[1].Vector2Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[1].Vector2IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[1].Vector2IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[1].Vector3Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[1].Vector3Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[1].Vector3Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[1].Vector3IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[1].Vector3IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[1].Vector3IntValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[1].Vector4Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[1].Vector4Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[1].Vector4Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[1].Vector4Value.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[1].ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[1].ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[1].ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[1].ColorValue.a
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[2].Type
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[2].BoolValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[2].IntValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[2].FloatValue
+    value: 3.6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[2].StringValue
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[2].Vector2Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[2].Vector2Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[2].Vector2IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[2].Vector2IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[2].Vector3Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[2].Vector3Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[2].Vector3Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[2].Vector3IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[2].Vector3IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[2].Vector3IntValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[2].Vector4Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[2].Vector4Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[2].Vector4Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[2].Vector4Value.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[2].ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[2].ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[2].ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[2].ColorValue.a
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[3].Type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[3].BoolValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[3].IntValue
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[3].FloatValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[3].StringValue
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[3].Vector2Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[3].Vector2Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[3].Vector2IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[3].Vector2IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[3].Vector3Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[3].Vector3Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[3].Vector3Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[3].Vector3IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[3].Vector3IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[3].Vector3IntValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[3].Vector4Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[3].Vector4Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[3].Vector4Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[3].Vector4Value.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[3].ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[3].ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[3].ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: mixedCallback.parameters.Array.data[3].ColorValue.a
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: privateCallback.targetObject
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: privateCallback.methodName
+    value: Returns_Private
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: privateCallback.parameters.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: privateCallback.parameters.Array.data[0].Type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: privateCallback.parameters.Array.data[0].BoolValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: privateCallback.parameters.Array.data[0].IntValue
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: privateCallback.parameters.Array.data[0].FloatValue
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: privateCallback.parameters.Array.data[0].StringValue
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: privateCallback.parameters.Array.data[0].Vector2Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: privateCallback.parameters.Array.data[0].Vector2Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: privateCallback.parameters.Array.data[0].Vector2IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: privateCallback.parameters.Array.data[0].Vector2IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: privateCallback.parameters.Array.data[0].Vector3Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: privateCallback.parameters.Array.data[0].Vector3Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: privateCallback.parameters.Array.data[0].Vector3Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: privateCallback.parameters.Array.data[0].Vector3IntValue.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: privateCallback.parameters.Array.data[0].Vector3IntValue.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: privateCallback.parameters.Array.data[0].Vector3IntValue.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: privateCallback.parameters.Array.data[0].Vector4Value.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: privateCallback.parameters.Array.data[0].Vector4Value.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: privateCallback.parameters.Array.data[0].Vector4Value.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: privateCallback.parameters.Array.data[0].Vector4Value.w
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: privateCallback.parameters.Array.data[0].ColorValue.r
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: privateCallback.parameters.Array.data[0].ColorValue.g
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: privateCallback.parameters.Array.data[0].ColorValue.b
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: privateCallback.parameters.Array.data[0].ColorValue.a
+    value: 0
+    objectReference: {fileID: 0}
+  m_ExcludedProperties: []
+  m_CoupledType:
+    m_NativeTypeID: 0
+    m_ManagedTypePPtr: {fileID: 0}
+    m_ManagedTypeFallback: 
+  m_CoupledProperties: []
