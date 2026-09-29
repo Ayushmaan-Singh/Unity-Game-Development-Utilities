@@ -1,124 +1,154 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
+
 namespace Astek
 {
-	public static class RendererMethodExtension
-	{
-		#region Modify Material Properties
+    public static class RendererMethodExtension
+    {
+        #region Modify Material Properties
 
-		public static void ModifyMaterialProperty_Float(this Renderer renderer, int propertyID, float val)
-		{
-			MaterialPropertyBlock cachePropertyBlock = new MaterialPropertyBlock();
-			renderer.GetPropertyBlock(cachePropertyBlock);
+        private static MaterialPropertyBlock _cachedBlock = new MaterialPropertyBlock();
 
-			cachePropertyBlock.SetFloat(propertyID, val);
+        public static void ModifyMaterialProperty_Float(this Renderer renderer, int propertyID, float val)
+        {
+            if (!renderer) throw new ArgumentNullException(nameof(renderer));
+            renderer.GetPropertyBlock(_cachedBlock);
 
-			renderer.SetPropertyBlock(cachePropertyBlock);
-			cachePropertyBlock.Clear();
-		}
-		public static void ModifyMaterialProperty_FloatArray(this Renderer renderer, int propertyID, List<float> val)
-		{
-			MaterialPropertyBlock cachePropertyBlock = new MaterialPropertyBlock();
-			renderer.GetPropertyBlock(cachePropertyBlock);
+            if (_cachedBlock == null) throw new NullReferenceException($"{renderer} doesn't have a material");
+            if (!_cachedBlock.HasFloat(propertyID)) throw new Exception($"Material:{renderer.material} doesn't have a property by id {propertyID}");
+            _cachedBlock.SetFloat(propertyID, val);
 
-			cachePropertyBlock.SetFloatArray(propertyID, val);
+            renderer.SetPropertyBlock(_cachedBlock);
+            _cachedBlock.Clear();
+        }
+        public static void ModifyMaterialProperty_FloatArray(this Renderer renderer, int propertyID, List<float> val)
+        {
+            if (!renderer) throw new ArgumentNullException(nameof(renderer));
+            renderer.GetPropertyBlock(_cachedBlock);
 
-			renderer.SetPropertyBlock(cachePropertyBlock);
-			cachePropertyBlock.Clear();
-		}
+            if (_cachedBlock == null) throw new NullReferenceException($"{renderer} doesn't have a material");
+            if (_cachedBlock.GetFloatArray(propertyID) == null) throw new Exception($"Material:{renderer.material} doesn't have a property by id {propertyID}");
+            _cachedBlock.SetFloatArray(propertyID, val);
 
-		public static void ModifyMaterialProperty_Int(this Renderer renderer, int propertyID, int val)
-		{
-			MaterialPropertyBlock cachePropertyBlock = new MaterialPropertyBlock();
-			renderer.GetPropertyBlock(cachePropertyBlock);
+            renderer.SetPropertyBlock(_cachedBlock);
+            _cachedBlock.Clear();
+        }
 
-			cachePropertyBlock.SetInteger(propertyID, val);
+        public static void ModifyMaterialProperty_Int(this Renderer renderer, int propertyID, int val)
+        {
+            if (!renderer) throw new ArgumentNullException(nameof(renderer));
+            renderer.GetPropertyBlock(_cachedBlock);
 
-			renderer.SetPropertyBlock(cachePropertyBlock);
-			cachePropertyBlock.Clear();
-		}
+            if (_cachedBlock == null) throw new NullReferenceException($"{renderer} doesn't have a material");
+            if (!_cachedBlock.HasInt(propertyID)) throw new Exception($"Material:{renderer.material} doesn't have a property by id {propertyID}");
+            _cachedBlock.SetInteger(propertyID, val);
 
-		public static void ModifyMaterialProperty_Vector(this Renderer renderer, int propertyID, Vector4 val)
-		{
-			MaterialPropertyBlock cachePropertyBlock = new MaterialPropertyBlock();
-			renderer.GetPropertyBlock(cachePropertyBlock);
+            renderer.SetPropertyBlock(_cachedBlock);
+            _cachedBlock.Clear();
+        }
 
-			cachePropertyBlock.SetVector(propertyID, val);
+        public static void ModifyMaterialProperty_Vector(this Renderer renderer, int propertyID, Vector4 val)
+        {
+            if (!renderer) throw new ArgumentNullException(nameof(renderer));
+            renderer.GetPropertyBlock(_cachedBlock);
 
-			renderer.SetPropertyBlock(cachePropertyBlock);
-			cachePropertyBlock.Clear();
-		}
-		public static void ModifyMaterialProperty_VectorArray(this Renderer renderer, int propertyID, List<Vector4> val)
-		{
-			MaterialPropertyBlock cachePropertyBlock = new MaterialPropertyBlock();
-			renderer.GetPropertyBlock(cachePropertyBlock);
+            if (_cachedBlock == null) throw new NullReferenceException($"{renderer} doesn't have a material");
+            if (!_cachedBlock.HasVector(propertyID)) throw new Exception($"Material:{renderer.material} doesn't have a property by id {propertyID}");
+            _cachedBlock.SetVector(propertyID, val);
 
-			cachePropertyBlock.SetVectorArray(propertyID, val);
+            renderer.SetPropertyBlock(_cachedBlock);
+            _cachedBlock.Clear();
+        }
+        public static void ModifyMaterialProperty_VectorArray(this Renderer renderer, int propertyID, List<Vector4> val)
+        {
+            if (!renderer) throw new ArgumentNullException(nameof(renderer));
+            renderer.GetPropertyBlock(_cachedBlock);
 
-			renderer.SetPropertyBlock(cachePropertyBlock);
-			cachePropertyBlock.Clear();
-		}
+            if (_cachedBlock == null) throw new NullReferenceException($"{renderer} doesn't have a material");
+            if (_cachedBlock.GetVectorArray(propertyID) == null)
+                throw new Exception($"Material:{renderer.material} doesn't have a property by id {propertyID}");
+            _cachedBlock.SetVectorArray(propertyID, val);
 
-		public static void ModifyMaterialProperty_Matrix(this Renderer renderer, int propertyID, Matrix4x4 val)
-		{
-			MaterialPropertyBlock cachePropertyBlock = new MaterialPropertyBlock();
-			renderer.GetPropertyBlock(cachePropertyBlock);
+            renderer.SetPropertyBlock(_cachedBlock);
+            _cachedBlock.Clear();
+        }
 
-			cachePropertyBlock.SetMatrix(propertyID, val);
+        public static void ModifyMaterialProperty_Matrix(this Renderer renderer, int propertyID, Matrix4x4 val)
+        {
+            if (!renderer) throw new ArgumentNullException(nameof(renderer));
+            renderer.GetPropertyBlock(_cachedBlock);
 
-			renderer.SetPropertyBlock(cachePropertyBlock);
-			cachePropertyBlock.Clear();
-		}
-		public static void ModifyMaterialProperty_MatrixArray(this Renderer renderer, int propertyID, List<Matrix4x4> val)
-		{
-			MaterialPropertyBlock cachePropertyBlock = new MaterialPropertyBlock();
-			renderer.GetPropertyBlock(cachePropertyBlock);
+            if (_cachedBlock == null) throw new NullReferenceException($"{renderer} doesn't have a material");
+            if (!_cachedBlock.HasMatrix(propertyID)) throw new Exception($"Material:{renderer.material} doesn't have a property by id {propertyID}");
+            _cachedBlock.SetMatrix(propertyID, val);
 
-			cachePropertyBlock.SetMatrixArray(propertyID, val);
+            renderer.SetPropertyBlock(_cachedBlock);
+            _cachedBlock.Clear();
+        }
+        public static void ModifyMaterialProperty_MatrixArray(this Renderer renderer, int propertyID, List<Matrix4x4> val)
+        {
+            if (!renderer) throw new ArgumentNullException(nameof(renderer));
+            renderer.GetPropertyBlock(_cachedBlock);
 
-			renderer.SetPropertyBlock(cachePropertyBlock);
-			cachePropertyBlock.Clear();
-		}
+            if (_cachedBlock == null) throw new NullReferenceException($"{renderer} doesn't have a material");
+            if (_cachedBlock.GetMatrixArray(propertyID) == null)
+                throw new Exception($"Material:{renderer.material} doesn't have a property by id {propertyID}");
+            _cachedBlock.SetMatrixArray(propertyID, val);
 
-		public static void ModifyMaterialProperty_Texture(this Renderer renderer, int propertyID, Texture val)
-		{
-			MaterialPropertyBlock cachePropertyBlock = new MaterialPropertyBlock();
-			renderer.GetPropertyBlock(cachePropertyBlock);
+            renderer.SetPropertyBlock(_cachedBlock);
+            _cachedBlock.Clear();
+        }
 
-			cachePropertyBlock.SetTexture(propertyID, val);
+        public static void ModifyMaterialProperty_Texture(this Renderer renderer, int propertyID, Texture val)
+        {
+            if (!renderer) throw new ArgumentNullException(nameof(renderer));
+            renderer.GetPropertyBlock(_cachedBlock);
 
-			renderer.SetPropertyBlock(cachePropertyBlock);
-			cachePropertyBlock.Clear();
-		}
+            if (_cachedBlock == null) throw new NullReferenceException($"{renderer} doesn't have a material");
+            if (!_cachedBlock.HasTexture(propertyID)) throw new Exception($"Material:{renderer.material} doesn't have a property by id {propertyID}");
+            _cachedBlock.SetTexture(propertyID, val);
 
-		public static void ModifyMaterialProperty_Buffer(this Renderer renderer, int propertyID, ComputeBuffer val)
-		{
-			MaterialPropertyBlock cachePropertyBlock = new MaterialPropertyBlock();
-			renderer.GetPropertyBlock(cachePropertyBlock);
+            renderer.SetPropertyBlock(_cachedBlock);
+            _cachedBlock.Clear();
+        }
 
-			cachePropertyBlock.SetBuffer(propertyID, val);
+        public static void ModifyMaterialProperty_Buffer(this Renderer renderer, int propertyID, ComputeBuffer val)
+        {
+            if (!renderer) throw new ArgumentNullException(nameof(renderer));
+            renderer.GetPropertyBlock(_cachedBlock);
 
-			renderer.SetPropertyBlock(cachePropertyBlock);
-			cachePropertyBlock.Clear();
-		}
+            if (_cachedBlock == null) throw new NullReferenceException($"{renderer} doesn't have a material");
+            if (!_cachedBlock.HasBuffer(propertyID)) throw new Exception($"Material:{renderer.material} doesn't have a property by id {propertyID}");
+            _cachedBlock.SetBuffer(propertyID, val);
 
-		public static void ModifyMaterialProperty_Color(this Renderer renderer, int propertyID, Color val)
-		{
-			MaterialPropertyBlock cachePropertyBlock = new MaterialPropertyBlock();
-			renderer.GetPropertyBlock(cachePropertyBlock);
+            renderer.SetPropertyBlock(_cachedBlock);
+            _cachedBlock.Clear();
+        }
 
-			cachePropertyBlock.SetColor(propertyID, val);
+        public static void ModifyMaterialProperty_Color(this Renderer renderer, int propertyID, Color val)
+        {
+            if (!renderer) throw new ArgumentNullException(nameof(renderer));
+            renderer.GetPropertyBlock(_cachedBlock);
 
-			renderer.SetPropertyBlock(cachePropertyBlock);
-			cachePropertyBlock.Clear();
-		}
+            if (_cachedBlock == null) throw new NullReferenceException($"{renderer} doesn't have a material");
+            if (!_cachedBlock.HasColor(propertyID)) throw new Exception($"Material:{renderer.material} doesn't have a property by id {propertyID}");
+            _cachedBlock.SetColor(propertyID, val);
 
-		#endregion
+            renderer.SetPropertyBlock(_cachedBlock);
+            _cachedBlock.Clear();
+        }
 
-		#region Line Renderer
+        #endregion
 
-		public static void Clear(this LineRenderer renderer) => renderer.positionCount = 0;
+        #region Line Renderer
 
-		#endregion
-	}
+        public static void Clear(this LineRenderer renderer)
+        {
+            if (renderer == null) throw new ArgumentNullException(nameof(renderer));
+            renderer.positionCount = 0;
+        }
+
+        #endregion
+    }
 }

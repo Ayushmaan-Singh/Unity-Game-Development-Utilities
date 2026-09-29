@@ -92,7 +92,7 @@ namespace Astek
             return new SelectManyEnumerable<TSource, TCollection, TResult>(source, collectionSelector, resultSelector);
         }
 
-        public static IZeroAllocEnumerable<TResult> OfType<TResult>(this IEnumerable source)
+        public static OfTypeEnumerable<TResult> OfType<TResult>(this IEnumerable source)
         {
             if (source == null)
                 throw new ArgumentNullException(nameof(source));

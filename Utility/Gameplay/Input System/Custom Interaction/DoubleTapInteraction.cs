@@ -48,10 +48,10 @@ namespace Astek
 		private double m_FirstTapTime;
 		private double _nextInputAllowedOn;
 
-		private float tapTimeOrDefault => TapTime > 0.0 ? TapTime : InputSystem.settings.defaultTapTime;
-		internal float tapDelayOrDefault => TapDelay > 0.0 ? TapDelay : InputSystem.settings.multiTapDelayTime;
-		private float pressPointOrDefault => PressPoint > 0 ? PressPoint : InputSystem.settings.defaultButtonPressPoint;
-		private float releasePointOrDefault => pressPointOrDefault * InputSystem.settings.buttonReleaseThreshold;
+		private float tapTimeOrDefault => TapTime > 0.0 ? TapTime : UnityEngine.InputSystem.InputSystem.settings.defaultTapTime;
+		internal float tapDelayOrDefault => TapDelay > 0.0 ? TapDelay : UnityEngine.InputSystem.InputSystem.settings.multiTapDelayTime;
+		private float pressPointOrDefault => PressPoint > 0 ? PressPoint : UnityEngine.InputSystem.InputSystem.settings.defaultButtonPressPoint;
+		private float releasePointOrDefault => pressPointOrDefault * UnityEngine.InputSystem.InputSystem.settings.buttonReleaseThreshold;
 
 		public void Process(ref InputInteractionContext context)
 		{
@@ -157,7 +157,7 @@ namespace Astek
 #endif
 		private static void Register()
 		{
-			InputSystem.RegisterInteraction<DoubleTapInteraction>();
+			UnityEngine.InputSystem.InputSystem.RegisterInteraction<DoubleTapInteraction>();
 		}
 	}
 }

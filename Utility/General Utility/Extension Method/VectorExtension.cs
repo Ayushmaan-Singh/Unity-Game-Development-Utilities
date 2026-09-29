@@ -19,23 +19,15 @@ namespace Astek
         public static Vector2 Add(this Vector2 vector, float x = 0, float y = 0)
             => new Vector2(vector.x + x, vector.y + y);
 
-        /// <summary>
-        /// Returns distance between 2 points using the more optimized method of root of squared magnitude method
-        /// </summary>
-        /// <param name="source"></param>
-        /// <param name="destination"></param>
-        /// <returns></returns>
-        public static float SqrMagnitudeDistance(this Vector2 source, Vector2 destination) => Mathf.Sqrt((source - destination).sqrMagnitude);
-
         public static Vector2 SpdLerp(Vector2 source, Vector2 destination, float startTime, float speed, EasingFunction easingFunction = EasingFunction.Linear)
         {
             // 1. Calculate distance covered based on current speed
             float distanceCovered = (Time.time - startTime) * speed;
             // 2. Calculate fraction of journey (t)
-            float fractionOfJourney = distanceCovered / Math.Max(0.000000000001f, source.SqrMagnitudeDistance(destination));
+            float fractionOfJourney = distanceCovered / Math.Max(0.000000000001f, (destination - source).magnitude);
             return Vector2.Lerp(source, destination, fractionOfJourney);
         }
-        
+
         /// <summary>
         /// Returns a Boolean indicating whether the current Vector3 is in a given range from another Vector3
         /// </summary>
