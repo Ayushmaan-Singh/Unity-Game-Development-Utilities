@@ -1,0 +1,417 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5417086421063359490
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3765386873940625465}
+  - component: {fileID: 6229001447727497168}
+  m_Layer: 0
+  m_Name: Serialization Callback Example
+  m_TagString: EditorOnly
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3765386873940625465
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5417086421063359490}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6229001447727497168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5417086421063359490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dde2657a55b4af5827982683b8a97a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Astek.SerializableMethods.Editor.Example
+  intCallback:
+    targetObject: {fileID: 6229001447727497168}
+    methodName: Returns_Int
+    parameters:
+    - Type: 0
+      BoolValue: 0
+      IntValue: 1
+      FloatValue: 0
+      StringValue: 
+      Vector2Value: {x: 0, y: 0}
+      Vector2IntValue: {x: 0, y: 0}
+      Vector3Value: {x: 0, y: 0, z: 0}
+      Vector3IntValue: {x: 0, y: 0, z: 0}
+      Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+      ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    - Type: 0
+      BoolValue: 0
+      IntValue: 2
+      FloatValue: 0
+      StringValue: 
+      Vector2Value: {x: 0, y: 0}
+      Vector2IntValue: {x: 0, y: 0}
+      Vector3Value: {x: 0, y: 0, z: 0}
+      Vector3IntValue: {x: 0, y: 0, z: 0}
+      Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+      ColorValue: {r: 0, g: 0, b: 0, a: 0}
+  floatCallback:
+    targetObject: {fileID: 6229001447727497168}
+    methodName: Returns_Float
+    parameters:
+    - Type: 1
+      BoolValue: 0
+      IntValue: 0
+      FloatValue: 1.3
+      StringValue: 
+      Vector2Value: {x: 0, y: 0}
+      Vector2IntValue: {x: 0, y: 0}
+      Vector3Value: {x: 0, y: 0, z: 0}
+      Vector3IntValue: {x: 0, y: 0, z: 0}
+      Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+      ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    - Type: 1
+      BoolValue: 0
+      IntValue: 0
+      FloatValue: 2.4
+      StringValue: 
+      Vector2Value: {x: 0, y: 0}
+      Vector2IntValue: {x: 0, y: 0}
+      Vector3Value: {x: 0, y: 0, z: 0}
+      Vector3IntValue: {x: 0, y: 0, z: 0}
+      Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+      ColorValue: {r: 0, g: 0, b: 0, a: 0}
+  boolCallback:
+    targetObject: {fileID: 6229001447727497168}
+    methodName: Returns_Bool
+    parameters:
+    - Type: 0
+      BoolValue: 0
+      IntValue: 1
+      FloatValue: 0
+      StringValue: 
+      Vector2Value: {x: 0, y: 0}
+      Vector2IntValue: {x: 0, y: 0}
+      Vector3Value: {x: 0, y: 0, z: 0}
+      Vector3IntValue: {x: 0, y: 0, z: 0}
+      Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+      ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    - Type: 0
+      BoolValue: 0
+      IntValue: 2
+      FloatValue: 0
+      StringValue: 
+      Vector2Value: {x: 0, y: 0}
+      Vector2IntValue: {x: 0, y: 0}
+      Vector3Value: {x: 0, y: 0, z: 0}
+      Vector3IntValue: {x: 0, y: 0, z: 0}
+      Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+      ColorValue: {r: 0, g: 0, b: 0, a: 0}
+  stringCallback:
+    targetObject: {fileID: 6229001447727497168}
+    methodName: Returns_String
+    parameters:
+    - Type: 3
+      BoolValue: 0
+      IntValue: 0
+      FloatValue: 0
+      StringValue: This is
+      Vector2Value: {x: 0, y: 0}
+      Vector2IntValue: {x: 0, y: 0}
+      Vector3Value: {x: 0, y: 0, z: 0}
+      Vector3IntValue: {x: 0, y: 0, z: 0}
+      Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+      ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    - Type: 3
+      BoolValue: 0
+      IntValue: 0
+      FloatValue: 0
+      StringValue: ASTEK
+      Vector2Value: {x: 0, y: 0}
+      Vector2IntValue: {x: 0, y: 0}
+      Vector3Value: {x: 0, y: 0, z: 0}
+      Vector3IntValue: {x: 0, y: 0, z: 0}
+      Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+      ColorValue: {r: 0, g: 0, b: 0, a: 0}
+  vector2Callback:
+    targetObject: {fileID: 6229001447727497168}
+    methodName: Returns_Vector2
+    parameters:
+    - Type: 4
+      BoolValue: 0
+      IntValue: 0
+      FloatValue: 0
+      StringValue: 
+      Vector2Value: {x: 2, y: 2}
+      Vector2IntValue: {x: 0, y: 0}
+      Vector3Value: {x: 0, y: 0, z: 0}
+      Vector3IntValue: {x: 0, y: 0, z: 0}
+      Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+      ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    - Type: 1
+      BoolValue: 0
+      IntValue: 0
+      FloatValue: 1.1
+      StringValue: 
+      Vector2Value: {x: 0, y: 0}
+      Vector2IntValue: {x: 0, y: 0}
+      Vector3Value: {x: 0, y: 0, z: 0}
+      Vector3IntValue: {x: 0, y: 0, z: 0}
+      Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+      ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    - Type: 1
+      BoolValue: 0
+      IntValue: 0
+      FloatValue: 2.67
+      StringValue: 
+      Vector2Value: {x: 0, y: 0}
+      Vector2IntValue: {x: 0, y: 0}
+      Vector3Value: {x: 0, y: 0, z: 0}
+      Vector3IntValue: {x: 0, y: 0, z: 0}
+      Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+      ColorValue: {r: 0, g: 0, b: 0, a: 0}
+  vector2IntCallback:
+    targetObject: {fileID: 6229001447727497168}
+    methodName: Returns_Vector2Int
+    parameters:
+    - Type: 5
+      BoolValue: 0
+      IntValue: 0
+      FloatValue: 0
+      StringValue: 
+      Vector2Value: {x: 0, y: 0}
+      Vector2IntValue: {x: 2, y: 1}
+      Vector3Value: {x: 0, y: 0, z: 0}
+      Vector3IntValue: {x: 0, y: 0, z: 0}
+      Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+      ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    - Type: 5
+      BoolValue: 0
+      IntValue: 0
+      FloatValue: 0
+      StringValue: 
+      Vector2Value: {x: 0, y: 0}
+      Vector2IntValue: {x: 1, y: 0}
+      Vector3Value: {x: 0, y: 0, z: 0}
+      Vector3IntValue: {x: 0, y: 0, z: 0}
+      Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+      ColorValue: {r: 0, g: 0, b: 0, a: 0}
+  vector3Callback:
+    targetObject: {fileID: 6229001447727497168}
+    methodName: Returns_Vector3
+    parameters:
+    - Type: 6
+      BoolValue: 0
+      IntValue: 0
+      FloatValue: 0
+      StringValue: 
+      Vector2Value: {x: 0, y: 0}
+      Vector2IntValue: {x: 0, y: 0}
+      Vector3Value: {x: 0, y: 0, z: 0}
+      Vector3IntValue: {x: 0, y: 0, z: 0}
+      Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+      ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    - Type: 6
+      BoolValue: 0
+      IntValue: 0
+      FloatValue: 0
+      StringValue: 
+      Vector2Value: {x: 0, y: 0}
+      Vector2IntValue: {x: 0, y: 0}
+      Vector3Value: {x: 0, y: 0, z: 0}
+      Vector3IntValue: {x: 0, y: 0, z: 0}
+      Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+      ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    - Type: 1
+      BoolValue: 0
+      IntValue: 0
+      FloatValue: 0
+      StringValue: 
+      Vector2Value: {x: 0, y: 0}
+      Vector2IntValue: {x: 0, y: 0}
+      Vector3Value: {x: 0, y: 0, z: 0}
+      Vector3IntValue: {x: 0, y: 0, z: 0}
+      Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+      ColorValue: {r: 0, g: 0, b: 0, a: 0}
+  vector3IntCallback:
+    targetObject: {fileID: 6229001447727497168}
+    methodName: Returns_Vector3Int
+    parameters:
+    - Type: 7
+      BoolValue: 0
+      IntValue: 0
+      FloatValue: 0
+      StringValue: 
+      Vector2Value: {x: 0, y: 0}
+      Vector2IntValue: {x: 0, y: 0}
+      Vector3Value: {x: 0, y: 0, z: 0}
+      Vector3IntValue: {x: 1, y: 1, z: 2}
+      Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+      ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    - Type: 7
+      BoolValue: 0
+      IntValue: 0
+      FloatValue: 0
+      StringValue: 
+      Vector2Value: {x: 0, y: 0}
+      Vector2IntValue: {x: 0, y: 0}
+      Vector3Value: {x: 0, y: 0, z: 0}
+      Vector3IntValue: {x: 4, y: 3, z: 1}
+      Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+      ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    - Type: 0
+      BoolValue: 0
+      IntValue: 3
+      FloatValue: 0
+      StringValue: 
+      Vector2Value: {x: 0, y: 0}
+      Vector2IntValue: {x: 0, y: 0}
+      Vector3Value: {x: 0, y: 0, z: 0}
+      Vector3IntValue: {x: 0, y: 0, z: 0}
+      Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+      ColorValue: {r: 0, g: 0, b: 0, a: 0}
+  vector4Callback:
+    targetObject: {fileID: 6229001447727497168}
+    methodName: Returns_Vector4
+    parameters:
+    - Type: 8
+      BoolValue: 0
+      IntValue: 0
+      FloatValue: 0
+      StringValue: 
+      Vector2Value: {x: 0, y: 0}
+      Vector2IntValue: {x: 0, y: 0}
+      Vector3Value: {x: 0, y: 0, z: 0}
+      Vector3IntValue: {x: 0, y: 0, z: 0}
+      Vector4Value: {x: 1, y: 2, z: 3, w: 4}
+      ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    - Type: 8
+      BoolValue: 0
+      IntValue: 0
+      FloatValue: 0
+      StringValue: 
+      Vector2Value: {x: 0, y: 0}
+      Vector2IntValue: {x: 0, y: 0}
+      Vector3Value: {x: 0, y: 0, z: 0}
+      Vector3IntValue: {x: 0, y: 0, z: 0}
+      Vector4Value: {x: 2, y: 3, z: 1, w: 8}
+      ColorValue: {r: 0, g: 0, b: 0, a: 0}
+  colorCallback:
+    targetObject: {fileID: 6229001447727497168}
+    methodName: Returns_Color
+    parameters:
+    - Type: 9
+      BoolValue: 0
+      IntValue: 0
+      FloatValue: 0
+      StringValue: 
+      Vector2Value: {x: 0, y: 0}
+      Vector2IntValue: {x: 0, y: 0}
+      Vector3Value: {x: 0, y: 0, z: 0}
+      Vector3IntValue: {x: 0, y: 0, z: 0}
+      Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+      ColorValue: {r: 1, g: 0, b: 0, a: 1}
+    - Type: 9
+      BoolValue: 0
+      IntValue: 0
+      FloatValue: 0
+      StringValue: 
+      Vector2Value: {x: 0, y: 0}
+      Vector2IntValue: {x: 0, y: 0}
+      Vector3Value: {x: 0, y: 0, z: 0}
+      Vector3IntValue: {x: 0, y: 0, z: 0}
+      Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+      ColorValue: {r: 0, g: 0.03808403, b: 1, a: 1}
+    - Type: 1
+      BoolValue: 0
+      IntValue: 0
+      FloatValue: 5
+      StringValue: 
+      Vector2Value: {x: 0, y: 0}
+      Vector2IntValue: {x: 0, y: 0}
+      Vector3Value: {x: 0, y: 0, z: 0}
+      Vector3IntValue: {x: 0, y: 0, z: 0}
+      Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+      ColorValue: {r: 0, g: 0, b: 0, a: 0}
+  noParamsCallback:
+    targetObject: {fileID: 6229001447727497168}
+    methodName: Returns_NoParameters
+    parameters: []
+  mixedCallback:
+    targetObject: {fileID: 6229001447727497168}
+    methodName: Returns_MixedTypes
+    parameters:
+    - Type: 3
+      BoolValue: 0
+      IntValue: 0
+      FloatValue: 0
+      StringValue: This is ASTEK
+      Vector2Value: {x: 0, y: 0}
+      Vector2IntValue: {x: 0, y: 0}
+      Vector3Value: {x: 0, y: 0, z: 0}
+      Vector3IntValue: {x: 0, y: 0, z: 0}
+      Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+      ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    - Type: 0
+      BoolValue: 0
+      IntValue: 2
+      FloatValue: 0
+      StringValue: 
+      Vector2Value: {x: 0, y: 0}
+      Vector2IntValue: {x: 0, y: 0}
+      Vector3Value: {x: 0, y: 0, z: 0}
+      Vector3IntValue: {x: 0, y: 0, z: 0}
+      Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+      ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    - Type: 1
+      BoolValue: 0
+      IntValue: 0
+      FloatValue: 3.6
+      StringValue: 
+      Vector2Value: {x: 0, y: 0}
+      Vector2IntValue: {x: 0, y: 0}
+      Vector3Value: {x: 0, y: 0, z: 0}
+      Vector3IntValue: {x: 0, y: 0, z: 0}
+      Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+      ColorValue: {r: 0, g: 0, b: 0, a: 0}
+    - Type: 0
+      BoolValue: 0
+      IntValue: 3
+      FloatValue: 0
+      StringValue: 
+      Vector2Value: {x: 0, y: 0}
+      Vector2IntValue: {x: 0, y: 0}
+      Vector3Value: {x: 0, y: 0, z: 0}
+      Vector3IntValue: {x: 0, y: 0, z: 0}
+      Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+      ColorValue: {r: 0, g: 0, b: 0, a: 0}
+  privateCallback:
+    targetObject: {fileID: 6229001447727497168}
+    methodName: Returns_Private
+    parameters:
+    - Type: 0
+      BoolValue: 0
+      IntValue: 5
+      FloatValue: 0
+      StringValue: 
+      Vector2Value: {x: 0, y: 0}
+      Vector2IntValue: {x: 0, y: 0}
+      Vector3Value: {x: 0, y: 0, z: 0}
+      Vector3IntValue: {x: 0, y: 0, z: 0}
+      Vector4Value: {x: 0, y: 0, z: 0, w: 0}
+      ColorValue: {r: 0, g: 0, b: 0, a: 0}
