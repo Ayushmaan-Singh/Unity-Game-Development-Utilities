@@ -10,8 +10,7 @@ namespace Astek
         /// <summary>
         /// Sets any x y _values of a Vector2
         /// </summary>
-        public static Vector2 With(this Vector2 vector, float? x = null, float? y = null)
-            => new Vector2(x ?? vector.x, y ?? vector.y);
+        public static Vector2 With(this Vector2 vector, float? x = null, float? y = null) => new(x ?? vector.x, y ?? vector.y);
 
         /// <summary>
         /// Adds to any x y _values of a Vector2
@@ -49,8 +48,7 @@ namespace Astek
         /// <summary>
         /// Sets any x y z _values of a Vector3
         /// </summary>
-        public static Vector3 With(this Vector3 vector, float? x = null, float? y = null, float? z = null)
-            => new Vector3(x ?? vector.x, y ?? vector.y, z ?? vector.z);
+        public static Vector3 With(this Vector3 vector, float? x = null, float? y = null, float? z = null) => new(x ?? vector.x, y ?? vector.y, z ?? vector.z);
 
         /// <summary>
         ///     Adds to any x y z _values of a Vector3

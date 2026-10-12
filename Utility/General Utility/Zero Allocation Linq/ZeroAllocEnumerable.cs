@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using NUnit.Framework;
 
 namespace Astek.ZeroAllocLinqInternal
 {
@@ -590,6 +591,20 @@ namespace Astek.ZeroAllocLinqInternal
             foreach (T item in _source)
                 list.Add(item);
             return list;
+        }
+
+        public HashSet<T> ToHashset()
+        {
+            if (_source == null)
+                return new HashSet<T>();
+
+            if (_source is ICollection<T> collection)
+                return new HashSet<T>(collection);
+
+            HashSet<T> hashset = new HashSet<T>();
+            foreach (T item in _source)
+                hashset.Add(item);
+            return hashset;
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

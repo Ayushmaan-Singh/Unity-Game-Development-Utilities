@@ -433,6 +433,13 @@ namespace Astek
             return new ZeroAllocEnumerable<TSource>(source).ToArray();
         }
 
+        public static HashSet<TSource> ToHashSet<TSource>(this IEnumerable<TSource> source)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+            return new ZeroAllocEnumerable<TSource>(source).ToHashset();
+        }
+
         #endregion
 
         #region ElementAt
@@ -540,8 +547,9 @@ namespace Astek
             return new OrderedEnumerable<TSource>(source, comparer);
         }
 
-        public static ZeroAllocLinqInternal.IOrderedEnumerable<TSource> OrderBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector,
-                                                                                               IComparer<TKey> comparer = null)
+        public static ZeroAllocLinqInternal.IOrderedEnumerable<TSource> OrderBy<TSource, TKey>(this IEnumerable<TSource> source,
+            Func<TSource, TKey> keySelector,
+            IComparer<TKey> comparer = null)
         {
             if (source == null)
                 throw new ArgumentNullException(nameof(source));
@@ -551,7 +559,8 @@ namespace Astek
         }
 
         //Descending
-        public static ZeroAllocLinqInternal.IOrderedEnumerable<TSource> OrderByDescending<TSource>(this IEnumerable<TSource> source, IComparer<TSource> comparer = null)
+        public static ZeroAllocLinqInternal.IOrderedEnumerable<TSource> OrderByDescending<TSource>(this IEnumerable<TSource> source,
+            IComparer<TSource> comparer = null)
         {
             if (source == null)
                 throw new ArgumentNullException(nameof(source));
@@ -573,7 +582,7 @@ namespace Astek
         #region ThenBy Extension
 
         public static ZeroAllocLinqInternal.IOrderedEnumerable<TSource> ThenBy<TSource, TKey>(this ZeroAllocLinqInternal.IOrderedEnumerable<TSource> source,
-                                                                                              Func<TSource, TKey> keySelector, IComparer<TKey> comparer = null)
+            Func<TSource, TKey> keySelector, IComparer<TKey> comparer = null)
         {
             if (source == null)
                 throw new ArgumentNullException(nameof(source));
@@ -584,7 +593,7 @@ namespace Astek
         }
 
         public static ZeroAllocLinqInternal.IOrderedEnumerable<TSource> ThenBy<TSource>(this ZeroAllocLinqInternal.IOrderedEnumerable<TSource> source,
-                                                                                        IComparer<TSource> comparer = null)
+            IComparer<TSource> comparer = null)
         {
             if (source == null)
                 throw new ArgumentNullException(nameof(source));
