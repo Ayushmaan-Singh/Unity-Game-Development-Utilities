@@ -1,37 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Astek.DesignPattern.ServiceLocatorTool;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+
 namespace Astek.Gameplay
 {
-	[RequireComponent(typeof(GraphicRaycaster))]
-	public class UIRaycaster : MonoBehaviour
-	{
-		private GraphicRaycaster _raycaster;
-		private EventSystem _eventSystem;
+    [RequireComponent(typeof(GraphicRaycaster))]
+    public class UIRaycaster : MonoBehaviour
+    {
+        private GraphicRaycaster _raycaster;
+        private UnityEngine.EventSystems.EventSystem _eventSystem;
 
-		private void Awake()
-		{
-			_raycaster = GetComponent<GraphicRaycaster>();
-			_eventSystem = EventSystem.current;
-			ServiceLocator.For(this).Register(this);
-		}
+        private void Awake()
+        {
+            _raycaster   = GetComponent<GraphicRaycaster>();
+            _eventSystem = UnityEngine.EventSystems.EventSystem.current;
+            ServiceLocator.For(this).Register(this);
+        }
 
-		public List<RaycastResult> Raycast(Vector2 pos)
-		{
-			PointerEventData pointerEventData = new PointerEventData(_eventSystem)
-			{
-				position = pos
-			};
+        public List<RaycastResult> Raycast(Vector2 pos)
+        {
+            PointerEventData pointerEventData = new PointerEventData(_eventSystem)
+            {
+                position = pos
+            };
 
-			// Create a list to store raycast results
-			List<RaycastResult> results = new List<RaycastResult>();
+            // Create a list to store raycast results
+            List<RaycastResult> results = new List<RaycastResult>();
 
-			// Perform the raycast
-			_raycaster.Raycast(pointerEventData, results);
-			return results;
-		}
-	}
+            // Perform the raycast
+            _raycaster.Raycast(pointerEventData, results);
+            return results;
+        }
+    }
 }
