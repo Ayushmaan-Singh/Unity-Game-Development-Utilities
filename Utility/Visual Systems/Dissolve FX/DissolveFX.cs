@@ -1,14 +1,9 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using Sirenix.OdinInspector;
-using Unity.Android.Gradle;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 namespace Astek.VisualFeedback
 {

@@ -283,9 +283,11 @@ namespace Astek.Gameplay.CustomPhysics2D
 					MoveWithCollision(substepMovement);
 				}
 
+				#if UNITY_EDITOR
 				// Store step for visualization
 				_substepPositions.Add(_transform.position);
 				_substepVelocities.Add(_velocity);
+				#endif
 			}
 		}
 

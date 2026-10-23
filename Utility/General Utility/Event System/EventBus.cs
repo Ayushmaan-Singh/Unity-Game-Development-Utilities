@@ -204,8 +204,7 @@ namespace Astek.EventSystems.Core
         {
             if (handler == null) throw new ArgumentNullException(nameof(handler));
             Channel<T> channel = GetOrCreate<T>();
-            channel.Add(handler, priority, false);
-            return new Subscription(channel, handler);
+            return channel.Add(handler, priority, false) ? new Subscription(channel, handler) : default(Subscription);
         }
 
         /// <summary>Like AddListener, but automatically unsubscribes right before its first invocation.</summary>
@@ -473,9 +472,9 @@ namespace Astek.EventSystems.Core
             }
 
             /// <summary>Registers a listener. Duplicate delegates are ignored. During a dispatch it is parked in _pending.</summary>
-            public void Add(EventManager.EventDelegate<T> handler, int priority, bool once)
+            public bool Add(EventManager.EventDelegate<T> handler, int priority, bool once)
             {
-                if (Has(handler)) return;
+                if (Has(handler)) return false;
 
                 Entry entry = new Entry { Callback = handler, Target = handler.Target, Priority = priority, Once = once };
                 if (_depth > 0)
@@ -487,6 +486,7 @@ namespace Astek.EventSystems.Core
                 {
                     Insert(entry);
                 }
+                return true;
             }
 
             // Only called while _depth == 0 (array has no gaps and may be resized/shifted freely).

@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
+
 namespace Astek.Gameplay.Geometric_Calculations
 {
     public class TestArcGeometry : MonoBehaviour
@@ -32,6 +32,7 @@ namespace Astek.Gameplay.Geometric_Calculations
             }
         }
 
+#if UNITY_EDITOR
         private void OnDrawGizmos()
         {
             arcGeo.OnDrawGizmos();
@@ -45,5 +46,6 @@ namespace Astek.Gameplay.Geometric_Calculations
                 spawned[i].rotation = Quaternion.Euler(0, 0, arcGeo.ArcPointsTransform[i].RotationDeg);
             }
         }
+#endif
     }
 }

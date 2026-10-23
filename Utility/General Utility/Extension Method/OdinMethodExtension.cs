@@ -1,12 +1,14 @@
 using System;
 using Sirenix.OdinInspector;
-using UnityEditor;
-using UnityEditorInternal;
 using UnityEngine;
-using AnimatorController = UnityEditor.Animations.AnimatorController;
-using AnimatorControllerLayer = UnityEditor.Animations.AnimatorControllerLayer;
 using AnimatorControllerParameter = UnityEngine.AnimatorControllerParameter;
 using AnimatorControllerParameterType = UnityEngine.AnimatorControllerParameterType;
+
+#if UNITY_EDITOR
+using UnityEditor;
+using AnimatorController = UnityEditor.Animations.AnimatorController;
+using AnimatorControllerLayer = UnityEditor.Animations.AnimatorControllerLayer;
+#endif
 
 namespace Astek
 {

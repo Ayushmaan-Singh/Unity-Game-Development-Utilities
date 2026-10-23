@@ -27,10 +27,10 @@ namespace Astek.InputSystem
             Fired
         }
 
-        private State state = State.Idle;
-        private Vector2 startPosition;
-        private Vector2 frozenDelta;
-        private double startTime;
+        private State _state = State.Idle;
+        private Vector2 _startPosition;
+        private Vector2 _frozenDelta;
+        private double _startTime;
 
 #if UNITY_EDITOR
         static SwipeV2Composite() => Initialize();
@@ -50,33 +50,33 @@ namespace Astek.InputSystem
             bool pressed = context.ReadValueAsButton(press);
             Vector2 currentPos = context.ReadValue<Vector2, Vector2MagnitudeComparer>(position);
 
-            if (pressed && state == State.Idle)
+            if (pressed && _state == State.Idle)
             {
-                state         = State.Tracking;
-                startPosition = currentPos;
-                startTime     = InputState.currentTime;
+                _state         = State.Tracking;
+                _startPosition = currentPos;
+                _startTime     = InputState.currentTime;
             }
             else if (!pressed)
             {
-                state = State.Idle;
+                _state = State.Idle;
                 return Vector2.zero;
             }
 
-            if (state == State.Fired)
-                return frozenDelta;
+            if (_state == State.Fired)
+                return _frozenDelta;
 
-            Vector2 delta = currentPos - startPosition;
+            Vector2 delta = currentPos - _startPosition;
 
-            if (state == State.Tracking)
+            if (_state == State.Tracking)
             {
-                var elapsed = InputState.currentTime - startTime;
+                var elapsed = InputState.currentTime - _startTime;
                 var speed = delta.magnitude / (float)System.Math.Max(elapsed, 0.0001);
 
                 if (delta.magnitude >= minDistance && speed >= minSpeed)
                 {
-                    state       = State.Fired;
-                    frozenDelta = delta;
-                    return frozenDelta;
+                    _state       = State.Fired;
+                    _frozenDelta = delta;
+                    return _frozenDelta;
                 }
             }
 
@@ -91,7 +91,7 @@ namespace Astek.InputSystem
         public override float EvaluateMagnitude(ref InputBindingCompositeContext context)
         {
             UpdateState(ref context); // ensure state is current even if this runs first
-            return state switch
+            return _state switch
             {
                 State.Idle => 0f,
                 State.Tracking => 1f,
